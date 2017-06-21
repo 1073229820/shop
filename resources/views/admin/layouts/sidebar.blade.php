@@ -42,6 +42,31 @@
         </li>
 
         <li>
+            <a href="#" class="dropdown-toggle">
+                <i class="icon-list"></i>
+                <span class="menu-text"> 商品管理 </span>
+
+                <b class="arrow icon-angle-down"></b>
+            </a>
+
+            <ul class="submenu">
+                <li>
+                    <a href="{{url('admin/goods/lst')}}">
+                        <i class="icon-double-angle-right"></i>
+                        浏览商品
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{url('admin/goods/add')}}">
+                        <i class="icon-double-angle-right"></i>
+                        添加商品
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li>
             <a href="typography.html">
                 <i class="icon-text-width"></i>
                 <span class="menu-text"> Typography </span>

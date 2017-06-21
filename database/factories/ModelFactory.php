@@ -19,3 +19,20 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+
+$factory->define(App\Goods::class, function (Faker\Generator $faker) {
+    return [
+        'cat_id' => $faker->randomDigitNotNull,
+        'type_id' => $faker->randomDigitNotNull,
+        'goods_name' => $faker->word,
+        'descr' => $faker->paragraph,
+        'price' => $faker->randomFloat(2),
+        'logo' => $faker->sentence,
+        'status' => $faker->numberBetween(1, 3),
+        'store' => $faker->randomNumber,
+        'num' => $faker->randomDigit,
+        'clicknum' => $faker->randomNumber,
+        'addtime' => $faker->unixTime,
+    ];
+});

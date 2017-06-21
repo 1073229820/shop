@@ -28,6 +28,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'web'], function () {
     Route::get('jqgrid', function () {
         return view('admin/jqgrid');
     });
+
+    //商品管理模块
+    Route::get('goods/lst', 'GoodsController@index');
 });
 
 Route::group(['prefix' => 'admin'], function () {
@@ -40,4 +43,8 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('jqgrid', function () {
         return view('admin/jqgrid');
     });
+
+    Route::get('goods/lst', 'GoodsController@index');
 });
+
+Route::resource('Goods', 'GoodsController');
