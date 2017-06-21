@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6cbaf734-c910-4d02-a356-5db52584ed85" name="默认" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.php" afterPath="$PROJECT_DIR$/app/Http/routes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/factories/ModelFactory.php" afterPath="$PROJECT_DIR$/database/factories/ModelFactory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/layouts/app.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/app.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/layouts/sidebar.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/sidebar.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/goods/lst.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/goods/lst.blade.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -53,16 +49,15 @@
       <file leaf-file-name="lst.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/admin/goods/lst.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="653">
-              <caret line="109" column="85" lean-forward="false" selection-start-line="109" selection-start-column="85" selection-end-line="109" selection-end-column="85" />
+            <state relative-caret-position="628">
+              <caret line="120" column="91" lean-forward="false" selection-start-line="120" selection-start-column="91" selection-end-line="120" selection-end-column="91" />
               <folding>
                 <element signature="e#55#909#0#HTML" expanded="false" />
                 <element signature="e#106#226#0#HTML" expanded="false" />
                 <element signature="e#236#509#0#HTML" expanded="false" />
                 <element signature="e#539#878#0#HTML" expanded="false" />
                 <element signature="e#4288#4598#0#HTML" expanded="false" />
-                <element signature="e#5681#6418#0#HTML" expanded="false" />
-                <element signature="e#6460#9028#0#HTML" expanded="false" />
+                <element signature="e#6493#9061#0#HTML" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -479,12 +474,12 @@
       <workItem from="1497957240881" duration="2009000" />
       <workItem from="1497959395520" duration="11636000" />
       <workItem from="1498006492047" duration="6562000" />
-      <workItem from="1498027908734" duration="19802000" />
+      <workItem from="1498027908734" duration="20459000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40009000" />
+    <option name="totallyTimeSpent" value="40666000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -772,16 +767,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/goods/lst.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="653">
-          <caret line="109" column="85" lean-forward="false" selection-start-line="109" selection-start-column="85" selection-end-line="109" selection-end-column="85" />
+        <state relative-caret-position="628">
+          <caret line="120" column="91" lean-forward="false" selection-start-line="120" selection-start-column="91" selection-end-line="120" selection-end-column="91" />
           <folding>
             <element signature="e#55#909#0#HTML" expanded="false" />
             <element signature="e#106#226#0#HTML" expanded="false" />
             <element signature="e#236#509#0#HTML" expanded="false" />
             <element signature="e#539#878#0#HTML" expanded="false" />
             <element signature="e#4288#4598#0#HTML" expanded="false" />
-            <element signature="e#5681#6418#0#HTML" expanded="false" />
-            <element signature="e#6460#9028#0#HTML" expanded="false" />
+            <element signature="e#6493#9061#0#HTML" expanded="false" />
           </folding>
         </state>
       </provider>
