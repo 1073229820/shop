@@ -48,3 +48,15 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 Route::resource('Goods', 'GoodsController');
+
+
+//前台的登录
+Route::any('ulogin', 'LoginController@login');
+//前台首页
+Route::any('index', 'LoginController@index');
+//前台注册页
+Route::any('reg', 'LoginController@reg');
+//前台注册
+Route::any('register', 'LoginController@register');
+//个人中心
+Route::any('order', 'OrderController@order');
