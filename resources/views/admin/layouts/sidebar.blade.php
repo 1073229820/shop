@@ -1,6 +1,9 @@
 <div class="sidebar" id="sidebar">
     <script type="text/javascript">
-        try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
+        try {
+            ace.settings.check('sidebar', 'fixed')
+        } catch (e) {
+        }
     </script>
 
     <div class="sidebar-shortcuts" id="sidebar-shortcuts">
@@ -72,6 +75,82 @@
                 <span class="menu-text"> Typography </span>
             </a>
         </li>
+
+        <li>
+            <a href="#" class="dropdown-toggle">
+                <i class="icon-list"></i>
+                <span class="menu-text"> 管理员 </span>
+
+                <b class="arrow icon-angle-down"></b>
+            </a>
+
+            <ul class="submenu">
+                <li>
+                    <a href="{{url('/admin/admins')}}">
+                        <i class="icon-double-angle-right"></i>
+                        管理员列表
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{url('admin/admins/create')}}">
+                        <i class="icon-double-angle-right"></i>
+                        添加管理员
+                    </a>
+                </li>
+            </ul>
+        </li>
+        {{--@role('admin')--}}
+        <li>
+            <a href="#" class="dropdown-toggle">
+                <i class="icon-list"></i>
+                <span class="menu-text"> 角色管理 </span>
+
+                <b class="arrow icon-angle-down"></b>
+            </a>
+
+            <ul class="submenu">
+                <li>
+                    <a href="{{url('/admin/roles')}}">
+                        <i class="icon-double-angle-right"></i>
+                        角色列表
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{url('admin/roles/create')}}">
+                        <i class="icon-double-angle-right"></i>
+                        添加角色
+                    </a>
+                </li>
+            </ul>
+        </li>
+        {{--@endrole--}}
+        <li>
+            <a href="#" class="dropdown-toggle">
+                <i class="icon-list"></i>
+                <span class="menu-text"> 权限管理 </span>
+
+                <b class="arrow icon-angle-down"></b>
+            </a>
+
+            <ul class="submenu">
+                <li>
+                    <a href="{{url('/admin/permissions')}}">
+                        <i class="icon-double-angle-right"></i>
+                        权限列表
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{url('admin/permissions/create')}}">
+                        <i class="icon-double-angle-right"></i>
+                        添加权限
+                    </a>
+                </li>
+            </ul>
+        </li>
+
 
         <li>
             <a href="#" class="dropdown-toggle">
@@ -243,7 +322,8 @@
 
                 <span class="menu-text">
 									Calendar
-									<span class="badge badge-transparent tooltip-error" title="2&nbsp;Important&nbsp;Events">
+									<span class="badge badge-transparent tooltip-error"
+                                          title="2&nbsp;Important&nbsp;Events">
 										<i class="icon-warning-sign red bigger-130"></i>
 									</span>
 								</span>
@@ -366,6 +446,9 @@
     </div>
 
     <script type="text/javascript">
-        try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
+        try {
+            ace.settings.check('sidebar', 'collapsed')
+        } catch (e) {
+        }
     </script>
 </div>
