@@ -117,7 +117,8 @@ License: You must have a valid license purchased only from themeforest(the above
         <span class="icon-bar"></span>
       </button>
       <!-- END RESPONSIVE MENU TOGGLER -->
-      <a href="index.html" class="navbar-brand"><img src="assets1/img/logo_red.png" alt="Metronic Shop UI"></a><!-- LOGO -->
+      <a href="{{url('index')}}" class="navbar-brand"><img src="assets1/img/logo_red.png" alt="Metronic Shop UI"></a><!-- LOGO -->
+
     </div>
     <!-- BEGIN CART -->
     <div class="cart-block">
@@ -460,26 +461,29 @@ License: You must have a valid license purchased only from themeforest(the above
         <div class="content-form-page">
           <div class="row">
             <div class="col-md-7 col-sm-7">
-              <form class="form-horizontal" role="form" action="{{url('register')}}" method="post">
+              <form class="form-horizontal" role="form" action="{{url('newinfo')}}" method="post">
+                <input type="hidden" name="id" value="{{$user->id}}">
                 <input type="hidden" name="_token" value="{{csrf_token()}}">
                 <fieldset>
                   <legend>Your personal details</legend>
                   <div class="form-group">
                     <label for="user_name" class="col-lg-4 control-label">用户名： <span class="require">*</span></label>
                     <div class="col-lg-8">
-                      <input type="text" class="form-control" id="firstname" name="user_name">
+                      <input type="text" class="form-control" id="firstname" name="user_name" value="{{$user->user_name}}">
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="name" class="col-lg-4 control-label">真实姓名： <span class="require">*</span></label>
                     <div class="col-lg-8">
-                      <input type="text" class="form-control" id="lastname" name="name">
+                      <input type="text" class="form-control" id="lastname" name="name" value="{{$user->name}}">
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="pass" class="col-lg-4 control-label">密码： <span class="require">*</span></label>
                     <div class="col-lg-8">
-                      <input type="text" class="form-control" id="password" name="pass">
+
+                      <input type="text" class="form-control" id="password" name="pass" value="{{$user->pass}}">
+
                     </div>
                   </div>
 
@@ -487,10 +491,20 @@ License: You must have a valid license purchased only from themeforest(the above
                     <label  for="password" class="col-lg-4 control-label">性别：</label>
                     <div class="radio-list col-lg-8">
                       <label class="radio-inline">
-                        <input type="radio" name="sex"  value="1" checked> 男
+
+
+                        <input type="radio" name="sex"  value="1" @if($user->sex==1)
+                          checked
+                               @else
+                                 @endif
+                          > 男
                       </label>
                       <label class="radio-inline">
-                        <input type="radio" name="sex"  value="0" > 女
+                        <input type="radio" name="sex"  value="0" @if($user->sex==0)
+                        checked
+                        @else
+                                @endif> 女
+
                       </label>
 
                     </div>
@@ -504,14 +518,18 @@ License: You must have a valid license purchased only from themeforest(the above
                   <div class="form-group">
                     <label for="email" class="col-lg-4 control-label">Email： <span class="require">*</span></label>
                     <div class="col-lg-8">
-                      <input type="text" class="form-control" id="email" name="email">
+
+                      <input type="text" class="form-control" id="email" name="email" value="{{$user->email}}">
+
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label for="email" class="col-lg-4 control-label">电话： <span class="require">*</span></label>
                     <div class="col-lg-8">
-                      <input type="text" class="form-control" id="email" name="phone">
+
+                      <input type="text" class="form-control" id="email" name="phone" value="{{$user->phone}}">
+
                     </div>
                   </div>
 

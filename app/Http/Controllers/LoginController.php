@@ -2,25 +2,34 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Goods;
 use App\User;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Validator;
 use Session;
+
 class LoginController extends Controller
 {
+    /*public function __construct()
+    {
+        $this->middleware('admin');
+    }*/
+
     //前台主页
     public function index()
     {
+
         return view('home/index');
+
     }
 
     //前台登录验证
     public function login()
     {
+
 
         if($input = Input::all()){
             //dd($input['email']);
@@ -30,6 +39,7 @@ class LoginController extends Controller
             $user = User::where('email', $input['email'])->first();
             //dd($user);
             if($user!=null){
+
                 if($user->pass == $input['pass']){
                     session(['user'=>$user]);
                     //dd(session('user')->user_name);
@@ -38,16 +48,36 @@ class LoginController extends Controller
                 }else{
                     return back()->with('errors','密码错误');
                 }
+
+                //验证用户状态
+                if($user->status != '0'){
+                    if($user->pass == $input['pass']){
+                        session(['user'=>$user]);
+                        //dd(session('user'));
+                        return redirect('index');
+                        //return 'good';
+                    }else{
+                        return back()->with('errors','密码错误');
+                    }
+                }else{
+                    return back()->with('errors','账号被禁用，请联系管理员');
+                }
+
+
             }else{
                 return back()->with('errors','账号错误');
             }
         }else{
+            //session(['user'=>null]);
             return view('home/login');
         }
+
+
     }
 
     //前台注册页
-    public function reg(){
+    public function reg()
+    {
         return view('home/reg');
     }
 
@@ -55,6 +85,9 @@ class LoginController extends Controller
     public function register()
     {
         $input = Input::except('_token');
+        $input['addtime'] = time();
+        //dd($input);
+
         $rules =[
             'user_name'=>'required',
             'name'=>'required',
@@ -100,5 +133,6 @@ class LoginController extends Controller
         $goodsList = Goods::where('cat_id', $input['catId'])->take(5)->get();
         return JSON_ENCODE($goodsList);
     }
+
 
 }

@@ -460,7 +460,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 <div class="content-form-page">
                     <div class="row">
                         <div class="col-md-7 col-sm-7">
-                            <form class="form-horizontal form-without-legend" role="form" action="{{url('ulogin')}}" method="post">
+                            <form class="form-horizontal form-without-legend" role="form" action="{{url('passget')}}" method="post">
                                 <input type="hidden" value="{{csrf_token()}}" name="_token">
                                 <div class="form-group">
                                     <label for="email" class="col-lg-4 control-label">Email <span class="require">*</span></label>
@@ -468,12 +468,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <input type="text" class="form-control" id="email" name="email">
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="password" class="col-lg-4 control-label">Password <span class="require">*</span></label>
-                                    <div class="col-lg-8">
-                                        <input type="text" class="form-control" id="password" name="pass">
-                                    </div>
-                                </div>
+
                                 <div class="row">
                                     <div class="col-lg-8 col-md-offset-4 padding-left-0">
                                         <a href="forgotton-password.html">Forget Password?</a>

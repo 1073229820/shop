@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <!--
 Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.1.1
 Version: 2.0.2
@@ -460,20 +461,16 @@ License: You must have a valid license purchased only from themeforest(the above
                 <div class="content-form-page">
                     <div class="row">
                         <div class="col-md-7 col-sm-7">
-                            <form class="form-horizontal form-without-legend" role="form" action="{{url('ulogin')}}" method="post">
+                            <form class="form-horizontal form-without-legend" role="form" action="{{url('passset')}}" method="post">
+                                <input type="hidden" name="id" value="{{$user->id}}">
                                 <input type="hidden" value="{{csrf_token()}}" name="_token">
                                 <div class="form-group">
-                                    <label for="email" class="col-lg-4 control-label">Email <span class="require">*</span></label>
+                                    <label for="email" class="col-lg-4 control-label">新密码 <span class="require">*</span></label>
                                     <div class="col-lg-8">
-                                        <input type="text" class="form-control" id="email" name="email">
+                                        <input type="text" class="form-control" id="email" name="pass">
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="password" class="col-lg-4 control-label">Password <span class="require">*</span></label>
-                                    <div class="col-lg-8">
-                                        <input type="text" class="form-control" id="password" name="pass">
-                                    </div>
-                                </div>
+
                                 <div class="row">
                                     <div class="col-lg-8 col-md-offset-4 padding-left-0">
                                         <a href="forgotton-password.html">Forget Password?</a>

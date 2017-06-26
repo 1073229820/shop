@@ -190,16 +190,20 @@
         <li>
             <a href="#" class="dropdown-toggle">
                 <i class="icon-edit"></i>
-                <span class="menu-text"> Forms </span>
+
+                <span class="menu-text"> 会员 </span>
+
 
                 <b class="arrow icon-angle-down"></b>
             </a>
 
             <ul class="submenu">
                 <li>
-                    <a href="form-elements.html">
+
+                    <a href="{{url('admin/userInfo')}}">
                         <i class="icon-double-angle-right"></i>
-                        Form Elements
+                        会员管理
+
                     </a>
                 </li>
 

@@ -22,7 +22,9 @@ class CreateUsersTable extends Migration
             $table->tinyInteger('sex');
             $table->string('email')->unique();
             $table->string('email_code');
-            $table->timestamp('addtime');
+            $table->integer('addtime');
+            $table->integer('status');
+
         });
     }
 

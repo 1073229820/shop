@@ -93,7 +93,7 @@ License: You must have a valid license purchased only from themeforest(the above
             <!-- BEGIN TOP BAR MENU -->
             <div class="col-md-6 col-sm-6 additional-nav">
                 <ul class="list-unstyled list-inline pull-right">
-                    <li><a href="{{url('order')}}">My Account</a></li>
+                    <li><a href="#">My Account</a></li>
                     <li><a href="#">My Wishlist</a></li>
                     <li><a href="checkout.html">Checkout</a></li>
                     <li><a href="login-page.html">Log In</a></li>

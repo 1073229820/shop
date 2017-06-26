@@ -156,6 +156,9 @@
 <script src="{{asset('assets/admin/js/flot/jquery.flot.pie.min.js')}}"></script>
 <script src="{{asset('assets/admin/js/flot/jquery.flot.resize.min.js')}}"></script>
 
+<script type="text/javascript" src="{{url('/layer/layer.js')}}"></script>
+
+
 <!-- ace scripts -->
 
 <script src="{{asset('assets/admin/js/ace-elements.min.js')}}"></script>

@@ -37,6 +37,7 @@
 
         var defaults = {
             min: 1,
+
             max: 100,
             initval: "",
             step: 1,
@@ -468,7 +469,9 @@
 
                 value = parseFloat(elements.input.val());
                 if (isNaN(value)) {
+
                     value = 1;
+
                 }
 
                 var initvalue = value,
@@ -480,7 +483,9 @@
                     stopSpin();
                     value = settings.max;
                     originalinput.trigger("touchspin.max");
-                } 
+
+                }
+
 
                 elements.input.val(Number(value).toFixed(settings.decimals));
 
@@ -494,7 +499,9 @@
 
                 value = parseFloat(elements.input.val());
                 if (isNaN(value)) {
+
                     value = 1;
+
                 }
 
                 var initvalue = value,
@@ -506,7 +513,10 @@
                     stopSpin();
                     value = settings.min;
                     originalinput.trigger("touchspin.min");
-                }    
+
+
+                }
+
 
                 elements.input.val(value.toFixed(settings.decimals));
 

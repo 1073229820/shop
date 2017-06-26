@@ -13,15 +13,18 @@
 
 $factory->define(App\User::class, function (Faker\Generator $faker) {
     return [
+
         'user_name' => $faker->word,
         'name' => $faker->name,
         'pass'=>$faker->sha256,
         'email' => $faker->email,
         'userpic' =>$faker->sentence,
-        'sex' =>$faker->randomDigitNotNull,
+        'sex' =>$faker->numberBetween(0,1),
         'phone'=>$faker->phoneNumber,
         'email_code'=>$faker->ean8,
         'addtime'=>$faker->unixTime,
+        'status'=>$faker->numberBetween(0,1),
+
     ];
 });
 
@@ -39,5 +42,6 @@ $factory->define(App\Goods::class, function (Faker\Generator $faker) {
         'num' => $faker->randomDigit,
         'clicknum' => $faker->randomNumber,
         'addtime' => $faker->unixTime,
+
     ];
 });
