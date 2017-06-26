@@ -28,6 +28,18 @@ Route::group(['prefix' => 'admin', 'middleware' => 'web'], function () {
     Route::get('jqgrid', function () {
         return view('admin/jqgrid');
     });
+//角色权限路由
+//   Route::group(['prifix'=>'admin', 'middleware'=>'auth'], function () {
+        Route::resource('roles', 'RolesController');
+        Route::resource('permissions', 'PermissionsController');
+        Route::resource('admins', 'AdminsController');
+   // });
+
+    //管理员登录路由
+    Route::get('login', 'AdminsController@login');
+    Route::post('login', 'AdminsController@signin');
+
+
 });
 
 Route::group(['prefix' => 'admin'], function () {
@@ -40,4 +52,15 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('jqgrid', function () {
         return view('admin/jqgrid');
     });
+
+//角色权限路由
+//Route::group(['prifix'=>'admin', 'middleware'=>'auth'], function () {
+    Route::resource('roles', 'RolesController');
+    Route::resource('permissions', 'PermissionsController');
+    Route::resource('admins', 'AdminsController');
+//});
+
+    //管理员登录路由
+    Route::get('login', 'AdminsController@login');
+    Route::post('login', 'AdminsController@signin');
 });
