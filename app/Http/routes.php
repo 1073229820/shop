@@ -17,14 +17,6 @@ Route::get('/', function () {
 });
 
 
-
-//DB::listen(function($sql) {
-////dump($sql);
-//echo $sql->sql;
-//// dump($sql->bindings);
-//});
-
-
 Route::group(['prefix' => 'admin', 'middleware' => 'web'], function () {
     Route::get('/', function () {
         return view('admin/index');
@@ -36,13 +28,22 @@ Route::group(['prefix' => 'admin', 'middleware' => 'web'], function () {
         return view('admin/jqgrid');
     });
 
-
     //商品管理模块
     Route::get('goods/lst', 'GoodsController@index');
 
 
 
 
+//角色权限路由
+//   Route::group(['prifix'=>'admin', 'middleware'=>'auth'], function () {
+        Route::resource('roles', 'RolesController');
+        Route::resource('permissions', 'PermissionsController');
+        Route::resource('admins', 'AdminsController');
+   // });
+
+    //管理员登录路由
+    Route::get('login', 'AdminsController@login');
+    Route::post('login', 'AdminsController@signin');
 
 });
 
@@ -56,6 +57,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('jqgrid', function () {
         return view('admin/jqgrid');
     });
+
 
     Route::get('goods/lst', 'GoodsController@index');
 });
@@ -106,4 +108,17 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 
+
+
+//角色权限路由
+//Route::group(['prifix'=>'admin', 'middleware'=>'auth'], function () {
+    Route::resource('roles', 'RolesController');
+    Route::resource('permissions', 'PermissionsController');
+    Route::resource('admins', 'AdminsController');
+//});
+
+    //管理员登录路由
+    Route::get('login', 'AdminsController@login');
+    Route::post('login', 'AdminsController@signin');
+//});
 
