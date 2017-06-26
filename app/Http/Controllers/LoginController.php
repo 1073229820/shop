@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Goods;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -54,7 +55,6 @@ class LoginController extends Controller
     public function register()
     {
         $input = Input::except('_token');
-        dd($input);
         $rules =[
             'user_name'=>'required',
             'name'=>'required',
@@ -85,6 +85,20 @@ class LoginController extends Controller
             return back()->withErrors($validator);
         }
 
+    }
+
+    public function ajax()
+    {
+        $goodsList = Goods::where('cat_id', 4)->take(5)->get();
+        return view('home/ajax', compact('goodsList'));
+    }
+
+    public function ajaxGet(Request $request)
+    {
+        $input = $request->except('_token');
+
+        $goodsList = Goods::where('cat_id', $input['catId'])->take(5)->get();
+        return JSON_ENCODE($goodsList);
     }
 
 }

@@ -60,3 +60,12 @@ Route::any('reg', 'LoginController@reg');
 Route::any('register', 'LoginController@register');
 //个人中心
 Route::any('order', 'OrderController@order');
+
+//购物车模块
+Route::get('cart/store', 'CartController@store');
+Route::get('cart', 'CartController@index');
+
+//首页ajax测试
+Route::get('ajax', 'LoginController@ajax');
+
+Route::get('ajaxGet', 'LoginController@ajaxGet');
