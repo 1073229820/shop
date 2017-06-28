@@ -42,21 +42,21 @@ License: You must have a valid license purchased only from themeforest(the above
     <!-- Fonts END -->
 
     <!-- Global styles START -->
-    <link href="assets1/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/home/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- Global styles END -->
 
     <!-- Page level plugin styles START -->
-    <link href="assets1/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
-    <link href="assets1/plugins/bxslider/jquery.bxslider.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets1/plugins/layerslider/css/layerslider.css" type="text/css">
+    <link href="assets/home/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
+    <link href="assets/home/plugins/bxslider/jquery.bxslider.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/home/plugins/layerslider/css/layerslider.css" type="text/css">
     <!-- Page level plugin styles END -->
 
     <!-- Theme styles START -->
-    <link href="assets1/css/style-metronic.css" rel="stylesheet" type="text/css">
-    <link href="assets1/css/style.css" rel="stylesheet" type="text/css">
-    <link href="assets1/css/style-responsive.css" rel="stylesheet" type="text/css">
-    <link href="assets1/css/custom.css" rel="stylesheet" type="text/css">
+    <link href="assets/home/css/style-metronic.css" rel="stylesheet" type="text/css">
+    <link href="assets/home/css/style.css" rel="stylesheet" type="text/css">
+    <link href="assets/home/css/style-responsive.css" rel="stylesheet" type="text/css">
+    <link href="assets/home/css/custom.css" rel="stylesheet" type="text/css">
     <!-- Theme styles END -->
 
     <style type="text/css">
@@ -122,7 +122,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 <span class="icon-bar"></span>
             </button>
             <!-- END RESPONSIVE MENU TOGGLER -->
-            <a href="index.html" class="navbar-brand"><img src="assets1/img/logo_red.png" alt="Metronic Shop UI"></a><!-- LOGO -->
+            <a href="index.html" class="navbar-brand"><img src="assets/home/img/logo_red.png" alt="Metronic Shop UI"></a><!-- LOGO -->
         </div>
         <!-- BEGIN CART -->
         <div class="cart-block">
@@ -136,56 +136,56 @@ License: You must have a valid license purchased only from themeforest(the above
                 <div class="cart-content">
                     <ul class="scroller" style="height: 250px;">
                         <li>
-                            <a href="item.html"><img src="assets1/temp/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
+                            <a href="item.html"><img src="assets/home/temp/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
                             <span class="cart-content-count">x 1</span>
                             <strong><a href="item.html">Rolex Classic Watch</a></strong>
                             <em>$1230</em>
                             <a href="javascript:void(0);" class="del-goods"><i class="fa fa-times"></i></a>
                         </li>
                         <li>
-                            <a href="item.html"><img src="assets1/temp/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
+                            <a href="item.html"><img src="assets/home/temp/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
                             <span class="cart-content-count">x 1</span>
                             <strong><a href="item.html">Rolex Classic Watch</a></strong>
                             <em>$1230</em>
                             <a href="javascript:void(0);" class="del-goods"><i class="fa fa-times"></i></a>
                         </li>
                         <li>
-                            <a href="item.html"><img src="assets1/temp/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
+                            <a href="item.html"><img src="assets/home/temp/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
                             <span class="cart-content-count">x 1</span>
                             <strong><a href="item.html">Rolex Classic Watch</a></strong>
                             <em>$1230</em>
                             <a href="javascript:void(0);" class="del-goods"><i class="fa fa-times"></i></a>
                         </li>
                         <li>
-                            <a href="item.html"><img src="assets1/temp/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
+                            <a href="item.html"><img src="assets/home/temp/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
                             <span class="cart-content-count">x 1</span>
                             <strong><a href="item.html">Rolex Classic Watch</a></strong>
                             <em>$1230</em>
                             <a href="javascript:void(0);" class="del-goods"><i class="fa fa-times"></i></a>
                         </li>
                         <li>
-                            <a href="item.html"><img src="assets1/temp/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
+                            <a href="item.html"><img src="assets/home/temp/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
                             <span class="cart-content-count">x 1</span>
                             <strong><a href="item.html">Rolex Classic Watch</a></strong>
                             <em>$1230</em>
                             <a href="javascript:void(0);" class="del-goods"><i class="fa fa-times"></i></a>
                         </li>
                         <li>
-                            <a href="item.html"><img src="assets1/temp/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
+                            <a href="item.html"><img src="assets/home/temp/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
                             <span class="cart-content-count">x 1</span>
                             <strong><a href="item.html">Rolex Classic Watch</a></strong>
                             <em>$1230</em>
                             <a href="javascript:void(0);" class="del-goods"><i class="fa fa-times"></i></a>
                         </li>
                         <li>
-                            <a href="item.html"><img src="assets1/temp/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
+                            <a href="item.html"><img src="assets/home/temp/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
                             <span class="cart-content-count">x 1</span>
                             <strong><a href="item.html">Rolex Classic Watch</a></strong>
                             <em>$1230</em>
                             <a href="javascript:void(0);" class="del-goods"><i class="fa fa-times"></i></a>
                         </li>
                         <li>
-                            <a href="item.html"><img src="assets1/temp/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
+                            <a href="item.html"><img src="assets/home/temp/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
                             <span class="cart-content-count">x 1</span>
                             <strong><a href="item.html">Rolex Classic Watch</a></strong>
                             <em>$1230</em>
@@ -262,11 +262,11 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <!-- BEGIN DROPDOWN MENU - BRANDS -->
                                 <div class="nav-brands">
                                     <ul>
-                                        <li><a href="product-list.html"><img title="esprit" alt="esprit" src="assets1/temp/brands/esprit.jpg"></a></li>
-                                        <li><a href="product-list.html"><img title="gap" alt="gap" src="assets1/temp/brands/gap.jpg"></a></li>
-                                        <li><a href="product-list.html"><img title="next" alt="next" src="assets1/temp/brands/next.jpg"></a></li>
-                                        <li><a href="product-list.html"><img title="puma" alt="puma" src="assets1/temp/brands/puma.jpg"></a></li>
-                                        <li><a href="product-list.html"><img title="zara" alt="zara" src="assets1/temp/brands/zara.jpg"></a></li>
+                                        <li><a href="product-list.html"><img title="esprit" alt="esprit" src="assets/home/temp/brands/esprit.jpg"></a></li>
+                                        <li><a href="product-list.html"><img title="gap" alt="gap" src="assets/home/temp/brands/gap.jpg"></a></li>
+                                        <li><a href="product-list.html"><img title="next" alt="next" src="assets/home/temp/brands/next.jpg"></a></li>
+                                        <li><a href="product-list.html"><img title="puma" alt="puma" src="assets/home/temp/brands/puma.jpg"></a></li>
+                                        <li><a href="product-list.html"><img title="zara" alt="zara" src="assets/home/temp/brands/zara.jpg"></a></li>
                                     </ul>
                                 </div>
                                 <!-- END DROPDOWN MENU - BRANDS -->
@@ -330,7 +330,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             <div class="nav-content">
                                 <div class="product-item">
                                     <div class="pi-img-wrapper">
-                                        <a href="item.html"><img src="assets1/temp/products/model4.jpg" class="img-responsive" alt="Berry Lace Dress"></a>
+                                        <a href="item.html"><img src="assets/home/temp/products/model4.jpg" class="img-responsive" alt="Berry Lace Dress"></a>
                                     </div>
                                     <h3><a href="item.html">Berry Lace Dress</a></h3>
                                     <div class="pi-price">$29.00</div>
@@ -338,7 +338,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 </div>
                                 <div class="product-item">
                                     <div class="pi-img-wrapper">
-                                        <a href="item.html"><img src="assets1/temp/products/model3.jpg" class="img-responsive" alt="Berry Lace Dress"></a>
+                                        <a href="item.html"><img src="assets/home/temp/products/model3.jpg" class="img-responsive" alt="Berry Lace Dress"></a>
                                     </div>
                                     <h3><a href="item.html">Berry Lace Dress</a></h3>
                                     <div class="pi-price">$29.00</div>
@@ -346,7 +346,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 </div>
                                 <div class="product-item">
                                     <div class="pi-img-wrapper">
-                                        <a href="item.html"><img src="assets1/temp/products/model7.jpg" class="img-responsive" alt="Berry Lace Dress"></a>
+                                        <a href="item.html"><img src="assets/home/temp/products/model7.jpg" class="img-responsive" alt="Berry Lace Dress"></a>
                                     </div>
                                     <h3><a href="item.html">Berry Lace Dress</a></h3>
                                     <div class="pi-price">$29.00</div>
@@ -429,7 +429,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <div id="layerslider" style="width: 100%; height: 494px; margin: 0 auto;">
         <!--LayerSlider layer-->
         <div class="ls-layer ls-layer1" style="slidedirection: right; transition2d: 24,25,27,28; ">
-            <img src="assets1/temp/sliders/slide1/bg.jpg" class="ls-bg" alt="Slide background">
+            <img src="assets/home/temp/sliders/slide1/bg.jpg" class="ls-bg" alt="Slide background">
             <div class="ls-s-1 title" style=" top: 96px; left: 35%; slidedirection : fade; slideoutdirection : fade; durationin : 750; durationout : 750; easingin : easeOutQuint; rotatein : 90; rotateout : -90; scalein : .5; scaleout : .5; showuntil : 4000; white-space: nowrap;">
                 Tones of <strong>shop UI features</strong> designed
             </div>
@@ -440,7 +440,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
         <!--LayerSlider layer-->
         <div class="ls-layer ls-layer2" style="slidedirection: right; transition2d: 110,111,112,113; ">
-            <img src="assets1/temp/sliders/slide2/bg.jpg" class="ls-bg" alt="Slide background">
+            <img src="assets/home/temp/sliders/slide2/bg.jpg" class="ls-bg" alt="Slide background">
             <div class="ls-s-1 ls-title title" style=" top: 40%; left: 21%; slidedirection : fade; slideoutdirection : fade; durationin : 750; durationout : 750; easingin : easeOutQuint; easingout : easeInOutQuint; delayin : 0; delayout : 0; rotatein : 90; rotateout : -90; scalein : .5; scaleout : .5; showuntil : 4000; white-space: nowrap;">
                 <strong class="title">Unlimted</strong>
                 Layout Options
@@ -459,7 +459,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
         <!--LayerSlider layer-->
         <div class="ls-layer ls-layer3" style="slidedirection: right; transition2d: 92,93,105; ">
-            <img src="assets1/temp/sliders/slide3/bg.jpg" class="ls-bg" alt="Slide background">
+            <img src="assets/home/temp/sliders/slide3/bg.jpg" class="ls-bg" alt="Slide background">
 
             <div class="ls-s-1 ls-title" style=" top: 83px; left: 33%; slidedirection : fade; slideoutdirection : fade; durationin : 750; durationout : 750; easingin : easeOutQuint; rotatein : 90; rotateout : -90; scalein : .5; scaleout : .5; showuntil : 4000; white-space: nowrap;">
                 Full Admin & Frontend
@@ -480,7 +480,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
         <!--LayerSlider layer-->
         <div class="ls-layer ls-layer5" style="slidedirection: right; transition2d: 110,111,112,113; ">
-            <img src="assets1/temp/sliders/slide5/bg.jpg" class="ls-bg" alt="Slide background">
+            <img src="assets/home/temp/sliders/slide5/bg.jpg" class="ls-bg" alt="Slide background">
 
             <div class="ls-s-1 title" style=" top: 35%; left: 60%; slidedirection : fade; slideoutdirection : fade; durationin : 750; durationout : 750; easingin : easeOutQuint; rotatein : 90; rotateout : -90; scalein : .5; scaleout : .5; showuntil : 4000; white-space: nowrap;">
                 The most<br>
@@ -510,9 +510,9 @@ License: You must have a valid license purchased only from themeforest(the above
                         <li>
                             <div class="product-item">
                                 <div class="pi-img-wrapper">
-                                    <img src="assets1/temp/products/model1.jpg" class="img-responsive" alt="Berry Lace Dress">
+                                    <img src="assets/home/temp/products/model1.jpg" class="img-responsive" alt="Berry Lace Dress">
                                     <div>
-                                        <a href="assets1/temp/products/model1.jpg" class="btn btn-default fancybox-button">Zoom</a>
+                                        <a href="assets/home/temp/products/model1.jpg" class="btn btn-default fancybox-button">Zoom</a>
                                         <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
                                     </div>
                                 </div>
@@ -544,12 +544,12 @@ License: You must have a valid license purchased only from themeforest(the above
         <div class="row">
             <div class="col-md-6 col-sm-6 col-xs-3">
                 <div class="product-main-image">
-                    <img src="assets1/temp/products/model7.jpg" alt="Cool green dress with red bell" class="img-responsive">
+                    <img src="assets/home/temp/products/model7.jpg" alt="Cool green dress with red bell" class="img-responsive">
                 </div>
                 <div class="product-other-images">
-                    <a href="#" class="active"><img alt="Berry Lace Dress" src="assets1/temp/products/model3.jpg"></a>
-                    <a href="#"><img alt="Berry Lace Dress" src="assets1/temp/products/model4.jpg"></a>
-                    <a href="#"><img alt="Berry Lace Dress" src="assets1/temp/products/model5.jpg"></a>
+                    <a href="#" class="active"><img alt="Berry Lace Dress" src="assets/home/temp/products/model3.jpg"></a>
+                    <a href="#"><img alt="Berry Lace Dress" src="assets/home/temp/products/model4.jpg"></a>
+                    <a href="#"><img alt="Berry Lace Dress" src="assets/home/temp/products/model5.jpg"></a>
                 </div>
             </div>
             <div class="col-md-6 col-sm-6 col-xs-9">
@@ -603,30 +603,30 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- Load javascripts at bottom, this will reduce page load time -->
 <!-- BEGIN CORE PLUGINS (REQUIRED FOR ALL PAGES) -->
 <!--[if lt IE 9]>
-<script src="assets1/plugins/respond.min.js"></script>
+<script src="assets/home/plugins/respond.min.js"></script>
 <![endif]-->
-<script src="assets1/plugins/jquery-1.10.2.min.js" type="text/javascript"></script>
-<script src="assets1/plugins/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
-<script src="assets1/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="assets1/plugins/back-to-top.js"></script>
-{{--<script type="text/javascript" src="assets1/plugins/jQuery-slimScroll/jquery.slimscroll.min.js"></script>--}}
+<script src="assets/home/plugins/jquery-1.10.2.min.js" type="text/javascript"></script>
+<script src="assets/home/plugins/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+<script src="assets/home/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="assets/home/plugins/back-to-top.js"></script>
+{{--<script type="text/javascript" src="assets/home/plugins/jQuery-slimScroll/jquery.slimscroll.min.js"></script>--}}
 <!-- END CORE PLUGINS -->
 
 <!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
-<script type="text/javascript" src="assets1/plugins/fancybox/source/jquery.fancybox.pack.js"></script><!-- pop up -->
-{{--<script type="text/javascript" src="assets1/plugins/bxslider/jquery.bxslider.min.js"></script><!-- slider for products -->--}}
-{{--<script type="text/javascript" src='assets1/plugins/zoom/jquery.zoom.min.js'></script><!-- product zoom -->--}}
-<script src="assets1/plugins/bootstrap-touchspin/bootstrap.touchspin.js" type="text/javascript"></script><!-- Quantity -->
+<script type="text/javascript" src="assets/home/plugins/fancybox/source/jquery.fancybox.pack.js"></script><!-- pop up -->
+{{--<script type="text/javascript" src="assets/home/plugins/bxslider/jquery.bxslider.min.js"></script><!-- slider for products -->--}}
+{{--<script type="text/javascript" src='assets/home/plugins/zoom/jquery.zoom.min.js'></script><!-- product zoom -->--}}
+<script src="assets/home/plugins/bootstrap-touchspin/bootstrap.touchspin.js" type="text/javascript"></script><!-- Quantity -->
 
 <!-- BEGIN LayerSlider -->
-<script src="assets1/plugins/layerslider/jQuery/jquery-easing-1.3.js" type="text/javascript"></script>
-<script src="assets1/plugins/layerslider/jQuery/jquery-transit-modified.js" type="text/javascript"></script>
-<script src="assets1/plugins/layerslider/js/layerslider.transitions.js" type="text/javascript"></script>
-<script src="assets1/plugins/layerslider/js/layerslider.kreaturamedia.jquery.js" type="text/javascript"></script>
+<script src="assets/home/plugins/layerslider/jQuery/jquery-easing-1.3.js" type="text/javascript"></script>
+<script src="assets/home/plugins/layerslider/jQuery/jquery-transit-modified.js" type="text/javascript"></script>
+<script src="assets/home/plugins/layerslider/js/layerslider.transitions.js" type="text/javascript"></script>
+<script src="assets/home/plugins/layerslider/js/layerslider.kreaturamedia.jquery.js" type="text/javascript"></script>
 <!-- END LayerSlider -->
 
-<script type="text/javascript" src="assets1/scripts/app.js"></script>
-<script type="text/javascript" src="assets1/scripts/index.js"></script>
+<script type="text/javascript" src="assets/home/scripts/app.js"></script>
+<script type="text/javascript" src="assets/home/scripts/index.js"></script>
 <script type="text/javascript">
     jQuery(document).ready(function() {
         App.init();
@@ -640,7 +640,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
 {{--ajax滚动加载首页商品--}}
 <script type="text/javascript">
-    $(function(){
+
         var winH = $(window).height(); //页面可视区域高度
         var catId = [1, 4, 5, 6, 8]; // 首页加载的商品类别id
         var index = 1;//catId数组索引
@@ -649,7 +649,9 @@ License: You must have a valid license purchased only from themeforest(the above
             var scrollT = $(document).scrollTop(); //滚动条top
             var aa = (pageH-winH-scrollT)/winH;
             if(aa<0.01 && index<catId.length){
-                $.getJSON("{{ url('ajaxGet') }}", {catId: catId[index]}, function(json){
+
+                $.ajax({ type: "GET", url: "{{ url('ajaxGet') }}", data: {catId: catId[index]}, dataType: "json", success: function (json) {
+
 
                     if(json){
 
@@ -666,9 +668,9 @@ License: You must have a valid license purchased only from themeforest(the above
                             str += '<li>';
                             str += '<div class="product-item">';
                             str += '<div class="pi-img-wrapper">';
-                            str += '<img src="assets1/temp/products/model1.jpg"  class="img-responsive" alt="Berry Lace Dress">';
+                            str += '<img src="assets/home/temp/products/model1.jpg"   class="img-responsive" alt="Berry Lace Dress">';
                             str += '<div>';
-                            str += '<a href="assets1/temp/products/model1.jpg" class="btn btn-default fancybox-button">Zoom</a>';
+                            str += '<a href="assets/home/temp/products/model1.jpg" class="btn btn-default fancybox-button">Zoom</a>';
                             str += '<a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>';
                             str += '</div>';
                             str += '</div>';
@@ -681,12 +683,15 @@ License: You must have a valid license purchased only from themeforest(the above
 
                         });
 
-                         str += '</ul>';
-                         str += '</div>';
-                         str += '</div>';
-                         str += '</div>';
+                        str += '</ul>';
+                        str += '</div>';
+                        str += '</div>';
+                        str += '</div>';
+
 
                         $(".nodata").before(str);
+
+
                         index++;
                         if(index >= catId.length){
                             $(".nodata").show().html("别滚动了，已经到底了。。。");
@@ -698,21 +703,23 @@ License: You must have a valid license purchased only from themeforest(the above
 
 
 
+
                     }else{
                         return false;
                     }
+                    }
 
-                    
                 });
+
 
 
             }
         });
-    });
+
 </script>
 <script>
 
-
+    //动态引入js/css文件
     $.extend({
         includePath: '',
         include: function(file) {
@@ -731,16 +738,16 @@ License: You must have a valid license purchased only from themeforest(the above
     });
 
     //使用方法
-    $.includePath = 'http://localhost/laravel-pjax/public/assets1/plugins/jQuery-slimScroll/';
+    $.includePath = 'http://localhost/laravel-pjax/public/assets/home/plugins/jQuery-slimScroll/';
     $.include(['jquery.slimscroll.min.js']);
 
-    $.includePath = 'http://localhost/laravel-pjax/public/assets1/plugins/bxslider/';
+    $.includePath = 'http://localhost/laravel-pjax/public/assets/home/plugins/bxslider/';
     $.include(['jquery.bxslider.min.js']);
 
-    $.includePath = 'http://localhost/laravel-pjax/public/assets1/plugins/zoom/';
+    $.includePath = 'http://localhost/laravel-pjax/public/assets/home/plugins/zoom/';
     $.include(['jquery.zoom.min.js']);
 
-    $.includePath = 'http://localhost/laravel-pjax/public/assets1/plugins/bootstrap/css/';
+    $.includePath = 'http://localhost/laravel-pjax/public/assets/home/plugins/bootstrap/css/';
     $.include(['bootstrap.css']);
 </script>
 </body>
