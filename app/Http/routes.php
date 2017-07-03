@@ -16,7 +16,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//pjax请求局部刷新页面
+
 Route::group(['prefix' => 'admin', 'middleware' => 'web'], function () {
     Route::get('/', function () {
         return view('admin/index');
@@ -29,13 +29,19 @@ Route::group(['prefix' => 'admin', 'middleware' => 'web'], function () {
     });
 
     //商品管理模块
-    Route::get('goods/lst', 'GoodsController@index');
+//    Route::get('goods/lst', 'GoodsController@index');
 
-    //角色权限路由
-    Route::resource('roles', 'RolesController');
-    Route::resource('permissions', 'PermissionsController');
-    Route::resource('admins', 'AdminsController');
 
+
+
+
+
+//角色权限路由
+//   Route::group(['prifix'=>'admin', 'middleware'=>'auth'], function () {
+        Route::resource('roles', 'RolesController');
+        Route::resource('permissions', 'PermissionsController');
+        Route::resource('admins', 'AdminsController');
+   // });
 
     //管理员登录路由
     Route::get('login', 'AdminsController@login');
@@ -54,23 +60,18 @@ Route::group(['prefix' => 'admin'], function () {
         return view('admin/jqgrid');
     });
 
-    Route::get('goods/lst', 'GoodsController@index');
 
-    Route::resource('roles', 'RolesController');
-    Route::resource('permissions', 'PermissionsController');
-    Route::resource('admins', 'AdminsController');
+//    Route::get('goods/lst', 'GoodsController@index');
 });
 
-Route::resource('Goods', 'GoodsController');
+
 
 
 
 //首页ajax滚动加载测试
 Route::get('ajax', 'LoginController@ajax');
 Route::get('ajaxGet', 'LoginController@ajaxGet');
-//购物车
-Route::get('cart', 'CartController@index');
-Route::get('cart/store', 'CartController@store');
+
 
 /*Route::group(['middleware' => ['web','user.login']], function(){*/
 
@@ -111,11 +112,29 @@ Route::group(['prefix' => 'admin'], function () {
 
 
 
-
-
+//角色权限路由
+//Route::group(['prifix'=>'admin', 'middleware'=>'auth'], function () {
+    Route::resource('roles', 'RolesController');
+    Route::resource('permissions', 'PermissionsController');
+    Route::resource('admins', 'AdminsController');
+//});
 
     //管理员登录路由
     Route::get('login', 'AdminsController@login');
     Route::post('login', 'AdminsController@signin');
 //});
+
+//商品管理模块
+    Route::resource('goods', 'GoodsController');
+    Route::resource('goodstype','GoodsTypeController');
+    Route::get('data/goodstype','GoodsTypeController@data');
+    Route::get('data2/goodstype','GoodsTypeController@data2');
+    Route::resource('attribute','AttributeController');
+    Route::get('data/attribute','AttributeController@data');
+    Route::any('admin/upload','UploadController@upload');//图片上传
+    Route::resource('goodsprice','GoodsPriceController');
+    Route::get('data/goodsprice','GoodsPriceController@data');
+
+//    Route::get('data',"GoodsTypeController@data");
+
 

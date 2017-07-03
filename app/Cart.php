@@ -21,7 +21,6 @@ class Cart extends Model
                 return session('cartList');
            }else{
                session()->forget('cartList');
-
            }
         }
     }

@@ -929,7 +929,6 @@ License: You must have a valid license purchased only from themeforest(the above
             <i class="fa fa-phone"></i>
             <div>
               <h2>477 505 8877</h2>
-              <em>24/7 customer care available</em>
             </div>
           </div>
         </div>
@@ -958,6 +957,7 @@ License: You must have a valid license purchased only from themeforest(the above
               <li><i class="fa fa-angle-right"></i> <a href="#">Shipping & Returns</a></li>
               <li><i class="fa fa-angle-right"></i> <a href="contacts.html">Contact Us</a></li>
               <li><i class="fa fa-angle-right"></i> <a href="#">Careers</a></li>
+                <em>24/7 customer care available</em>
               <li><i class="fa fa-angle-right"></i> <a href="#">Payment Methods</a></li>
             </ul>
           </div>
