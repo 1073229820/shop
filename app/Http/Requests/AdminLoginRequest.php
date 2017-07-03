@@ -24,7 +24,7 @@ class AdminLoginRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required',
+            'name' => 'required|alpha_dash',
             'pass' => 'required'
         ];
     }

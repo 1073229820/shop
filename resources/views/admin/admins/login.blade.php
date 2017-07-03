@@ -75,6 +75,13 @@
                                             </ul>
                                         </div>
                                     @endif
+                                    @if (session('fail'))
+                                        <div class="alert alert-danger">
+                                            <ul>
+                                                <li>{{ session('fail') }}</li>
+                                            </ul>
+                                        </div>
+                                    @endif
                                     <div class="space-6"></div>
                                     {{--登录--}}
                                     <form action="login" method="post">
@@ -92,6 +99,11 @@
                                                     <input type="password" name="pass"  class="form-control" placeholder="Password" />
                                                     <i class="icon-lock"></i>
                                                 </span>
+                                            </label>
+
+                                            <label class="block clearfix">
+                                                <input type="text" name="code" class="col-sm-7">
+                                                <img src="{{url('admin/code')}}" class="col-sm-5 " onclick="this.src='{{url('admin/code')}}?'+Math.random()">
                                             </label>
 
                                             <div class="space"></div>

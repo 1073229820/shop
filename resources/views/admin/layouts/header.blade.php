@@ -224,42 +224,49 @@
                     </ul>
                 </li>
 
-                <li class="light-blue">
-                    <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                        <img class="nav-user-photo" src="{{asset('assets/admin/avatars/user.jpg')}}" alt="Jason's Photo" />
-                        <span class="user-info">
-									<small>Welcome,</small>
-									Jason
-								</span>
+                @if (session('adminname'))
+                    <li class="light-blue">
+                        <a data-toggle="dropdown" href="#" class="dropdown-toggle">
 
-                        <i class="icon-caret-down"></i>
-                    </a>
+                            <img class="nav-user-photo" src="{{asset(session('adminname')->userpic)}}" alt="Jason's Photo" />
+                            <span class="user-info">
+                                <small>Welcome,</small>
+                                    {{session('adminname')->name}}
+                            </span>
 
-                    <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
-                        <li>
-                            <a href="#">
-                                <i class="icon-cog"></i>
-                                Settings
-                            </a>
-                        </li>
+                            <i class="icon-caret-down"></i>
+                        </a>
 
-                        <li>
-                            <a href="#">
-                                <i class="icon-user"></i>
-                                Profile
-                            </a>
-                        </li>
+                        <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                            <li>
+                                <a href="#">
+                                    <i class="icon-cog"></i>
+                                    Settings
+                                </a>
+                            </li>
 
-                        <li class="divider"></li>
+                            <li>
+                                <a href="#">
+                                    <i class="icon-user"></i>
+                                    Profile
+                                </a>
+                            </li>
 
-                        <li>
-                            <a href="#">
-                                <i class="icon-off"></i>
-                                Logout
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+                            <li class="divider"></li>
+
+                            <li>
+                                <a href="{{url('admin/logout')}}">
+                                    <i class="icon-off"></i>
+                                    退出
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                @else
+                    <li class="light-blue">
+                        <a  href="admin/login" class="dropdown-toggle">登录</a>
+                    </li>
+                @endif
             </ul><!-- /.ace-nav -->
         </div><!-- /.navbar-header -->
     </div><!-- /.container -->

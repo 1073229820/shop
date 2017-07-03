@@ -19,6 +19,8 @@
         </ul>
     </div><!-- .breadcrumb -->
 
+    <script src="{{asset('assets/admin/js/jquery-1.10.2.min.js')}}"></script>
+    <script src="{{asset('layer/layer.js')}}"></script>
     <div class="nav-search" id="nav-search">
         <form class="form-search">
                     <span class="input-icon">
@@ -30,7 +32,7 @@
     <div class="page-content">
         <div class="page-header">
             <h1>
-                用户权限
+                权限管理
                 <small>
                     <i class="icon-double-angle-right"></i>
                     权限列表
@@ -45,7 +47,7 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="table-responsive">
-                            <table id="sample-table-1" class="table table-striped table-bordered table-hover">
+                            <table id="sample-table-1" class="table table-striped table-bordered table-hover" style="margin-bottom: -5px">
                                 <thead>
                                     <tr>
                                         <th class="center">
@@ -61,8 +63,9 @@
                                         <th>操作</th>
                                     </tr>
                                 </thead>
-                                @foreach($permissions as $v)
-                                    <tbody>
+
+                                <tbody>
+                                    @foreach($permissions as $v)
                                         <tr>
                                             <td class="center">
                                                 <label>
@@ -75,33 +78,38 @@
                                                 <a href="#">{{$v->name}}</a>
                                             </td>
                                             <td>{{$v->display_name}}</td>
-
                                             <td class="hidden-480">
                                                 {{$v->description}}
                                             </td>
                                             <td>
                                                 <div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
-                                                    <a href="permissions/{{{$v->id}}}/edit">
-                                                        <button class="btn btn-xs btn-info">
-                                                            <i class="icon-edit bigger-120"></i>
-                                                        </button>
-                                                    </a>
-
-                                                    <form action="permissions/{{{$v->id}}}" method="post">
-                                                        <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                                        <input type="hidden" name="_method" value="DELETE">
-
-                                                        <button class="btn btn-xs btn-danger">
-                                                            <i class="icon-trash bigger-120"></i>
-                                                        </button>
-                                                    </form>
+                                                    @if (session('adminname'))
+                                                        @if (session('adminname')->ability('admin', 'perms_edit'))
+                                                            <a href="permissions/{{{$v->id}}}/edit"
+                                                               class="btn btn-xs btn-info">
+                                                                <i class="icon-edit bigger-120"></i>
+                                                            </a>
+                                                        @endif
+                                                    @endif
+                                                    @if (session('adminname'))
+                                                        @if (session('adminname')->ability('admin', 'perms_delete'))
+                                                            <a href="javascript:;"
+                                                               onclick="delPerms('{{$v->id}}', this)"
+                                                               class="btn btn-xs btn-danger">
+                                                                <i class="icon-trash bigger-120"></i>
+                                                            </a>
+                                                        @endif
+                                                    @endif
                                                 </div>
 
                                             </td>
                                         </tr>
-                                    </tbody>
-                                @endforeach
+                                    @endforeach
+                                </tbody>
                             </table>
+                            <div class="pull-right">
+                            {{$permissions->links()}}
+                            </div>
                         </div><!-- /.table-responsive -->
                     </div><!-- /span -->
                 </div><!-- /row -->
@@ -109,6 +117,28 @@
             </div><!-- /.col -->
         </div><!-- /.row -->
     </div><!-- /.page-content -->
+    <script>
+
+        function delPerms (perms_id, that)
+        {
+            layer.confirm('确定删除该权限吗？', {
+                btn: ['确定','取消'] //按钮
+            }, function(){
+                //ajax请求删除数据
+                $.post("{{url('admin/permissions')}}/"+perms_id, {'_method':'delete', '_token':'{{csrf_token()}}'},
+                    function (data) {
+                        //返回值为真，删除改行数据（局部刷新）
+                        if (data.status == 1) {
+                            layer.msg(data.msg, {icon: 6});
+                            $(that).parents('div').parents('td').parents('tr').remove();
+
+                        } else {
+                            layer.msg(data.msg, {icon: 5});
+                        }
+                    });
+            }, function(){});
+        }
+    </script>
 @endsection
 
 
