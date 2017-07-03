@@ -4,13 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Goods;
 use App\User;
+use App\Userinfo;
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Input;
 use Session;
 use App\Admin;
-use Illuminate\Support\Facades\Hash;
 
 require_once '/code/Code.class.php';
 
@@ -29,8 +32,15 @@ class LoginController extends Controller
 
     }
 
+    //前台退出
+    public function logout()
+    {
+        session(['user'=>null]);
+        return view('home/login');
+    }
+
     //前台登录验证
-    public function login()
+    public function login(Request $request)
     {
 
 
@@ -40,19 +50,89 @@ class LoginController extends Controller
             //dd($user->pass);
 
             $user = User::where('email', $input['email'])->first();
+
+
             //dd($user);
             if($user!=null){
 
                 //验证用户状态
+                $user_id = $user->id;
+                $ip = $request->getClientIp();
+                $logintime = time();
+
                 if($user->status != '0'){
-                    if($user->pass == $input['pass']){
-                        session(['user'=>$user]);
-                        //dd(session('user'));
-                        return redirect('index');
-                        //return 'good';
-                    }else{
-                        return back()->with('errors','密码错误');
-                    }
+                    //验证登录错误次数
+                    $error = DB::table('userinfos')->select('pass_wrong_time_status', 'logintime')->where('user_id' , $user_id)->whereBetween('logintime', [$logintime-300, $logintime])->get();
+                    //dd($error);
+                   if(count($error)>=3){
+                       $errors = DB::table('userinfos')->select('pass_wrong_time_status')->where('user_id', $user_id)->take(3)->get();
+                       //dd($errors);
+                       $json= json_encode($errors);
+                       $dejson = json_decode($json, true);
+                       $a = array_column($dejson, 'pass_wrong_time_status');
+                       //dd($a);
+                       //$b = array_search('0', $a);
+
+                       $b = in_array('0', $a);
+
+                        //dd($b);
+                       if($b){
+                           if($user->pass == $input['pass']){
+                               session(['user'=>$user]);
+                               //dd(session('user'));
+                               Userinfo::create(['ipaddr'=>$ip, 'user_id'=>$user_id, 'pass_wrong_time_status'=>'0', 'logintime'=>$logintime]);
+                               return redirect('index');
+                               //return 'good';
+                           }else{
+
+                               Userinfo::create(['ipaddr'=>$ip, 'user_id'=>$user_id, 'pass_wrong_time_status'=>'1', 'logintime'=>$logintime]);
+                               return back()->with('errors','密码错误');
+                           }
+
+                       }else{
+                           $errorss = DB::table('userinfos')->where('user_id', $user_id)->take(1)->value('logintime');
+                            //dd($errorss);
+                           $time = $errorss;
+
+                           $nowtime = time();
+                           //dd($nowtime-$time);
+                           if($nowtime-$time>=300){
+
+                               if($user->pass == $input['pass']){
+                                   session(['user'=>$user]);
+                                   //dd(session('user'));
+                                   Userinfo::create(['ipaddr'=>$ip, 'user_id'=>$user_id, 'pass_wrong_time_status'=>'0', 'logintime'=>$logintime]);
+                                   return redirect('index');
+                                   //return 'good';
+                               }else{
+
+                                   Userinfo::create(['ipaddr'=>$ip, 'user_id'=>$user_id, 'pass_wrong_time_status'=>'1', 'logintime'=>$logintime]);
+                                   return back()->with('errors','密码错误');
+                               }
+                           }else{
+                               return back()->with('errors','账号错误3次。。5分钟后再试');
+                           }
+
+
+                       }
+
+                   }else{
+                       if($user->pass == $input['pass']){
+                           session(['user'=>$user]);
+                           //dd(session('user'));
+                           Userinfo::create(['ipaddr'=>$ip, 'user_id'=>$user_id, 'pass_wrong_time_status'=>'0', 'logintime'=>$logintime]);
+                           return redirect('index');
+                           //return 'good';
+                       }else{
+
+                           Userinfo::create(['ipaddr'=>$ip, 'user_id'=>$user_id, 'pass_wrong_time_status'=>'1', 'logintime'=>$logintime]);
+                           return back()->with('errors','密码错误');
+                       }
+                   }
+
+
+
+
                 }else{
                     return back()->with('errors','账号被禁用，请联系管理员');
                 }
@@ -80,7 +160,15 @@ class LoginController extends Controller
     {
         $input = Input::except('_token');
         $input['addtime'] = time();
+        //$input['pass'] = Crypt::encrypt($input['pass']);
+
+
+
         //dd($input);
+
+
+        $emailinfo = $this->checkemail();
+
 
         $rules =[
             'user_name'=>'required',
@@ -100,26 +188,47 @@ class LoginController extends Controller
         ];
 
         $validator = Validator::make($input, $rules, $message);
-        if($validator->passes()){
-            $re = User::create($input);
-            //dd($re);
-            if($re){
-                return redirect('ulogin');
+        if($emailinfo['status']!=1){
+            if($validator->passes()){
+                $re = User::create($input);
+                //dd($re);
+                if($re){
+                    return redirect('ulogin');
+                }else{
+                    return back()->with('errors','数据填充失败，请稍后重试！');
+                }
             }else{
-                return back()->with('errors','数据填充失败，请稍后重试！');
+                return back()->withErrors($validator);
             }
+
         }else{
-            return back()->withErrors($validator);
+            return back()->with('errors','该邮箱已经被注册！');
         }
 
     }
 
+
+
+
+    public  function checkemail()
+    {
+        $input = Input::except('_token');
+        $emailifno = User::where('email', $input['email'])->first();
+        if($emailifno){
+            $data = ['status' =>1];
+        }else{
+            $data = ['status' =>0];
+        }
+        return $data;
+    }
+
+
+    //前台首页遍历测试
     public function ajax()
     {
         $goodsList = Goods::where('cat_id', 4)->take(5)->get();
         return view('home/ajax', compact('goodsList'));
     }
-
     public function ajaxGet(Request $request)
     {
         $input = $request->except('_token');
@@ -199,7 +308,7 @@ class LoginController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function logout(Request $request)
+    public function signout(Request $request)
     {
         //清除session值
         $request->session()->forget('adminname');

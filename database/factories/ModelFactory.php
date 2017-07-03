@@ -45,3 +45,21 @@ $factory->define(App\Goods::class, function (Faker\Generator $faker) {
 
     ];
 });
+
+$factory->define(App\Userinfo::class, function (Faker\Generator $faker) {
+    return [
+        'user_id' => $faker->numberBetween(1, 19),
+        'ipaddr' => $faker->phoneNumber,
+        'logintime'=>$faker->unixTime,
+        'pass_wrong_time_status' =>$faker->numberBetween(0, 1),
+    ];
+});
+
+$factory->define(App\Link::class, function (Faker\Generator $faker) {
+    return [
+        'name' =>$faker->name,
+        'url' => $faker->url,
+        'sort_num'=>$faker->numberBetween(1,100),
+        'status' =>$faker->numberBetween(0, 1),
+    ];
+});

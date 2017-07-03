@@ -278,27 +278,24 @@
         <li>
             <a href="#" class="dropdown-toggle">
                 <i class="icon-edit"></i>
-
-                <span class="menu-text"> 会员 </span>
-
-
+                <span class="menu-text"> 友情链接管理 </span>
                 <b class="arrow icon-angle-down"></b>
             </a>
 
             <ul class="submenu">
                 <li>
 
-                    <a href="{{url('admin/userInfo')}}">
+                    <a href="{{url('admin/link')}}">
                         <i class="icon-double-angle-right"></i>
-                        会员管理
+                        友情链接列表
 
                     </a>
                 </li>
 
                 <li>
-                    <a href="form-wizard.html">
+                    <a href="{{url('admin/link/create')}}">
                         <i class="icon-double-angle-right"></i>
-                        Wizard &amp; Validation
+                        添加友情链接
                     </a>
                 </li>
 
@@ -319,9 +316,9 @@
         </li>
 
         <li>
-            <a href="widgets.html">
+            <a href="{{url('admin/userInfo')}}">
                 <i class="icon-list-alt"></i>
-                <span class="menu-text"> Widgets </span>
+                <span class="menu-text"> 会员管理 </span>
             </a>
         </li>
 
