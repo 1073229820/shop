@@ -43,8 +43,8 @@ License: You must have a valid license purchased only from themeforest(the above
   <!-- Global styles START -->       
   <link href="assets1/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <link href="assets1/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-  <!-- Global styles END --> 
-   
+  <!-- Global styles END -->
+    <script src="{{url('/layer/layer.js')}}"></script>
   <!-- Page level plugin styles START -->
   <link href="assets1/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
   <link href="assets1/plugins/bxslider/jquery.bxslider.css" rel="stylesheet">
@@ -511,7 +511,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         <div class="form-group">
                             <label for="email" class="col-lg-4 control-label">电话： <span class="require">*</span></label>
                             <div class="col-lg-8">
-                                <input type="text" class="form-control" id="email" name="phone">
+                                <input type="text" class="form-control" id="phone" name="phone">
                             </div>
                         </div>
 
@@ -766,6 +766,31 @@ License: You must have a valid license purchased only from themeforest(the above
         });
     </script>
     <!-- END PAGE LEVEL JAVASCRIPTS -->
+
+{{--ajax验证邮箱是否被注册--}}
+    <script src="{{url('/layer/layer.js')}}"></script>
+<script>
+    $("#email").blur(function(){
+        var email = $(this).val();
+        $.get(
+            "checkemail",
+            {
+                email:email
+            },
+            function(data){
+                if(data.status ==1){
+                    layer.msg('该邮箱已被注册');
+                }else{
+                    layer.msg('该邮箱可注册');
+                }
+            }
+
+        );
+
+
+    })
+</script>
+
 </body>
 <!-- END BODY -->
 </html>

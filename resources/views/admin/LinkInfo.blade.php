@@ -10,17 +10,17 @@
         <ul class="breadcrumb">
             <li>
                 <i class="icon-home home-icon"></i>
-                <a href="#">会员</a>
+                <a href="#">友情链接</a>
             </li>
 
             <li>
-                <a href="#">会员管理</a>
+                <a href="#">友情链接管理</a>
             </li>
-            <li class="active">会员列表</li>
+            <li class="active">友情链接列表</li>
         </ul><!-- .breadcrumb -->
 
         <div class="nav-search" id="nav-search">
-            <form class="form-search" action="{{url('admin/userInfo')}}" method="get">
+            <form class="form-search" action="" method="get">
                         <span class="input-icon">
                             <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input"  name="keyword"/>
                             <i class="icon-search nav-search-icon"></i>
@@ -43,7 +43,7 @@
                     <div class="col-xs-12">
                         <h3 class="header smaller lighter blue">jQuery dataTables</h3>
                         <div class="table-header">
-                           会员信息列表
+                           友情链接信息列表
                         </div>
 
                         <div class="table-responsive">
@@ -56,18 +56,11 @@
                                             <span class="lbl"></span>
                                         </label>
                                     </th>
-                                    <th>用户名</th>
-                                    <th>真实姓名</th>
-
-
-                                    <th>
-
-                                        性别
-                                    </th>
-                                    <th class="hidden-480">  <i class="icon-time bigger-110 hidden-480"></i>电话</th>
-                                    <th class="hidden-480">邮箱</th>
-                                    <th>状态</th>
-                                    <th class="hidden-480">注册时间</th>
+                                    <th>id</th>
+                                    <th>排序号</th>
+                                    <th>链接名</th>
+                                    <th>链接地址</th>
+                                    <th>链接状态</th>
                                     <th></th>
                                 </tr>
                                 </thead>
@@ -81,33 +74,17 @@
                                             <span class="lbl"></span>
                                         </label>
                                     </td>
-
-                                    <td>
-                                       {{$v->user_name}}
-                                    </td>
-                                    <td>{{$v->name}}</td>
-                                    <td>@if($v->sex == 1)
-                                            男
-                                            @else
-                                            女
+                                    <td>{{$v->id}}</td>
+                                    <td><input type="text" name="ord[]" onchange="changeOrder(this,{{$v->id}})" value="{{$v['sort_num']}}" size="3"></td>
+                                    <td>{{$v['name']}}</td>
+                                    <td>{{$v['url']}}</td>
+                                    <td>@if($v->status==1)
+                                        显示
+                                        @else
+                                        隐藏
                                         @endif
                                     </td>
-                                    <td class="hidden-480">{{$v->phone}}</td>
 
-
-                                    <td class="hidden-480">
-                                      {{$v->email}}
-                                    </td>
-                                    <td class="hidden-480">
-                                        @if($v->status == '1')
-                                            正常
-                                            @else
-                                            禁用
-                                            @endif
-                                    </td>
-                                    <td class="hidden-480">
-                                        {{date('Y-m-d H:i:s', $v->addtime)}}
-                                    </td>
 
                                     <td>
                                         <div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
@@ -115,7 +92,7 @@
                                                 <i class="icon-zoom-in bigger-130"></i>
                                             </a>
 --}}
-                                            <a class="green" href="javascript:;"   onclick="edit({{$v->id}})">
+                                            <a class="green" href="javascript:;"   onclick="edit({{$v->id}})" >
                                                 <i class="icon-pencil bigger-130"></i>
                                             </a>
 
@@ -168,7 +145,6 @@
 
 
 
-                {!! $info->appends($request->only(['keyword']))->render() !!}
 
                 <div id="modal-table" class="modal fade" tabindex="-1">
                     <div class="modal-dialog">
@@ -288,13 +264,13 @@
     <script>
 
         //删除用户
-        function deleteClick(cate_id)
+        function deleteClick(id)
         {
             //询问框
-            layer.confirm('你确定要删除这个会员信息么？', {
+            layer.confirm('你确定要删除该链接么？', {
                 btn: ['是的','不不'] //按钮
             }, function(){
-                $.post("{{url('/admin/userinfo/')}}/"+cate_id, {'_method':'delete', '_token':'{{csrf_token()}}'}, function(data){
+                $.post("{{url('/admin/link/')}}/"+id, {'_method':'delete', '_token':'{{csrf_token()}}'}, function(data){
                     if(data.status == 1){
                         //删除成功后就马上刷新
                         location.href = location.href;
@@ -310,20 +286,36 @@
 
         }
 
+        //ajax异步排序
+        function changeOrder(obj, id)
+        {
+            var sortnum = $(obj).val();
+            //alert(sortnum);
+            $.post("{{url('admin/link/changesortnum')}}", {'_token':'{{csrf_token()}}', 'id':id, 'sortnum':sortnum}, function(data){
+                if(data.status == 1){
+
+                    layer.msg(data.msg, {icon: 6});
+                }else{
+                    layer.msg(data.msg, {icon: 5});
+                }
+            });
+        }
+
+    //修改链接状态
         //修改用户状态
-        function edit(cate_id)
+        function edit(id)
         {
             //询问框
-            layer.confirm('你确定要修改该会员状态么？', {
+            layer.confirm('你确定改变该链接状态么？', {
                 btn: ['是的','不不'] //按钮
             }, function(){
-                $.post("{{url('/admin/userinfo/')}}/"+cate_id+"/edit", {'_method':'get', '_token':'{{csrf_token()}}'}, function(data){
+                $.post("{{url('/admin/link/')}}/"+id+"/edit", {'_method':'get', '_token':'{{csrf_token()}}'}, function(data){
                     if(data.status == 1){
                         //删除成功后就马上刷新
                         location.href = location.href;
-                        layer.msg('修改成功', {icon: 6});
+                        layer.msg('改变成功', {icon: 6});
                     }else{
-                        layer.msg('修改失败！稍后再试', {icon: 5});
+                        layer.msg('改变失败！稍后再试', {icon: 5});
                     }
                 });
                 //alert(cate_id);
@@ -332,7 +324,6 @@
             });
 
         }
-
 
 
 

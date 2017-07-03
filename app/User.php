@@ -15,7 +15,7 @@ class User extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'pass','phone','sex','addtime','user_name'
+        'name', 'email', 'pass','phone','sex','addtime','user_name','email_code'
     ];
     public $timestamps = false;
 

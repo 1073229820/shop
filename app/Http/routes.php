@@ -12,13 +12,13 @@
 */
 
 
+/*
 
-
-//DB::listen(function($sql) {
-////dump($sql);
-//echo $sql->sql;
-//// dump($sql->bindings);
-//});
+DB::listen(function($sql) {
+dump($sql);
+echo $sql->sql;
+dump($sql->bindings);
+});*/
 
 Route::group(['prefix' => 'admin', 'middleware' => 'web'], function () {
     Route::get('/', function () {
@@ -65,6 +65,8 @@ Route::resource('Goods', 'GoodsController');
 
     //前台的登录
     Route::any('ulogin', 'LoginController@login');
+    //前台退出
+    Route::any('logout', 'LoginController@logout');
 //前台首页
     Route::any('index', 'LoginController@index');
 //前台注册页
@@ -73,11 +75,11 @@ Route::resource('Goods', 'GoodsController');
 
     Route::any('register', 'LoginController@register');
 
-    Route::any('register', 'LoginController@register');
+    Route::any('checkemail', 'LoginController@checkemail');
 //个人中心
-    Route::any('order', 'OrderController@order');
+  /*  Route::any('order', 'OrderController@order');*/
 //修改个人资料
-    Route::any('newinfo', 'OrderController@newinfo');
+    /*Route::any('newinfo', 'OrderController@newinfo');*/
 //密码找回
     Route::any('passshow', 'LostPassController@show');
     Route::any('passget', 'LostPassController@getpass');
@@ -85,17 +87,32 @@ Route::resource('Goods', 'GoodsController');
     Route::any('passsetshow', 'LostPassController@setpassshow');
     Route::any('passset', 'LostPassController@setpass');
     Route::any('newpass', 'LostPassController@newpass');
+//邮箱密码找回
+    Route::any('passinfo', 'LostPassController@passinfo');
 
 /*});*/
+
+Route::group(['middleware' => ['web','user.login']], function(){
+
+    //个人中心
+    Route::any('order', 'OrderController@order');
+//修改个人资料
+    Route::any('newinfo', 'OrderController@newinfo');
+
+});
 
 
 //会员管理
 Route::group(['prefix' => 'admin'], function () {
 
-    Route::resource('userinfo', 'UserController');
+    Route::resource('userInfo', 'UserController');
 
+//友情链接
 
+    Route::resource('link', 'LinkController');
+    Route::post('link/changesortnum', 'LinkController@changesortnum');
 });
+
 
 
 
