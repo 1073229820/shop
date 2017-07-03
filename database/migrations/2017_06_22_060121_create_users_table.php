@@ -26,6 +26,8 @@ class CreateUsersTable extends Migration
             $table->integer('status');
 
         });
+
+
     }
 
     /**

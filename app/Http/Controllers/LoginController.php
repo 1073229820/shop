@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Input;
 use Session;
 use App\Admin;
 
-require_once '/code/Code.class.php';
+require_once './code/Code.class.php';
 
 class LoginController extends Controller
 {

@@ -54,16 +54,41 @@
 
             <ul class="submenu">
                 <li>
-                    <a href="{{url('admin/goods/lst')}}">
+                    <a href="{{url('admin/goods')}}">
                         <i class="icon-double-angle-right"></i>
                         浏览商品
                     </a>
                 </li>
 
                 <li>
-                    <a href="{{url('admin/goods/add')}}">
+                    <a href="{{url('admin/goods/create')}}">
                         <i class="icon-double-angle-right"></i>
                         添加商品
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="#" class="dropdown-toggle">
+                <i class="icon-list"></i>
+                <span class="menu-text"> 分类管理 </span>
+
+                <b class="arrow icon-angle-down"></b>
+            </a>
+
+            <ul class="submenu">
+                <li>
+                    <a href="{{url('admin/goodstype')}}">
+                        <i class="icon-double-angle-right"></i>
+                        浏览分类
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{url('admin/goodstype/create')}}">
+                        <i class="icon-double-angle-right"></i>
+                        添加分类
                     </a>
                 </li>
             </ul>
@@ -76,7 +101,7 @@
             </a>
         </li>
         @if (session('adminname'))
-            @if (session('adminname')->ability(array('admin', 'administrator'), array('admin_create', 'admin_edit', 'admin_delete')))
+            {{--@if (session('adminname')->ability(array('admin', 'administrator'), array('admin_create', 'admin_edit', 'admin_delete')))--}}
                 <li>
                     <a href="#" class="dropdown-toggle">
                         <i class="icon-list"></i>
@@ -100,10 +125,10 @@
                         </li>
                     </ul>
                 </li>
-            @endif
+            {{--@endif--}}
         @endif
         @if (session('adminname'))
-           @if (session('adminname')->ability(array('admin', 'roles'), array('role_create', 'role_edit', 'role_delete')))
+           {{--@if (session('adminname')->ability(array('admin', 'roles'), array('role_create', 'role_edit', 'role_delete')))--}}
 {{--            @if (session('adminname')->hasRole(['admin', 'roles']))--}}
                 <li>
                     <a href="#" class="dropdown-toggle">
@@ -129,11 +154,11 @@
                         </li>
                     </ul>
                 </li>
-            @endif
+            {{--@endif--}}
         @endif
 
         @if (session('adminname'))
-            @if (session('adminname')->ability(array('admin', 'perms'),array('perms_create,', 'perms_edit', 'perms_delete')))
+            {{--@if (session('adminname')->ability(array('admin', 'perms'),array('perms_create,', 'perms_edit', 'perms_delete')))--}}
                 <li>
             <a href="#" class="dropdown-toggle">
                 <i class="icon-list"></i>
@@ -158,7 +183,7 @@
                 </li>
             </ul>
         </li>
-            @endif
+            {{--@endif--}}
         @endif
 
         <li>

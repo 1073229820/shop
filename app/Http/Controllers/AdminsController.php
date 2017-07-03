@@ -15,6 +15,10 @@ use Illuminate\Support\Facades\Storage;
 class AdminsController extends Controller
 {
 
+//    public function __construct()
+//    {
+//        $this->middleware('auth', ['only'=>['create', 'store', 'edit', 'update']]);
+//    }
     /**
      * 后台管理员登录界面
      */
