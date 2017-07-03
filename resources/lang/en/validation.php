@@ -92,12 +92,29 @@ return [
     */
 
     'custom' => [
+
         'name' => [
             'required' => '用户名不能为空',
+            'min' => '用户名最小长度不能小于1个字符',
+            'max' => '用户名最大长度不能大于30个字符',
+            'alpha_dash' => '用户名只能是数字、字母、下划线',
+            'unique' => '该名称已存在'
+
         ],
         'pass' => [
             'required' => '密码不能为空',
+            'min' => '密码最小长度不能小于6个字符',
+            'max' => '密码最大长度不能超过255个字符',
         ],
+        'sex' => ['required' => '性别不能为空'],
+        'userpic' => ['required' => '图片没上传'],
+        'email' => [
+            'required' => '邮箱不能为空',
+            'email' => '邮箱格式不对，请输入有效邮箱'
+        ],
+        'status' => ['required' => '状态必选'],
+        'display_name' => ['alpha_dash' => '显示名称只能是数字、字母、下划线'],
+        'description' => ['alpha_dash'  => '描述只能是字母、数字、下划线'],
     ],
 
     /*

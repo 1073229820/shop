@@ -11,6 +11,11 @@ use App\Permissions;
 
 class PermissionsController extends Controller
 {
+    public function __construct()
+    {
+        
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +23,7 @@ class PermissionsController extends Controller
      */
     public function index()
     {
-        $permissions = Permission::all();
+        $permissions = Permission::paginate(9);
 
         return view('admin.permissions.index', compact('permissions'));
 
@@ -38,23 +43,12 @@ class PermissionsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Requests\PermissionsRequest $request)
     {
        $permission = $request->all();
        Permission::create($permission);
 
        return redirect('/admin/permissions');
-
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
 
     }
 
@@ -75,13 +69,13 @@ class PermissionsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Requests\PermissionsRequest $request, $id)
     {
         $perms = Permission::findOrFail($id);
         $perms->name = $request->name;
         $perms->display_name = $request->display_name;
         $perms->description = $request->description;
-        dd($perms->save());
+        $perms->save();
 
         return redirect('admin/permissions');
     }
@@ -94,7 +88,44 @@ class PermissionsController extends Controller
     {
         $perms = Permission::findOrFail($id);
         if ($perms->delete()) {
-            return redirect('admin/permissions');
+
+            $data = [
+                'status' =>1,
+                'msg' => '删除权限成功'
+            ];
+        } else {
+            $data = [
+                'status' => 2,
+                'msg' => '删除权限失败，请稍后再试！'
+            ];
         }
+
+        return $data;
+    }
+
+    /**
+     * ajax检查权限名称是否存在
+     */
+    public function checkPermsName ()
+    {
+        //获取ajax传过来的name 值，并查询数据库
+        $pname = $_POST['name'];
+        $result = Permission::where('name', $pname)->first();
+
+        if ($result) {
+
+            $data = [
+                'status' => 1,
+                'msg' => '*该权限名称已存在'
+            ];
+        } else {
+
+            $data = [
+                'status' => 2,
+                'msg' => '可以添加'
+            ];
+        }
+
+        return json_encode($data);
     }
 }

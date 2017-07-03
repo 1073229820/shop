@@ -75,58 +75,66 @@
                 <span class="menu-text"> Typography </span>
             </a>
         </li>
-
-        <li>
-            <a href="#" class="dropdown-toggle">
-                <i class="icon-list"></i>
-                <span class="menu-text"> 管理员 </span>
-
-                <b class="arrow icon-angle-down"></b>
-            </a>
-
-            <ul class="submenu">
+        @if (session('adminname'))
+            @if (session('adminname')->ability(array('admin', 'administrator'), array('admin_create', 'admin_edit', 'admin_delete')))
                 <li>
-                    <a href="{{url('/admin/admins')}}">
-                        <i class="icon-double-angle-right"></i>
-                        管理员列表
+                    <a href="#" class="dropdown-toggle">
+                        <i class="icon-list"></i>
+                        <span class="menu-text"> 管理员 </span>
+                        <b class="arrow icon-angle-down"></b>
                     </a>
-                </li>
 
+                    <ul class="submenu">
+                        <li>
+                            <a href="{{url('/admin/admins')}}">
+                                <i class="icon-double-angle-right"></i>
+                                管理员列表
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{url('admin/admins/create')}}">
+                                <i class="icon-double-angle-right"></i>
+                                添加管理员
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            @endif
+        @endif
+        @if (session('adminname'))
+           @if (session('adminname')->ability(array('admin', 'roles'), array('role_create', 'role_edit', 'role_delete')))
+{{--            @if (session('adminname')->hasRole(['admin', 'roles']))--}}
                 <li>
-                    <a href="{{url('admin/admins/create')}}">
-                        <i class="icon-double-angle-right"></i>
-                        添加管理员
+                    <a href="#" class="dropdown-toggle">
+                        <i class="icon-list"></i>
+                        <span class="menu-text"> 角色管理 </span>
+
+                        <b class="arrow icon-angle-down"></b>
                     </a>
+
+                    <ul class="submenu">
+                        <li>
+                            <a href="{{url('/admin/roles')}}">
+                                <i class="icon-double-angle-right"></i>
+                                角色列表
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{url('admin/roles/create')}}">
+                                <i class="icon-double-angle-right"></i>
+                                添加角色
+                            </a>
+                        </li>
+                    </ul>
                 </li>
-            </ul>
-        </li>
-        {{--@role('admin')--}}
-        <li>
-            <a href="#" class="dropdown-toggle">
-                <i class="icon-list"></i>
-                <span class="menu-text"> 角色管理 </span>
+            @endif
+        @endif
 
-                <b class="arrow icon-angle-down"></b>
-            </a>
-
-            <ul class="submenu">
+        @if (session('adminname'))
+            @if (session('adminname')->ability(array('admin', 'perms'),array('perms_create,', 'perms_edit', 'perms_delete')))
                 <li>
-                    <a href="{{url('/admin/roles')}}">
-                        <i class="icon-double-angle-right"></i>
-                        角色列表
-                    </a>
-                </li>
-
-                <li>
-                    <a href="{{url('admin/roles/create')}}">
-                        <i class="icon-double-angle-right"></i>
-                        添加角色
-                    </a>
-                </li>
-            </ul>
-        </li>
-        {{--@endrole--}}
-        <li>
             <a href="#" class="dropdown-toggle">
                 <i class="icon-list"></i>
                 <span class="menu-text"> 权限管理 </span>
@@ -150,7 +158,8 @@
                 </li>
             </ul>
         </li>
-
+            @endif
+        @endif
 
         <li>
             <a href="#" class="dropdown-toggle">
