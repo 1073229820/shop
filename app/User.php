@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Hash;
 
 class User extends Model
 {
@@ -27,7 +28,13 @@ class User extends Model
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'pass', 'remember_token',
     ];
+
+
+    public function setPassAttribute($password)
+    {
+        $this->attributes['pass'] = Hash::make($password);
+    }
 
 }
