@@ -48,7 +48,7 @@
                                         </label>
                                     </th>
                                     <th>属性名称</th>
-                                    <th>属性值</th>
+                                    <th>属性可选值</th>
 
                                     <th>
                                         <i class="icon-time bigger-110 hidden-480"></i>
@@ -68,7 +68,7 @@
                                     <td class="hidden-480">{{$v->attr_value}}</td>
 
                                     <td class="hidden-480">
-                                        <span class="label label-sm label-warning">{{$v->type_name}}</span>
+                                        <span class="label label-sm label-warning">{{$type[$v->type_id]}}</span>
                                     </td>
 
                                     <td>
@@ -99,7 +99,7 @@
                         <thead>
                         <tr>
                             <th>属性名称</th>
-                            <th>属性值</th>
+                            <th>属性可选值</th>
                             <th>
                                 <i class="icon-time bigger-110 hidden-480"></i>
                                 商品类型名

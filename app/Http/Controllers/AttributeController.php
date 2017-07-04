@@ -19,7 +19,9 @@ class AttributeController extends Controller
     public function index()
     {   //商品属性信息列表主页
         $post = Attribute::all();
-        return view('admin/goods/attribute',compact('post'));
+        $type = Categories::pluck('name','id');
+//        dd($type);
+        return view('admin/goods/attribute',compact('post','type'));
     }
 
     /**
@@ -100,7 +102,7 @@ class AttributeController extends Controller
     {
         $type_id = request('type_id');
 //        $data = Attribute::distinct()->where('type_name',$type_name)->pluck('attr_name');
-        $data = DB::select('select attr_name,GROUP_CONCAT(attr_value) val from attributes where type_id=?  GROUP BY attr_name;',[$type_id]);
+        $data = DB::select('select * from attributes where type_id=? ;',[$type_id]);
 //        $data->attr = ['memory','color'];
         return $data;
     }

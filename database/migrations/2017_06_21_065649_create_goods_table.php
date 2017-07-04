@@ -15,17 +15,17 @@ class CreateGoodsTable extends Migration
         Schema::create('goods', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('production');
-            $table->integer('type_id');
-            $table->string('name');
-            // $table->text('descr');
-            $table->double('price', 6, 2);
-            $table->string('image');
-            $table->tinyInteger('status');
-            $table->integer('store');
-            $table->integer('num');
-            $table->integer('clicknum');
-            // $table->integer('addtime');
+            $table->string('production')->comment('生产厂家');
+            $table->integer('type_id')->comment('种类id');
+            $table->string('name')->comment('商品名');
+            $table->text('descr')->comment('简单的描述');
+            // $table->double('price', 6, 2);
+            $table->string('image')->comment('图片或主图');
+            $table->tinyInteger('status')->comment('状态，1=>新添加，2=>在售,3=>下架');
+            $table->integer('store')->comment('总存量');
+            $table->integer('num')->default(0)->comment('被购买的次数');
+            $table->integer('clicknum')->default(0)->comment('点击量');
+            $table->timestamps();
         });
     }
 

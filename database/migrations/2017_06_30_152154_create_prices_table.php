@@ -14,7 +14,14 @@ class CreatePricesTable extends Migration
     {
         Schema::create('prices', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->string('attr1')->comment('影响价格的属性1');
+            $table->string('attr2')->comment('影响价格的属性2');
+            $table->double('price', 6, 2)->comment('商品价格');
+            $table->integer('store')->comment('库存');
+            $table->integer('goods_id')->comment('商品的id');
+            $table->string('image')->comment('商品图片');
+
+            
         });
     }
 

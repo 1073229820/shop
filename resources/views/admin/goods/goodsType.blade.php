@@ -77,7 +77,7 @@
                                     </td>
                                     <td>
                                         <?php
-                                            $m = substr_count($v['path'],",")-1;
+                                            $m = substr_count($v['path'],",");
                                             $nbsp = str_repeat("-->",$m);
                                         ?>    
                                         @if($m>0)                                    
@@ -181,7 +181,7 @@
                                     var id = $(this).prev().attr('data');
                                     console.log(id);
                                     $.ajax({
-                                        url:'/goodstype/'+id+'/edit?name='+name,
+                                        url:'/admin/goodstype/'+id+'/edit?name='+name,
                                         type:'get',
                                         dataType:'json',
                                         success:function(data){
@@ -208,8 +208,8 @@
 
                                     var del = $(this);
                                     id = $(this).attr('data');
-                                    $.ajax({
-                                        url:'/data2?id='+id,
+                                    /*$.ajax({
+                                        url:'/admin/data2?id='+id,
                                         type:'get',
                                         dataType:'json',
                                         success:function(data){
@@ -224,19 +224,17 @@
 
                                             }
                                         }
-                                        
-                                    });
-
-                                    if(aa){
-                                        $.post(
-                                            "/goodstype/"+id,
-                                            {'_method':'delete','_token':'{{csrf_token()}}'},
-                                            function (data) {
-                                                if(data) {
-                                                    $('tr.id'+id).empty();
-                                                }
-                                        }) 
-                                    }
+                                    });*/
+                                    
+                                    $.post(
+                                        "/admin/goodstype/"+id,
+                                        {'_method':'delete','_token':'{{csrf_token()}}'},
+                                        function (data) {
+                                            if(data) {
+                                                $('tr.id'+id).empty();
+                                            }
+                                    }) 
+                                    
                                     
                                 })
                                 

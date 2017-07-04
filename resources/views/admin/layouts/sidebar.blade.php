@@ -66,6 +66,14 @@
                         添加商品
                     </a>
                 </li>
+                
+                <li>
+                    <a href="{{url('admin/attribute')}}">
+                        <i class="icon-double-angle-right"></i>
+                        商品属性
+                    </a>
+                </li>
+
             </ul>
         </li>
 

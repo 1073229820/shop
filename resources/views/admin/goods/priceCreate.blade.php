@@ -97,7 +97,7 @@
                 <script type="text/javascript" src="{{asset('/assets/admin/js/jquery-1.10.2.min.js')}}"></script>
                 <script type="text/javascript">
                     $(function($) {
-                        $.get('')
+
                     })
                 </script>
 

@@ -39,9 +39,16 @@ class GoodsTypeController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required',
+        ],[
+            'required' => ':attribute 是必填字段',
+        ],[
+            'name' => '类别名',
+        ]);
         $post = $request->except('_token');
 //        dd($post);
-        $success = "true";
+        $success = "添加成功!!!";
         if(Categories::create($post)){
 //            return redirect()->action('GoodsTypeController@create',compact('success'));
             return back();

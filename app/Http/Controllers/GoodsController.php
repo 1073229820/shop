@@ -8,6 +8,7 @@ use App\Descr;
 use App\Goods;
 use App\Price;
 use Illuminate\Http\Request;
+use DB;
 
 use App\Http\Requests;
 
@@ -53,24 +54,20 @@ class GoodsController extends Controller
         dump($goods);
         $goods->save();$post = $request->all();dd($post);*/
         //添加商品主表
-        $post = $request->only(['type_id','name','descr','production','image','status','store']);
+        $post = $request->only(['type_id','name','production','image','status','store']);
         $goods = Goods::create($post);
 
         //添加商品详情表(商品的图文介绍)
-        $post = $request->only(['descr']);
+        $post = $request->only(['descrs']);
         $post['id']=$goods->id;
         Descr::create($post);
 
         //添加商品属性价格表
-        $post = $request->only(['color','memory','price','store','image']);
+        $post = $request->only(['attr1','attr2','price','store','image']);
         $post['goods_id']=$goods->id;
 //        return redirect()->action('GoodsPriceController@store',compact('post'));
         Price::create($post);
         return view('admin.goods.goodsCreate');
-        dump($goods);
-        dd($post);
-        $post = $request->except('_token');
-        dd($post);
  /*       if(Goods::create($post)){
             return redirect('admin/goods/create')->with(['success'=>'添加成功！！！！！']);
         } else {
@@ -86,25 +83,21 @@ class GoodsController extends Controller
      */
     public function show($id)
     {
-        $goods = Goods::where('id',$id)->get();
+//        $goods = Goods::where('id',$id)->get();
+//        $goods = Goods::join('categories c','goods.type_id','=','c.id')->select('goods.*','c.name type')->where('id',$id)->first();
+        $goods = DB::select('select g.*,c.name type from goods g,categories c where g.id= ? and type_id =c.id;',[$id]);
         $descr = Descr::where('id',$id)->get();
         $goods = $goods[0];
         //商品的主要信息完
-        $attr = Attribute::where('type_id',$goods->type_id)->groupBy('attr_name')->get();
-        //有几个商品属性
-        $array = [];
-        foreach ($attr as $v) {
-            $array[$v->attr_name] = Price::distinct()->pluck($v->attr_name);
-        }
-//        dump($array);
-//        $price = Price::where('goods_id',$id)->groupBy('color')->get();
-//        $price = Price::where('goods_id',$id)->groupBy('memory')->get();
-
+        $type_id = Categories::where('id',$goods->type_id)->pluck('pid')->first();  //获取商品的父类，决定属性的二级类
+        $attr = Attribute::where('type_id',$type_id)->pluck('attr_name','attr_price');
+        $price = Price::where('goods_id',$id)->first();
+//        dump($type_id);
 //        dump($attr);
-//////        dump($price);
-//        dump($goods);
 //        dd($descr);
-        return view('admin.goods.goodsShow',compact('goods','descr','array'));
+//        dump($goods);
+//        dump($price);
+        return view('admin.goods.goodsShow',compact('goods','descr','price','attr'));
     }
 
     /**

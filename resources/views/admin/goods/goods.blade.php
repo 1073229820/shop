@@ -82,9 +82,9 @@
                                         <td>
                                             <a href="#">{{$v['id']}}</a>
                                         </td>
-                                        <td><a href="/goods/{{$v['id']}}">{{$v['name']}}</a></td>
+                                        <td><a href="/admin/goods/{{$v['id']}}">{{$v['name']}}</a></td>
                                         <td class="hidden-480">{{$v['type_id']}}</td>
-                                        <td>{{$v['image']}}</td>                                       
+                                        <td><img src="{{asset($v['image'])}}"></td>                                       
                                         <td>{{$v['clicknum']}}</td>
                                         <td>{{$v['store']}}</td>                                            
                                         <td class="hidden-480">
@@ -136,7 +136,7 @@
 								$('a.del').click( function () {
 									var id = $(this).attr('data');
                                     $.post(
-                                        "/goods/"+id,
+                                        "/admin/goods/"+id,
                                         {'_method':'delete','_token':'{{csrf_token()}}'},
                                         function (data) {
                                             if( data>0) {

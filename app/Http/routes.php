@@ -81,7 +81,8 @@ Route::group(['prefix' => 'admin'], function () {
 
 });
 
-
+// 前台首页
+    Route::any('home','HomeController@index');
 
 
 

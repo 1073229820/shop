@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDescrsTable extends Migration
+class CreateCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,9 +12,12 @@ class CreateDescrsTable extends Migration
      */
     public function up()
     {
-        Schema::create('descrs', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('descrs')->comment('商品的图文介绍');
+            $table->string('name')->comment('类别的名字');
+            $table->integer('pid')->comment('父类id');
+            $table->string('path')->comment('类别路径');
+
         });
     }
 
@@ -25,6 +28,6 @@ class CreateDescrsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('descrs');
+        Schema::drop('categories');
     }
 }
