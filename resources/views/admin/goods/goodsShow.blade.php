@@ -44,6 +44,12 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 商品简单描述： </label>
+                    <div class="">
+                        {{$goods->descr}}
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 商品类别: </label>
                     <div class="">
                         {{$goods->type}}
@@ -101,7 +107,7 @@
                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 商品描述： </label>
                     <div class="">
                         @if(count($descr)>0)
-                        {{$descr[0]['descr']}}
+                        {{$descr[0]['descrs']}}
                         @endif                        
                     </div>
                 </div>

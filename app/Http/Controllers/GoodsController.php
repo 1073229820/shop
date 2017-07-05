@@ -43,18 +43,11 @@ class GoodsController extends Controller
      */
     public function store(Request $request)
     {
-/*        $goods = new Goods();
-        $goods->type_id = request('type_id');
-        $goods->name = request('name');
-        $goods->descr = request('descr');
-        $goods->production = request('production');
-        $goods->image = request('image');
-        $goods->status = request('status');
-        $goods->store = request('store');
-        dump($goods);
-        $goods->save();$post = $request->all();dd($post);*/
         //添加商品主表
-        $post = $request->only(['type_id','name','production','image','status','store']);
+        $post = $request->only(['type_id','name','production','descr','image','status','store']);
+        //商品的销售量，点击量，热卖，推荐初始为0
+        $post['num'] = 0;$post['clicknum'] = 0;$post['hot'] = 0;$post['recommend'] = 0;
+//        dd($post);
         $goods = Goods::create($post);
 
         //添加商品详情表(商品的图文介绍)

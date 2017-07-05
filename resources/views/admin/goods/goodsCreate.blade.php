@@ -42,11 +42,11 @@
             <div class="col-xs-12">
                 <!-- PAGE CONTENT BEGINS -->
 
-                <form class="form-horizontal" role="form" method="post" action="/goods">
+                <form class="form-horizontal" role="form" method="post" action="/admin/goods">
                     <div class="form-group">
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 商品名 </label>
                         <div class="col-sm-9">
-                            <input type="text" id="form-field-1"  class="col-xs-10 col-sm-1" name="name" />
+                            <input type="text" id="form-field-1"  class="col-xs-10 col-sm-3" name="name" />
                             {{ csrf_field() }}
                         </div>
                     </div>
@@ -81,7 +81,7 @@
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 价格： </label>
 
                         <div class="col-sm-9">
-                            <input type="text" id="form-field-1"  class="col-xs-10 col-sm-1" name="price" />
+                            <input type="text" id="form-field-1"  class="col-xs-10 col-sm-2" name="price" />
                            
                         </div>
                     </div>
@@ -89,14 +89,14 @@
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 商品库存量 </label>
 
                         <div class="col-sm-9">
-                            <input type="text" id="form-field-1"  class="col-xs-10 col-sm-1" name="store"/>
+                            <input type="text" id="form-field-1"  class="col-xs-10 col-sm-2" name="store"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 商品厂家 </label>
 
                         <div class="col-sm-9">
-                            <input type="text" id="form-field-1"  class="col-xs-10 col-sm-1" name="production"/>
+                            <input type="text" id="form-field-1"  class="col-xs-10 col-sm-3" name="production"/>
                         </div>
                     </div>
 
@@ -163,8 +163,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 商品描述 </label>
-
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 商品详细描述 </label>
                         <div class="col-sm-9">
                             <textarea id="form-field-11" class="autosize-transition col-xs-10 col-sm-6 " name="descrs"></textarea>
                         </div>

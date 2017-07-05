@@ -84,7 +84,8 @@
                                         </td>
                                         <td><a href="/admin/goods/{{$v['id']}}">{{$v['name']}}</a></td>
                                         <td class="hidden-480">{{$v['type_id']}}</td>
-                                        <td><img src="{{asset($v['image'])}}"></td>                                       
+                                        <td><img src="{{asset($v['image'])}}" width='100' height='100
+                                        '></td>                                       
                                         <td>{{$v['clicknum']}}</td>
                                         <td>{{$v['store']}}</td>                                            
                                         <td class="hidden-480">

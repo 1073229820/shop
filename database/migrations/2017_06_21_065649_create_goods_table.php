@@ -25,6 +25,8 @@ class CreateGoodsTable extends Migration
             $table->integer('store')->comment('总存量');
             $table->integer('num')->default(0)->comment('被购买的次数');
             $table->integer('clicknum')->default(0)->comment('点击量');
+            $table->integer('hot')->default(0)->comment('热卖，0为否，1为热卖');
+            $table->integer('recommend')->default(0)->comment('0为不推荐，1为推荐');
             $table->timestamps();
         });
     }

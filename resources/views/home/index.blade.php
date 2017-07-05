@@ -200,46 +200,44 @@ License: You must have a valid license purchased only from themeforest(the above
             <!-- BEGIN NAVIGATION -->
             <div class="collapse navbar-collapse mega-menu">
                 <ul class="nav navbar-nav">         <!-- 这个ul是整个导航栏 -->
-                    <li class="dropdown">           <!-- 第一个li是商品分类 -->
+                    <li class="dropdown">
                       <a class="dropdown-toggle" data-toggle="dropdown" data-delay="0" data-close-others="false" data-target="product-list.html" href="product-list.html">
-                        商品分类 
+                        分类 
                         <i class="fa fa-angle-down"></i>
                       </a>
                       <!-- BEGIN DROPDOWN MENU -->
                       <ul class="dropdown-menu" aria-labelledby="mega-menu">
-                        @foreach($type as $one)
-                        @if($one['pid'] == 0)
-                        <li>        
+                        <li>
                           <div class="nav-content">
-                            <!-- BEGIN DROPDOWN MENU - COLUMN -->
-                            <div class="nav-brands">  
-                                <h2>{{$one['name']}}</h2>
-                            </div> 
-                            @foreach($type as $two)
-                            @if($two['pid'] == $one['id'])
+                            @foreach($type as $one)
+                            @if($one['pid'] == 0)
                             <div class="nav-content-col">
-                              <h3>{{$two['name']}}</h3>
+                              <h3>{{$one['name']}}</h3>
+                              @foreach($type as $two)
+                              @if($two['pid'] == $one['id'])
                               <ul>
+                                <span style="color:red"><a>{{$two['name']}}</a></span>
                                 @foreach($type as $three)
                                 @if($three['pid'] == $two['id'])
                                 <li><a href="product-list.html">{{$three['name']}}</a></li>
                                 @endif
                                 @endforeach
                               </ul>
+                              @endif
+                              @endforeach
                             </div>
-                             @endif
+                            @endif
                             @endforeach
                           </div>
                         </li>
-                        @endif
-                        @endforeach
                       </ul>
                       <!-- END DROPDOWN MENU -->
                     </li>
                     <li><a href="product-list.html">Men</a></li>
+
                     <li class="dropdown">
                       <a class="dropdown-toggle" data-toggle="dropdown" data-delay="0" data-close-others="false" data-target="product-list.html" href="product-list.html">
-                        Kids
+                        分类
                         <i class="fa fa-angle-down"></i>
                       </a>
                       <!-- BEGIN DROPDOWN MENU -->
@@ -280,6 +278,7 @@ License: You must have a valid license purchased only from themeforest(the above
                       </ul>
                       <!-- END DROPDOWN MENU -->
                     </li>
+
                     <li class="dropdown">
                       <a class="dropdown-toggle" data-toggle="dropdown" data-delay="0" data-close-others="false" data-target="product-list.html" href="product-list.html">
                         New 

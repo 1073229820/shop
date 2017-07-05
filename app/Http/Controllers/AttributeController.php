@@ -45,7 +45,7 @@ class AttributeController extends Controller
     {   //添加商品属性信息
         $post = $request->except('_token');
         if(Attribute::create($post)){
-            return  redirect('/attribute');
+            return  redirect('/admin/attribute');
         }
 
     }

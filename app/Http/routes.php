@@ -72,6 +72,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('goodstype','GoodsTypeController');
     Route::get('data/goodstype','GoodsTypeController@data');
     Route::get('data2/goodstype','GoodsTypeController@data2');
+    Route::get('data3/goodstype','GoodsTypeController@data3');
     Route::resource('attribute','AttributeController');
     Route::get('data/attribute','AttributeController@data');
     Route::any('admin/upload','UploadController@upload');//图片上传
@@ -83,7 +84,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 // 前台首页
     Route::any('home','HomeController@index');
-
+    Route::any('item/{id?}','ItemController@show');
 
 
 //首页ajax滚动加载测试
