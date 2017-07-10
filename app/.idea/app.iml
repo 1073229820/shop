@@ -12,5 +12,6 @@
     <orderEntry type="module" module-name="database" />
     <orderEntry type="module" module-name="database" />
     <orderEntry type="module" module-name="database" />
+    <orderEntry type="module" module-name="public" />
   </component>
 </module>

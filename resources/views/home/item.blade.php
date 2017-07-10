@@ -503,11 +503,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             <div class="product-main-image">
                                 <img src="{{asset($price->image)}}" alt="Cool green dress with red bell" class="img-responsive" data-BigImgSrc="{{asset($price->image)}}">
                             </div>
-                            <div class="product-other-images">
-                                <a href="#" class="active"><img alt="Berry Lace Dress" src="/assets/home/temp/products/model3.jpg"></a>
-                                <a href="#"><img alt="Berry Lace Dress" src="/assets/home/temp/products/model4.jpg"></a>
-                                <a href="#"><img alt="Berry Lace Dress" src="/assets/home/temp/products/model5.jpg"></a>
-                            </div>
+
                         </div>
                         <div class="col-md-6 col-sm-6">
                             <h1>{{$goods->name}}</h1>

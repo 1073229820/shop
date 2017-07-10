@@ -16,7 +16,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- Head BEGIN -->
 <head>
   <meta charset="utf-8">
-  <title>Metronic Shop</title>
+  <title>Men category | Metronic Shop UI</title>
 
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -36,20 +36,21 @@ License: You must have a valid license purchased only from themeforest(the above
   <link href="/favicon.ico" rel="SHORTCUT ICON" type="image/ico">
 
   <!-- Fonts START -->
-  <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&subset=all" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css">
   <link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow&subset=all" rel="stylesheet" type="text/css">
-  <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900&subset=all" rel="stylesheet" type="text/css"><!--- fonts for slider on the index page -->
   <!-- Fonts END -->
 
   <!-- Global styles START -->          
   <link href="/assets/home/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <link href="/assets/home/plugins/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="/assets/home/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
   <!-- Global styles END --> 
    
   <!-- Page level plugin styles START -->
   <link href="/assets/home/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">              
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"><!-- for slider-range -->
   <link href="/assets/home/plugins/bxslider/jquery.bxslider.css" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/home/plugins/layerslider/css/layerslider.css" type="text/css">
+  <link href="/assets/home/plugins/rateit/src/rateit.css" rel="stylesheet" type="text/css">
+  <link href="/assets/home/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css">
   <!-- Page level plugin styles END -->
 
   <!-- Theme styles START -->
@@ -82,7 +83,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         <li class="langs-block">
                             <a href="javascript:void(0);" class="current">English <i class="fa fa-angle-down"></i></a>
                             <div class="langs-block-others-wrapper"><div class="langs-block-others">
-                              <a href="javascript:void(0);">Japanese</a>
+                              <a href="javascript:void(0);">French</a>
                               <a href="javascript:void(0);">Germany</a>
                               <a href="javascript:void(0);">Turkish</a>
                             </div></div>
@@ -94,9 +95,9 @@ License: You must have a valid license purchased only from themeforest(the above
                 <!-- BEGIN TOP BAR MENU -->
                 <div class="col-md-6 col-sm-6 additional-nav">
                     <ul class="list-unstyled list-inline pull-right">
-                        <li><a href="{{url('order')}}">My Account</a></li>
+                        <li><a href="#">My Account</a></li>
                         <li><a href="#">My Wishlist</a></li>
-                        <li><a href="logout">Checkout</a></li>
+                        <li><a href="checkout.html">Checkout</a></li>
                         <li><a href="login-page.html">Log In</a></li>
                     </ul>
                 </div>
@@ -118,7 +119,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     <span class="icon-bar"></span>
                 </button>
                 <!-- END RESPONSIVE MENU TOGGLER -->
-                <a href="{{asset('/home')}}" class="navbar-brand"><img src="/assets/home/img/logo_red.png" alt="Metronic Shop UI"></a><!-- LOGO -->
+                <a href="index.html" class="navbar-brand"><img src="/assets/home/img/logo_red.png" alt="Metronic Shop UI"></a><!-- LOGO -->
             </div>
             <!-- BEGIN CART -->
             <div class="cart-block">
@@ -199,86 +200,213 @@ License: You must have a valid license purchased only from themeforest(the above
             <!-- END CART -->
             <!-- BEGIN NAVIGATION -->
             <div class="collapse navbar-collapse mega-menu">
-                <ul class="nav navbar-nav">         <!-- 这个ul是整个导航栏 -->
-                    @foreach($type as $one)
-                    @if($one['pid'] == 0)
+                <ul class="nav navbar-nav">
                     <li class="dropdown">
                       <a class="dropdown-toggle" data-toggle="dropdown" data-delay="0" data-close-others="false" data-target="product-list.html" href="product-list.html">
-                        {{$one['name']}} 
+                        Woman 
                         <i class="fa fa-angle-down"></i>
                       </a>
                       <!-- BEGIN DROPDOWN MENU -->
                       <ul class="dropdown-menu" aria-labelledby="mega-menu">
                         <li>
                           <div class="nav-content">
-                          @foreach($type as $two)
-                          @if($two['pid'] == $one['id'])
+                            <!-- BEGIN DROPDOWN MENU - COLUMN -->
                             <div class="nav-content-col">
-                              <h3>{{$two['name']}}</h3>
+                              <h3>Footwear</h3>
                               <ul>
-                                @foreach($type as $three)
-                                @if($three['pid'] == $two['id'])
-                                <li><a href="{{asset('/productlist?type='.$three['id'])}}">{{$three['name']}}</a></li>
-                                @endif
-                                @endforeach
+                                <li><a href="product-list.html">Astro Trainers</a></li>
+                                <li><a href="product-list.html">Basketball Shoes</a></li>
+                                <li><a href="product-list.html">Boots</a></li>
+                                <li><a href="product-list.html">Canvas Shoes</a></li>
+                                <li><a href="product-list.html">Football Boots</a></li>
+                                <li><a href="product-list.html">Golf Shoes</a></li>
+                                <li><a href="product-list.html">Hi Tops</a></li>
+                                <li><a href="product-list.html">Indoor and Court Trainers</a></li>
                               </ul>
                             </div>
-                          @endif
-                          @endforeach
+                            <!-- END DROPDOWN MENU - COLUMN -->
+                            <!-- BEGIN DROPDOWN MENU - COLUMN -->
+                            <div class="nav-content-col">
+                              <h3>Clothing</h3>
+                              <ul>
+                                <li><a href="product-list.html">Base Layer</a></li>
+                                <li><a href="product-list.html">Character</a></li>
+                                <li><a href="product-list.html">Chinos</a></li>
+                                <li><a href="product-list.html">Combats</a></li>
+                                <li><a href="product-list.html">Cricket Clothing</a></li>
+                                <li><a href="product-list.html">Fleeces</a></li>
+                                <li><a href="product-list.html">Gilets</a></li>
+                                <li><a href="product-list.html">Golf Tops</a></li>
+                              </ul>
+                            </div>
+                            <!-- END DROPDOWN MENU - COLUMN -->
+                            <!-- BEGIN DROPDOWN MENU - COLUMN -->
+                            <div class="nav-content-col">
+                              <h3>Accessories</h3>
+                              <ul>
+                                <li><a href="product-list.html">Belts</a></li>
+                                <li><a href="product-list.html">Caps</a></li>
+                                <li><a href="product-list.html">Gloves, Hats and Scarves</a></li>
+                              </ul>
+
+                              <h3>Clearance</h3>
+                              <ul>
+                                <li><a href="product-list.html">Jackets</a></li>
+                                <li><a href="product-list.html">Bottoms</a></li>
+                              </ul>
+                            </div>
+                            <!-- END DROPDOWN MENU - COLUMN -->
+                            <!-- BEGIN DROPDOWN MENU - BRANDS -->
+                            <div class="nav-brands">
+                              <ul>
+                                <li><a href="product-list.html"><img title="esprit" alt="esprit" src="/assets/home/temp/brands/esprit.jpg"></a></li>
+                                <li><a href="product-list.html"><img title="gap" alt="gap" src="/assets/home/temp/brands/gap.jpg"></a></li>
+                                <li><a href="product-list.html"><img title="next" alt="next" src="/assets/home/temp/brands/next.jpg"></a></li>
+                                <li><a href="product-list.html"><img title="puma" alt="puma" src="/assets/home/temp/brands/puma.jpg"></a></li>
+                                <li><a href="product-list.html"><img title="zara" alt="zara" src="/assets/home/temp/brands/zara.jpg"></a></li>
+                              </ul>
+                            </div>
+                            <!-- END DROPDOWN MENU - BRANDS -->
                           </div>
-                          <!-- BEGIN DROPDOWN MENU - BRANDS -->
-                          <div class="nav-brands">
-                            <ul>
-                              <li><a href="product-list.html"><img title="esprit" alt="esprit" src="/assets/home/temp/brands/esprit.jpg"></a></li>
-                              <li><a href="product-list.html"><img title="gap" alt="gap" src="/assets/home/temp/brands/gap.jpg"></a></li>
-                              <li><a href="product-list.html"><img title="next" alt="next" src="/assets/home/temp/brands/next.jpg"></a></li>
-                              <li><a href="product-list.html"><img title="puma" alt="puma" src="/assets/home/temp/brands/puma.jpg"></a></li>
-                              <li><a href="product-list.html"><img title="zara" alt="zara" src="/assets/home/temp/brands/zara.jpg"></a></li>
-                            </ul>
-                          </div>
-                          <!-- END DROPDOWN MENU - BRANDS -->
                         </li>
                       </ul>
                       <!-- END DROPDOWN MENU -->
                     </li>
-                    @endif
-                    @endforeach
+                    <li><a href="product-list.html">Men</a></li>
                     <li class="dropdown">
                       <a class="dropdown-toggle" data-toggle="dropdown" data-delay="0" data-close-others="false" data-target="product-list.html" href="product-list.html">
-                        新上市 
+                        Kids
+                        <i class="fa fa-angle-down"></i>
+                      </a>
+                      <!-- BEGIN DROPDOWN MENU -->
+                      <ul class="dropdown-menu">
+                        <li class="dropdown-submenu">
+                          <a href="product-list.html">Hi Tops <i class="fa fa-angle-right"></i></a>
+                          <ul class="dropdown-menu">
+                            <li><a href="product-list.html">Second Level Link</a></li>
+                            <li><a href="product-list.html">Second Level Link</a></li>
+                            <li class="dropdown-submenu">
+                              <a href="product-list.html">Second Level Link <i class="fa fa-angle-right"></i></a>
+                              <ul class="dropdown-menu">
+                                <li><a href="product-list.html">Third Level Link</a></li>
+                                <li><a href="product-list.html">Third Level Link</a></li>
+                                <li><a href="product-list.html">Third Level Link</a></li>
+                              </ul>
+                            </li>
+                          </ul>
+                        </li>
+                        <li><a href="product-list.html">Running Shoes</a></li>
+                        <li><a href="product-list.html">Jackets and Coats</a></li>
+                        <li><a href="product-list.html">Tennis Clothing</a></li>
+                        <li class="dropdown-submenu">
+                          <a href="product-list.html">Running Clothing <i class="fa fa-angle-right"></i></a>
+                          <ul class="dropdown-menu">
+                            <li><a href="product-list.html">Second Level Link</a></li>
+                            <li><a href="product-list.html">Second Level Link</a></li>
+                            <li class="dropdown-submenu">
+                              <a href="product-list.html">Second Level Link <i class="fa fa-angle-right"></i></a>
+                              <ul class="dropdown-menu">
+                                <li><a href="product-list.html">Third Level Link</a></li>
+                                <li><a href="product-list.html">Third Level Link</a></li>
+                                <li><a href="product-list.html">Third Level Link</a></li>
+                              </ul>
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
+                      <!-- END DROPDOWN MENU -->
+                    </li>
+                    <li class="dropdown">
+                      <a class="dropdown-toggle" data-toggle="dropdown" data-delay="0" data-close-others="false" data-target="product-list.html" href="product-list.html">
+                        New 
                         <i class="fa fa-angle-down"></i>
                       </a>
                       <!-- BEGIN DROPDOWN MENU -->
                       <ul class="dropdown-menu" aria-labelledby="mega-menu-catalogue">
                         <li>
                           <div class="nav-content">
-                            @for($i=0;$i<3;$i++)
                             <div class="product-item">
                               <div class="pi-img-wrapper">
-                                <a href="item.html"><img src="{{$newgoods[$i]->image}}"></a>
+                                <a href="item.html"><img src="/assets/home/temp/products/model4.jpg" class="img-responsive" alt="Berry Lace Dress"></a>
                               </div>
-                              <h3><a href="item.html">{{$newgoods[$i]->name}}</a></h3>
-                              <div class="pi-price">${{$newgoods[$i]->price}}</div>
-                              <a href="#" class="btn btn-default add2cart">加入购物车</a>
+                              <h3><a href="item.html">Berry Lace Dress</a></h3>
+                              <div class="pi-price">$29.00</div>
+                              <a href="#" class="btn btn-default add2cart">Add to cart</a>
                             </div>
-                            @endfor
-      
+                            <div class="product-item">
+                              <div class="pi-img-wrapper">
+                                <a href="item.html"><img src="/assets/home/temp/products/model3.jpg" class="img-responsive" alt="Berry Lace Dress"></a>
+                              </div>
+                              <h3><a href="item.html">Berry Lace Dress</a></h3>
+                              <div class="pi-price">$29.00</div>
+                              <a href="#" class="btn btn-default add2cart">Add to cart</a>
+                            </div>
+                            <div class="product-item">
+                              <div class="pi-img-wrapper">
+                                <a href="item.html"><img src="/assets/home/temp/products/model7.jpg" class="img-responsive" alt="Berry Lace Dress"></a>
+                              </div>
+                              <h3><a href="item.html">Berry Lace Dress</a></h3>
+                              <div class="pi-price">$29.00</div>
+                              <a href="#" class="btn btn-default add2cart">Add to cart</a>
+                            </div>
                           </div>
                         </li>
                       </ul>
                       <!-- END DROPDOWN MENU -->
                     </li>
-
+                    <li class="dropdown active">
+                      <a class="dropdown-toggle" data-toggle="dropdown" data-delay="0" data-close-others="false" data-target="#" href="#">
+                        Pages
+                        <i class="fa fa-angle-down"></i>
+                      </a>
+                      <!-- BEGIN DROPDOWN MENU -->
+                      <ul class="dropdown-menu">
+                        <li><a href="index-light-footer.html">Light Footer</a></li>
+                        <li class="active"><a href="product-list.html">Product List</a></li>
+                        <li><a href="search-result.html">Search Result</a></li>
+                        <li><a href="item.html">Product Page</a></li>
+                        <li><a href="shopping-cart-null.html">Shopping Cart (Null Cart)</a></li>
+                        <li><a href="shopping-cart.html">Shopping Cart</a></li>
+                        <li><a href="checkout.html">Checkout</a></li>
+                        <li><a href="reg-page.html">Registration Page</a></li>
+                        <li><a href="login-page.html">Login Page</a></li>
+                        <li><a href="forgotton-password.html">Forget Password</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contacts.html">Contacts</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-conditions-page.html">Terms & Conditions</a></li>
+                        <li><a href="site-map.html">Site Map</a></li>
+                        <li><a href="page-404.html">404</a></li>
+                        <li><a href="page-500.html">500</a></li> 
+                      </ul>
+                      <!-- END DROPDOWN MENU -->
+                    </li>
+                    <li class="dropdown">
+                      <a class="dropdown-toggle" data-toggle="dropdown" data-delay="0" data-close-others="false" data-target="#" href="#">
+                        Features
+                        <i class="fa fa-angle-down"></i>
+                      </a>
+                      <!-- BEGIN DROPDOWN MENU -->
+                      <ul class="dropdown-menu">
+                        <li><a href="feature-typography.html">Typography</a></li>
+                        <li><a href="feature-forms.html">Forms</a></li>
+                        <li><a href="feature-buttons.html">Buttons</a></li>
+                        <li><a href="feature-icons.html">Icons</a></li>
+                      </ul>
+                      <!-- END DROPDOWN MENU -->
+                    </li>
+                    <li><a href="http://keenthemes.com/preview/metronic_admin/ecommerce_index.html">Admin theme</a></li>
                     <!-- BEGIN TOP SEARCH -->
                     <li class="menu-search">
                         <span class="sep"></span>
                         <i class="fa fa-search search-btn"></i>
                         <div class="search-box">
-                            <form action="{{asset('/productlist')}}" method="get">
+                            <form action="#">
                                 <div class="input-group">
-                                    <input type="text" placeholder="搜索内容" class="form-control" name="search">
+                                    <input type="text" placeholder="Search" class="form-control">
                                     <span class="input-group-btn">
-                                        <button class="btn btn-primary" type="submit">搜索</button>
+                                        <button class="btn btn-primary" type="submit">Search</button>
                                     </span>
                                 </div>
                             </form>
@@ -292,117 +420,24 @@ License: You must have a valid license purchased only from themeforest(the above
     </div>
     <!-- END HEADER -->
 
-    <!-- BEGIN SLIDER -->
-    <div class="page-slider margin-bottom-35">
-      <!--LayerSlider begin-->
-      <div id="layerslider" style="width: 100%; height: 494px; margin: 0 auto;">
-          <!--LayerSlider layer-->
-          <div class="ls-layer ls-layer1" style="slidedirection: right; transition2d: 24,25,27,28; ">
-            <img src="/assets/home/temp/sliders/slide1/bg.jpg" class="ls-bg" alt="Slide background">
-            <div class="ls-s-1 title" style=" top: 96px; left: 35%; slidedirection : fade; slideoutdirection : fade; durationin : 750; durationout : 750; easingin : easeOutQuint; rotatein : 90; rotateout : -90; scalein : .5; scaleout : .5; showuntil : 4000; white-space: nowrap;">
-              Tones of <strong>shop UI features</strong> designed
-            </div>
-            <div class="ls-s-1 mini-text" style=" top: 338px; left: 35%; slidedirection : fade; slideoutdirection : fade; durationout : 750; easingin : easeOutQuint; delayin : 300; showuntil : 4000; white-space: nowrap;">
-              Lorem ipsum dolor sit amet  constectetuer diam<br > adipiscing elit euismod ut laoreet dolore.
-            </div>
-          </div>
-
-          <!--LayerSlider layer-->
-          <div class="ls-layer ls-layer2" style="slidedirection: right; transition2d: 110,111,112,113; ">
-            <img src="/assets/home/temp/sliders/slide2/bg.jpg" class="ls-bg" alt="Slide background">
-            <div class="ls-s-1 ls-title title" style=" top: 40%; left: 21%; slidedirection : fade; slideoutdirection : fade; durationin : 750; durationout : 750; easingin : easeOutQuint; easingout : easeInOutQuint; delayin : 0; delayout : 0; rotatein : 90; rotateout : -90; scalein : .5; scaleout : .5; showuntil : 4000; white-space: nowrap;">
-              <strong class="title">Unlimted</strong>
-              Layout Options
-              <em class="title">Fully Responsive</em>
-            </div>
-
-            <div class="ls-s-2 ls-price title" style=" top: 50%; left: 45%; slidedirection : fade; slideoutdirection : fade; durationout : 109750; easingin : easeOutQuint; delayin : 300; scalein : .8; scaleout : .8; showuntil : 4000; white-space: nowrap;">
-              <b>from</b>
-              <strong><span>$</span>25</strong>
-            </div>
-
-            <a href="#" class="ls-s-1 ls-more mini-text" style=" top: 72%; left: 21%; slidedirection : fade; slideoutdirection : fade; durationin : 750; durationout : 750; easingin : easeOutQuint; easingout : easeInOutQuint; delayin : 0; delayout : 0; rotatein : 90; rotateout : -90; scalein : .5; scaleout : .5; showuntil : 4000; display: inline-block; white-space: nowrap;">
-              See More Details
-            </a>
-          </div>
-
-          <!--LayerSlider layer-->
-          <div class="ls-layer ls-layer3" style="slidedirection: right; transition2d: 92,93,105; ">
-            <img src="/assets/home/temp/sliders/slide3/bg.jpg" class="ls-bg" alt="Slide background">
-
-            <div class="ls-s-1 ls-title" style=" top: 83px; left: 33%; slidedirection : fade; slideoutdirection : fade; durationin : 750; durationout : 750; easingin : easeOutQuint; rotatein : 90; rotateout : -90; scalein : .5; scaleout : .5; showuntil : 4000; white-space: nowrap;">
-              Full Admin & Frontend
-              <strong>eCommerce UI</strong>
-              Is Ready For Your Project
-            </div>
-
-            <div class="ls-s-1" style=" top: 333px; left: 33%; slidedirection : fade; slideoutdirection : fade; durationout : 750; easingin : easeOutQuint; delayin : 300; scalein : .8; scaleout : .8; showuntil : 4000; white-space: nowrap; font-size: 20px; font: 20px 'Open Sans Light', sans-serif;">
-              <a href="#" class="ls-buy">
-                Buy It Now!
-              </a>
-              <div class="ls-price">
-                <span>All these for only:</span>
-                <strong>25<sup>$</sup></strong>
-              </div>
-            </div>
-          </div>
-
-          <!--LayerSlider layer-->
-          <div class="ls-layer ls-layer5" style="slidedirection: right; transition2d: 110,111,112,113; ">
-            <img src="/assets/home/temp/sliders/slide5/bg.jpg" class="ls-bg" alt="Slide background">
-
-            <div class="ls-s-1 title" style=" top: 35%; left: 60%; slidedirection : fade; slideoutdirection : fade; durationin : 750; durationout : 750; easingin : easeOutQuint; rotatein : 90; rotateout : -90; scalein : .5; scaleout : .5; showuntil : 4000; white-space: nowrap;">
-              The most<br>
-              wanted bijouterie
-            </div>
-
-            <div class="ls-s-1 mini-text" style=" top: 70%; left: 60%; slidedirection : fade; slideoutdirection : fade; durationout : 750; easingin : easeOutQuint; delayin : 300; scalein : .8; scaleout : .8; showuntil : 4000; white-space: nowrap;">
-              <span>Lorem ipsum and</span>
-              <a href="#">Buy It Now!</a>
-            </div>
-          </div>
-      </div>
-      <!--LayerSlider end-->
+    <div class="title-wrapper">
+      <div class="container"><div class="container-inner">
+        <h1><span>MEN</span> CATEGORY</h1>
+        <em>Over 4000 Items are available here</em>
+      </div></div>
     </div>
-    <!-- END SLIDER -->
 
     <div class="main">
       <div class="container">
-        <!-- BEGIN SALE PRODUCT & NEW ARRIVALS -->
-        <div class="row margin-bottom-40">
-          <!-- BEGIN SALE PRODUCT -->
-          <div class="col-md-12 sale-product">    <!-- 风琴特效，可以用来放特卖，新品什么的 -->
-            <h2>新品上市</h2>       
-            <div class="bxslider-wrapper">
-              <ul class="bxslider" data-slides-phone="1" data-slides-tablet="2" data-slides-desktop="5" data-slide-margin="15">
-                @foreach($newgoods as $v)
-                <li>
-                  <div class="product-item">
-                    <div class="pi-img-wrapper">
-                      <img src="{{$v->image}}" class="img-responsive" alt="Berry Lace Dress">
-                      <div>
-                        <a href="{{$v->image}}" class="btn btn-default fancybox-button">Zoom</a>
-                        <a href="{{asset('/item/'.$v->id)}}" class="btn btn-default fancybox-fast-view">View</a>
-                      </div>
-                    </div>
-                    <h3><a href="{{asset('/item/'.$v->id)}}">{{$v->name}}</a></h3>
-                    <div class="pi-price">${{$v->price}}</div>
-                    <a href="#" class="btn btn-default add2cart">加入购物车</a>
-                    <div class="sticker sticker-new"></div>
-                  </div>
-                </li>
-                @endforeach
-              </ul>
-            </div>
-          </div>
-          <!-- END SALE PRODUCT -->
-        </div>
-        <!-- END SALE PRODUCT & NEW ARRIVALS -->
-
+        <ul class="breadcrumb">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="">Store</a></li>
+            <li class="active">Men category</li>
+        </ul>
         <!-- BEGIN SIDEBAR & CONTENT -->
-        <div class="row margin-bottom-40 ">
+        <div class="row margin-bottom-40">
           <!-- BEGIN SIDEBAR -->
-          <div class="sidebar col-md-3 col-sm-4">
+          <div class="sidebar col-md-3 col-sm-5">
             <ul class="list-group margin-bottom-25 sidebar-menu">
               <li class="list-group-item clearfix"><a href="product-list.html"><i class="fa fa-angle-right"></i> 全部商品</a></li>
               @foreach($type as $one)
@@ -426,7 +461,7 @@ License: You must have a valid license purchased only from themeforest(the above
                       @if($three['pid'] == $two['id'])
                       <ul class="dropdown-menu">
                         <li class="list-group-item dropdown clearfix">
-                          <a href="{{asset('/productlist?type='.$three['id'])}}">
+                          <a href="">
                             <i class="fa fa-circle"></i>
                              {{$three['name']}}
                           </a>
@@ -442,149 +477,72 @@ License: You must have a valid license purchased only from themeforest(the above
               @endif
               @endforeach
             </ul>
-            <!-- 用来撑住下面的空白 -->
-            <div class="product-item">
-              <div class="pi-img-wrapper">
-                <img src="{{$v->image}}" class="img-responsive" alt="Berry Lace Dress">
-                <div>
-                  <a href="{{$v->image}}" class="btn btn-default fancybox-button">Zoom</a>
-                  <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
-                </div>
-              </div>
-              <h3><a href="{{asset('/item/'.$v->id)}}">{{$v->name}}</a></h3>
-              <div class="pi-price">${{$v->price}}</div>
-              <a href="#" class="btn btn-default add2cart">加入购物车</a>
-              <div class="sticker sticker-new"></div>
-            </div>
-            <!-- 这个$v真的不会报错？ -->
+
+
+
           </div>
           <!-- END SIDEBAR -->
           <!-- BEGIN CONTENT -->
-          <div class="col-md-9 col-sm-8">
-            <h2>热卖</h2>
-            <div class="bxslider-wrapper">
-              <ul class="bxslider" data-slides-phone="1" data-slides-tablet="2" data-slides-desktop="3" data-slide-margin="15">
-                @foreach($hotgoods as $v)
-                <li>
+          <div class="col-md-9 col-sm-7">
+
+            <div class="row list-view-sorting clearfix">
+              <div class="col-md-2 col-sm-2 list-view">
+                <a href="#"><i class="fa fa-th-large"></i></a>
+                <a href="#"><i class="fa fa-th-list"></i></a>
+              </div>
+              <div class="col-md-10 col-sm-10">
+                <div class="pull-right">
+                  <label class="control-label">排序方式:</label>
+                  <select class="form-control input-sm" name="ordername">
+                    <option value="created_at,asc">时间:新->旧</option>
+                    <option value="created_at,desc" >时间:旧->新</option>
+                    <option value="price,asc" >价格：低->高</option>
+                    <option value="price,desc" >价格：高->低</option>
+                    <option value="num,asc" >销售量：低->高</option>                    
+                    <option value="num,desc" >销售量：高->低</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- BEGIN 商品列表 -->
+            <div class="row product-list">
+              @foreach($goods as $v)
+              <!-- PRODUCT ITEM START -->
+              <div class="col-md-4 col-sm-6 col-xs-12">
                   <div class="product-item">
                     <div class="pi-img-wrapper">
                       <img src="{{$v->image}}" class="img-responsive" alt="Berry Lace Dress">
                       <div>
                         <a href="{{$v->image}}" class="btn btn-default fancybox-button">Zoom</a>
-                        <a href="{{asset('/item/'.$v->id)}}" class="btn btn-default fancybox-fast-view">View</a>
+                        <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
                       </div>
                     </div>
-                    <h3><a href="{{asset('/item/'.$v->id)}}">{{$v->name}}</a></h3>
+                    <h3><a href="item.html">{{$v->name}}</a></h3>
                     <div class="pi-price">${{$v->price}}</div>
                     <a href="#" class="btn btn-default add2cart">加入购物车</a>
                   </div>
-                </li>
-                @endforeach
-              </ul>
+              </div>
+              <!-- 商品列表 END -->
+              @endforeach
             </div>
+            <!-- END PRODUCT LIST -->
+            <!-- 分页 -->
+            <div class="row">
+             <div class="col-sm-6">
+                 <div class="dataTables_info" id="sample-table-2_info">共 {{$goods->total()}} 件商品</div>
+             </div>
+             <div class="col-sm-6" >
+                 <div class="dataTables_paginate paging_bootstrap" style="float: right;">
+                     {{$goods->links()}}
+                 </div>
+             </div> 
+            </div>
+            <!-- END 分页 -->
           </div>
           <!-- END CONTENT -->
         </div>
         <!-- END SIDEBAR & CONTENT -->
-
-        <!-- BEGIN TWO PRODUCTS & PROMO -->
-        <div class="row margin-bottom-35 ">
-          <!-- BEGIN TWO PRODUCTS -->
-          <div class="col-md-6 two-items-bottom-items">
-            <h2>推荐</h2>
-            <div class="bxslider-wrapper">
-              <ul class="bxslider" data-slides-phone="1" data-slides-tablet="2" data-slides-desktop="2" data-slide-margin="15">
-                @foreach($recommend as $v)
-                <li>
-                  <div class="product-item">
-                    <div class="pi-img-wrapper">
-                      <img src="{{$v->image}}" class="img-responsive" alt="Berry Lace Dress">
-                      <div>
-                        <a href="{{$v->image}}" class="btn btn-default fancybox-button">Zoom</a>
-                        <a href="{{asset('/item/'.$v->id)}}" class="btn btn-default fancybox-fast-view">View</a>
-                      </div>
-                    </div>
-                    <h3><a href="{{asset('/item/'.$v->id)}}">{{$v->name}}</a></h3>
-                    <div class="pi-price">${{$v->price}}</div>
-                    <a href="#" class="btn btn-default add2cart">加入购物车</a>
-                  </div>
-                </li>
-                @endforeach
-              </ul>
-            </div>
-          </div>
-          <!-- END TWO PRODUCTS -->
-          <!-- BEGIN PROMO -->
-          <div class="col-md-6">
-            <div class="content-slider">
-              <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                <!-- Indicators -->
-                <ol class="carousel-indicators">
-                  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                  <li data-target="#myCarousel" data-slide-to="1"></li>
-                  <li data-target="#myCarousel" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner">
-                  <div class="item active">
-                    <img src="/assets/home/temp/index-sliders/slide1.jpg" class="img-responsive" alt="Berry Lace Dress">
-                  </div>
-                  <div class="item">
-                    <img src="/assets/home/temp/index-sliders/slide2.jpg" class="img-responsive" alt="Berry Lace Dress">
-                  </div>
-                  <div class="item">
-                    <img src="/assets/home/temp/index-sliders/slide3.jpg" class="img-responsive" alt="Berry Lace Dress">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- END PROMO -->
-        </div>        
-        <!-- END TWO PRODUCTS & PROMO -->
-        <!-- 商品全部的遍历开始 -->
-        <!-- <div class="row margin-bottom-40">
-          foreach($type as $one)
-          if($one['pid'] == 0)
-          foreach($type as $two)
-          if($two['pid'] == $one['id'])
-          foreach($type as $three)
-          if($three['pid'] == $two['id'])
-          <div class="col-md-12 col-sm-7">
-            <h2>{{$three['name']}}</h2>
-            
-            <div class="row product-list">
-              foreach($goods as $v)
-              
-                if($v->type_id == $three['id'])
-              
-              <div class="col-md-3 col-sm-6 col-xs-12">
-                <div class="product-item">
-                  <div class="pi-img-wrapper">
-                    <img src="{{$v->image}}" class="img-responsive" alt="Berry Lace Dress">
-                    <div>
-                      <a href="{{$v->image}}" class="btn btn-default fancybox-button">Zoom</a>
-                      <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
-                    </div>
-                  </div>
-                  <h3><a href="item.html">{{$v->name}}</a></h3>
-                  <div class="pi-price">{{$v->price}}</div>
-                  <a href="#" class="btn btn-default add2cart">加入购物车</a>
-                </div>
-              </div>
-              
-                endif
-              endforeach
-            </div>
-            
-          </div>
-          endif
-          endforeach
-          endif
-          endforeach
-          endif
-          endforeach
-        </div> -->
-        <!-- 商品遍历结束 -->
       </div>
     </div>
 
@@ -594,18 +552,18 @@ License: You must have a valid license purchased only from themeforest(the above
         <div class="row">
           <div class="bxslider-wrapper">
             <ul class="bxslider" data-slides-phone="1" data-slides-tablet="3" data-slides-desktop="6" data-slide-margin="15">
-              <li><a href="product-list.html"><img src="/assets/home/temp/brands/canon.jpg" alt="canon" title="canon"></a></li>
-              <li><a href="product-list.html"><img src="/assets/home/temp/brands/esprit.jpg" alt="esprit" title="esprit"></a></li>
-              <li><a href="product-list.html"><img src="/assets/home/temp/brands/gap.jpg" alt="gap" title="gap"></a></li>
-              <li><a href="product-list.html"><img src="/assets/home/temp/brands/next.jpg" alt="next" title="next"></a></li>
-              <li><a href="product-list.html"><img src="/assets/home/temp/brands/puma.jpg" alt="puma" title="puma"></a></li>
-              <li><a href="product-list.html"><img src="/assets/home/temp/brands/zara.jpg" alt="zara" title="zara"></a></li>
-              <li><a href="product-list.html"><img src="/assets/home/temp/brands/canon.jpg" alt="canon" title="canon"></a></li>
-              <li><a href="product-list.html"><img src="/assets/home/temp/brands/esprit.jpg" alt="esprit" title="esprit"></a></li>
-              <li><a href="product-list.html"><img src="/assets/home/temp/brands/gap.jpg" alt="gap" title="gap"></a></li>
-              <li><a href="product-list.html"><img src="/assets/home/temp/brands/next.jpg" alt="next" title="next"></a></li>
-              <li><a href="product-list.html"><img src="/assets/home/temp/brands/puma.jpg" alt="puma" title="puma"></a></li>
-              <li><a href="product-list.html"><img src="/assets/home/temp/brands/zara.jpg" alt="zara" title="zara"></a></li>
+              <li><a href="#"><img src="/assets/home/temp/brands/canon.jpg" alt="canon" title="canon"></a></li>
+              <li><a href="#"><img src="/assets/home/temp/brands/esprit.jpg" alt="esprit" title="esprit"></a></li>
+              <li><a href="#"><img src="/assets/home/temp/brands/gap.jpg" alt="gap" title="gap"></a></li>
+              <li><a href="#"><img src="/assets/home/temp/brands/next.jpg" alt="next" title="next"></a></li>
+              <li><a href="#"><img src="/assets/home/temp/brands/puma.jpg" alt="puma" title="puma"></a></li>
+              <li><a href="#"><img src="/assets/home/temp/brands/zara.jpg" alt="zara" title="zara"></a></li>
+              <li><a href="#"><img src="/assets/home/temp/brands/canon.jpg" alt="canon" title="canon"></a></li>
+              <li><a href="#"><img src="/assets/home/temp/brands/esprit.jpg" alt="esprit" title="esprit"></a></li>
+              <li><a href="#"><img src="/assets/home/temp/brands/gap.jpg" alt="gap" title="gap"></a></li>
+              <li><a href="#"><img src="/assets/home/temp/brands/next.jpg" alt="next" title="next"></a></li>
+              <li><a href="#"><img src="/assets/home/temp/brands/puma.jpg" alt="puma" title="puma"></a></li>
+              <li><a href="#"><img src="/assets/home/temp/brands/zara.jpg" alt="zara" title="zara"></a></li>
             </ul>
           </div>
         </div>
@@ -800,8 +758,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     </div>
                   </div>
                   <div class="description">
-                    <p>Lorem ipsum dolor ut sit ame dolore  adipiscing elit, sed nonumy nibh sed euismod laoreet dolore magna aliquarm erat volutpat 
-Nostrud duis molestie at dolore.</p>
+                    <p>Lorem ipsum dolor ut sit ame dolore  adipiscing elit, sed nonumy nibh sed euismod laoreet dolore magna aliquarm erat </p>
                   </div>
                   <div class="product-page-options">
                     <div class="pull-left">
@@ -837,43 +794,50 @@ Nostrud duis molestie at dolore.</p>
     <!-- END fast view of a product -->
 
     <!-- Load javascripts at bottom, this will reduce page load time -->
-    <!-- BEGIN CORE PLUGINS (REQUIRED FOR ALL PAGES) -->
+    <!-- BEGIN CORE PLUGINS(REQUIRED FOR ALL PAGES) -->
     <!--[if lt IE 9]>
     <script src="/assets/home/plugins/respond.min.js"></script>  
     <![endif]-->  
     <script src="/assets/home/plugins/jquery-1.10.2.min.js" type="text/javascript"></script>
     <script src="/assets/home/plugins/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
     <script src="/assets/home/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>      
-    <script type="text/javascript" src="/assets/home/plugins/back-to-top.js"></script>
-    <script type="text/javascript" src="/assets/home/plugins/jQuery-slimScroll/jquery.slimscroll.min.js"></script>
+    <script type="text/javascript" src="/assets/home/plugins/back-to-top.js"></script>   
+    <script type="text/javascript" src="/assets/home/plugins/jQuery-slimScroll/jquery.slimscroll.min.js"></script> 
     <!-- END CORE PLUGINS -->
 
-    <!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
-    <script type="text/javascript" src="/assets/home/plugins/fancybox/source/jquery.fancybox.pack.js"></script><!-- pop up -->
+    <!-- BEGIN PAGE LEVEL JAVASCRIPTS(REQUIRED ONLY FOR CURRENT PAGE) -->
+    <script type="text/javascript" src="/assets/home/plugins/fancybox/source/jquery.fancybox.pack.js"></script>  
     <script type="text/javascript" src="/assets/home/plugins/bxslider/jquery.bxslider.min.js"></script><!-- slider for products -->
+    <script src="/assets/home/plugins/rateit/src/jquery.rateit.js" type="text/javascript"></script>
     <script type="text/javascript" src='/assets/home/plugins/zoom/jquery.zoom.min.js'></script><!-- product zoom -->
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script><!-- for slider-range -->
+    <script src="/assets/home/plugins/uniform/jquery.uniform.min.js" type="text/javascript" ></script>
     <script src="/assets/home/plugins/bootstrap-touchspin/bootstrap.touchspin.js" type="text/javascript"></script><!-- Quantity -->
-
-    <!-- BEGIN LayerSlider -->
-    <script src="/assets/home/plugins/layerslider/jQuery/jquery-easing-1.3.js" type="text/javascript"></script>
-    <script src="/assets/home/plugins/layerslider/jQuery/jquery-transit-modified.js" type="text/javascript"></script>
-    <script src="/assets/home/plugins/layerslider/js/layerslider.transitions.js" type="text/javascript"></script>
-    <script src="/assets/home/plugins/layerslider/js/layerslider.kreaturamedia.jquery.js" type="text/javascript"></script>
-    <!-- END LayerSlider -->
-
     <script type="text/javascript" src="/assets/home/scripts/app.js"></script>
-    <script type="text/javascript" src="/assets/home/scripts/index.js"></script>
     <script type="text/javascript">
-        jQuery(document).ready(function() {
-            App.init();    
-            App.initBxSlider();
-            Index.initLayerSlider();
-            App.initImageZoom();
-            App.initTouchspin();
-        });
+
+      $('select').change( function () {
+        var arr= $(this).val().split(',');
+        var ordername = arr[0];
+        var order = arr[1];
+        console.log(order+'+'+ordername);
+        location.href="{{asset('/productlist')}}"+'?order='+order+'&ordername='+ordername;
+
+      })
+
+
+
+
+      jQuery(document).ready(function() {
+        App.init();
+        App.initBxSlider(); 
+        App.initImageZoom();
+        App.initSliderRange();
+        App.initUniform(); 
+        App.initTouchspin();
+      });
     </script>
     <!-- END PAGE LEVEL JAVASCRIPTS -->
-
 </body>
 <!-- END BODY -->
 </html>

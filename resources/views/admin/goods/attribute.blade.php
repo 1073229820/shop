@@ -94,7 +94,15 @@
                         </div><!-- /.table-responsive -->
                     </div><!-- /span -->
                 </div><!-- /row -->
-
+                @if (count($errors) > 0)
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <div class="row">
                     <table id="sample-table-1" class="table table-striped table-bordered table-hover">
                         <thead>

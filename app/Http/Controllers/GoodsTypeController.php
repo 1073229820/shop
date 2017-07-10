@@ -16,7 +16,7 @@ class GoodsTypeController extends Controller
      */
     public function index()
     {
-        $data = Categories::orderby('id','asc')->paginate(6);
+        $data = Categories::orderBy('path','asc')->paginate(6);
         return view('admin.goods.goodstype',compact('data'));
     }
 
@@ -47,11 +47,10 @@ class GoodsTypeController extends Controller
             'name' => '类别名',
         ]);
         $post = $request->except('_token');
-//        dd($post);
         $success = '添加成功!!!!!';
         if(Categories::create($post)){
-            return view('admin.goods.typeCreate',compact('success'));
-//            return back();
+            return  redirect('/admin/goodstype');
+//            return view('admin.goods.goodstype',compact('success'));
         } else {
             return back()->withInput();
         }
@@ -106,10 +105,16 @@ class GoodsTypeController extends Controller
      */
     public function destroy($id)
     {
-        if (Categories::destroy($id))
-        {
-            return 1;
+        $array = Categories::where('pid',$id)->get();
+        if(count($array)>0){
+            return 0;
+        } else {
+            if (Categories::destroy($id))
+            {
+                return 1;
+            }
         }
+
     }
 
     public function data()

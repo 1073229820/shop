@@ -55,18 +55,22 @@
                         {{$goods->type}}
                     </div>
                 </div>
+                @if(!empty($attr['attr1']))
                 <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> {{$attr['attr1']}} </label>
                     <div class="">
                         {{$price['attr1']}}
                     </div>
                 </div>
+                @endif
+                @if(!empty($attr['attr2']))
                 <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> {{$attr['attr2']}} </label>
                     <div class="">
                         {{$price['attr2']}}
                     </div>
                 </div>
+                @endif
                 <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1">价格：  </label>
                     <div class="">

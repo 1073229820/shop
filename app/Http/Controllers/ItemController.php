@@ -14,7 +14,7 @@ use App\Http\Requests;
 
 class ItemController extends Controller
 {
-    public function show( $id=null)
+    public function show( $id)
     {
         $goods = Goods::where('id',$id)->first();
         $pid = Categories::where('id',$goods['type_id'])->pluck('pid')->first();//找到这个商品类别的父类别id
