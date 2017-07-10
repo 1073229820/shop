@@ -17,11 +17,20 @@ class Cart extends Model
             //从数据库中取数据
         }else{
             //从session中取数据，且在session有效期内
-           if (time()-session('addtime')<300){
-                return session('cartList');
-           }else{
-               session()->forget('cartList');
-           }
+            $cartList = session('cartList');
+            $arr = [];
+            if ($cartList) {
+                foreach ($cartList as $key=>$val) {
+                    if (time()-$val['addtime']<3000) {
+                        $arr[] = $val;
+                    }else{
+                        unset($cartList[$key]);
+                        session()->put('cartList', $cartList);
+                    }
+                }
+            }
+
+            return $arr;
         }
     }
 }

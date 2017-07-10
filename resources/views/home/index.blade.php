@@ -190,7 +190,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     </ul>
                     <div class="text-right">
                       <a href="shopping-cart.html" class="btn btn-default">View Cart</a>
-                      <a href="checkout.html" class="btn btn-primary">Checkout</a>
+                      <a href="checkout.blade.php" class="btn btn-primary">Checkout</a>
                     </div>
                   </div>
                 </div>
@@ -209,12 +209,12 @@ License: You must have a valid license purchased only from themeforest(the above
                       <ul class="dropdown-menu" aria-labelledby="mega-menu">
                         @foreach($type as $one)
                         @if($one['pid'] == 0)
-                        <li>        
+                        <li>
                           <div class="nav-content">
                             <!-- BEGIN DROPDOWN MENU - COLUMN -->
-                            <div class="nav-brands">  
+                            <div class="nav-brands">
                                 <h2>{{$one['name']}}</h2>
-                            </div> 
+                            </div>
                             @foreach($type as $two)
                             @if($two['pid'] == $one['id'])
                             <div class="nav-content-col">
@@ -331,7 +331,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         <li><a href="item.html">Product Page</a></li>
                         <li><a href="shopping-cart-null.html">Shopping Cart (Null Cart)</a></li>
                         <li><a href="shopping-cart.html">Shopping Cart</a></li>
-                        <li><a href="checkout.html">Checkout</a></li>
+                        <li><a href="checkout.blade.php">Checkout</a></li>
                         <li><a href="reg-page.html">Registration Page</a></li>
                         <li><a href="login-page.html">Login Page</a></li>
                         <li><a href="forgotton-password.html">Forget Password</a></li>

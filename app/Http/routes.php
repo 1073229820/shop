@@ -55,6 +55,11 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('link/changesortnum', 'LinkController@changesortnum');
 
 
+        //订单管理
+        Route::get('orders', 'OrderController@adminIndex');
+
+        Route::get('orders/edit/{id}', 'OrderController@edit');
+        Route::get('orders/detail/{id}', 'OrderController@detail');
 
 
     });
@@ -79,6 +84,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('data/goodsprice','GoodsPriceController@data');
 
 
+
 });
 
 // 前台首页
@@ -89,6 +95,13 @@ Route::group(['prefix' => 'admin'], function () {
 //首页ajax滚动加载测试
 Route::get('ajax', 'LoginController@ajax');
 Route::get('ajaxGet', 'LoginController@ajaxGet');
+Route::get('cart', 'CartController@index');
+Route::any('cart/store', 'CartController@store');
+Route::any('cart/order', 'CartController@order');
+
+Route::get('cart/ajaxUpdateGoods', 'CartController@ajaxUpdateGoods');
+Route::post('order/store', 'OrderController@store');
+Route::get('history/orders', 'OrderController@index');
 
 
 /*Route::group(['middleware' => ['web','user.login']], function(){*/

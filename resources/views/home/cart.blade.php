@@ -65,7 +65,6 @@ License: You must have a valid license purchased only from themeforest(the above
 
 <div class="main">
     <div class="container">
-
         @if($cartList)
         <!-- BEGIN SIDEBAR & CONTENT -->
         <div class="row margin-bottom-40">
@@ -90,23 +89,23 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <a href="#"><img src="{{asset('assets/home/temp/products/model3.jpg')}}" alt="Berry Lace Dress"></a>
                                     </td>
                                     <td class="shopping-cart-description">
-                                        <h3><a href="#">{{$cart->goods_name}}</a></h3>
-                                        <p><strong>Item 1</strong> - {{$cart->logo}} </p>
+                                        <h3><a href="#">{{$cart['goods_name']}}</a></h3>
+                                        <p><strong>Item 1</strong> - {{$cart['logo']}} </p>
                                         <em>查看详情</em>
                                     </td>
                                     <td class="shopping-cart-ref-no">
-                                        {{$cart->cat_id}}
+                                        {{$cart['cat_id']}}
                                     </td>
-                                    <td class="shopping-cart-quantity">
+                                    <td class="shopping-cart-quantity" gid="{{$cart['id']}}">
                                         <div class="product-quantity">
-                                            <input id="product-quantity" type="text"  value="1" readonly class="form-control input-sm">
+                                            <input id="product-quantity" type="text"  value="{{$cart['buynum']}}" readonly class="form-control input-sm">
                                         </div>
                                     </td>
                                     <td class="shopping-cart-price">
-                                        <strong>￥<span>{{$cart->price}}</span></strong>
+                                        <strong>￥<span>{{$cart['price']}}</span></strong>
                                     </td>
                                     <td class="shopping-cart-total">
-                                        <strong>￥<span>{{1*$cart->price}}</span></strong>
+                                        <strong>￥<span>{{sprintf("%.2f", $cart['buynum']*$cart['price'])}}</span></strong>
                                     </td>
                                     <td class="del-goods-col">
                                         <a class="del-goods" href="#"><i class="fa fa-align-right"></i></a>
@@ -118,23 +117,16 @@ License: You must have a valid license purchased only from themeforest(the above
 
                         <div class="shopping-total">
                             <ul>
-                                <li>
-                                    <em>Sub total</em>
-                                    <strong class="price"><span>$</span>47.00</strong>
-                                </li>
-                                <li>
-                                    <em>Shipping cost</em>
-                                    <strong class="price"><span>$</span>3.00</strong>
                                 </li>
                                 <li class="shopping-total-price">
                                     <em>Total</em>
-                                    <strong class="price"><span>$</span>50.00</strong>
+                                    <strong class="price">￥<span></span></strong>
                                 </li>
                             </ul>
                         </div>
                     </div>
-                    <button class="btn btn-default" type="submit">继续购物<i class="fa fa-shopping-cart"></i></button>
-                    <button class="btn btn-primary" type="submit">确认购买<i class="fa fa-check"></i></button>
+                    <a class="btn btn-default" href="/ajax">继续购物<i class="fa fa-shopping-cart"></i></a>
+                    <a class="btn btn-primary" href="/cart/order">确认购买<i class="fa fa-check"></i></a>
                 </div>
             </div>
             <!-- END CONTENT -->
@@ -191,12 +183,41 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- END PAGE LEVEL JAVASCRIPTS -->
 
 <script>
+    $(function () {
+        var sum = 0;
+        $("td.shopping-cart-total span").each(function () {
+            var total = parseFloat($(this).html(), 2);
+            sum += total;
+        });
+        sum = sum.toFixed(2);
+        $('li.shopping-total-price span').html(sum);
+
+    });
     //获取购买数量
-    $("td.shopping-cart-quantity").on("click", "button", function () {
-        var num = $('#product-quantity').val();
-        var price = $('td.shopping-cart-price span').html();
-        var total = (num*price).toFixed(2);//保留两位小数
-        $('td.shopping-cart-total span').html(total);
+    $("table").on("click", "button", function () {
+
+        var gid = $(this).parent().parent().parent().parent().attr('gid');
+        var buynum = parseFloat($(this).parent().parent().children(':input').val());
+        var that = this;
+
+        $.ajax({
+            url: "{{url('cart/ajaxUpdateGoods')}}",
+            data: "gid="+gid+"&buynum="+buynum,
+            type: 'get',
+            success: function (data) {
+                var price = data.price;
+                var total = (buynum*price).toFixed(2);
+                $(that).parent().parent().parent().parent().nextAll('.shopping-cart-total').children().children('span').html(total);
+                var sum = 0;
+                $("td.shopping-cart-total span").each(function () {
+                    var total = parseFloat($(this).html());
+                    sum += total;
+                });
+                sum = sum.toFixed(2);
+                $('li.shopping-total-price span').html(sum);
+            },
+            dataType: 'json'
+        })
     });
 </script>
 

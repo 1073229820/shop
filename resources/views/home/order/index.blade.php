@@ -16,7 +16,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- Head BEGIN -->
 <head>
     <meta charset="utf-8">
-    <title>Login | Metronic Shop UI</title>
+    <title>Create new account | Metronic Shop UI</title>
 
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -41,21 +41,21 @@ License: You must have a valid license purchased only from themeforest(the above
     <!-- Fonts END -->
 
     <!-- Global styles START -->
-    <link href="assets/home/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="assets/home/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/home/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/home/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <!-- Global styles END -->
 
     <!-- Page level plugin styles START -->
-    <link href="assets/home/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
-    <link href="assets/home/plugins/bxslider/jquery.bxslider.css" rel="stylesheet">
-    <link href="assets/home/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+    <link href="/assets/home/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
+    <link href="/assets/home/plugins/bxslider/jquery.bxslider.css" rel="stylesheet">
+    <link href="/assets/home/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
     <!-- Page level plugin styles END -->
 
     <!-- Theme styles START -->
-    <link href="assets/home/css/style-metronic.css" rel="stylesheet" type="text/css">
-    <link href="assets/home/css/style.css" rel="stylesheet" type="text/css">
-    <link href="assets/home/css/style-responsive.css" rel="stylesheet" type="text/css">
-    <link href="assets/home/css/custom.css" rel="stylesheet" type="text/css">
+    <link href="/assets/home/css/style-metronic.css" rel="stylesheet" type="text/css">
+    <link href="/assets/home/css/style.css" rel="stylesheet" type="text/css">
+    <link href="/assets/home/css/style-responsive.css" rel="stylesheet" type="text/css">
+    <link href="/assets/home/css/custom.css" rel="stylesheet" type="text/css">
     <!-- Theme styles END -->
 </head>
 <!-- Head END -->
@@ -93,7 +93,7 @@ License: You must have a valid license purchased only from themeforest(the above
             <!-- BEGIN TOP BAR MENU -->
             <div class="col-md-6 col-sm-6 additional-nav">
                 <ul class="list-unstyled list-inline pull-right">
-                    <li><a href="{{url('order')}}">My Account</a></li>
+                    <li><a href="#">My Account</a></li>
                     <li><a href="#">My Wishlist</a></li>
                     <li><a href="checkout.blade.php">Checkout</a></li>
                     <li><a href="login-page.html">Log In</a></li>
@@ -117,7 +117,8 @@ License: You must have a valid license purchased only from themeforest(the above
                 <span class="icon-bar"></span>
             </button>
             <!-- END RESPONSIVE MENU TOGGLER -->
-            <a href="index.html" class="navbar-brand"><img src="assets/home/img/logo_red.png" alt="Metronic Shop UI"></a><!-- LOGO -->
+            <a href="{{url('index')}}" class="navbar-brand"><img src="/assets/home/img/logo_red.png" alt="Metronic Shop UI"></a><!-- LOGO -->
+
         </div>
         <!-- BEGIN CART -->
         <div class="cart-block">
@@ -131,56 +132,56 @@ License: You must have a valid license purchased only from themeforest(the above
                 <div class="cart-content">
                     <ul class="scroller" style="height: 250px;">
                         <li>
-                            <a href="item.html"><img src="assets/home/temp/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
+                            <a href="item.html"><img src="/assets/home/temp/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
                             <span class="cart-content-count">x 1</span>
                             <strong><a href="item.html">Rolex Classic Watch</a></strong>
                             <em>$1230</em>
                             <a href="javascript:void(0);" class="del-goods"><i class="fa fa-times"></i></a>
                         </li>
                         <li>
-                            <a href="item.html"><img src="assets/home/temp/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
+                            <a href="item.html"><img src="/assets/home/temp/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
                             <span class="cart-content-count">x 1</span>
                             <strong><a href="item.html">Rolex Classic Watch</a></strong>
                             <em>$1230</em>
                             <a href="javascript:void(0);" class="del-goods"><i class="fa fa-times"></i></a>
                         </li>
                         <li>
-                            <a href="item.html"><img src="assets/home/temp/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
+                            <a href="item.html"><img src="/assets/home/temp/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
                             <span class="cart-content-count">x 1</span>
                             <strong><a href="item.html">Rolex Classic Watch</a></strong>
                             <em>$1230</em>
                             <a href="javascript:void(0);" class="del-goods"><i class="fa fa-times"></i></a>
                         </li>
                         <li>
-                            <a href="item.html"><img src="assets/home/temp/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
+                            <a href="item.html"><img src="/assets/home/temp/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
                             <span class="cart-content-count">x 1</span>
                             <strong><a href="item.html">Rolex Classic Watch</a></strong>
                             <em>$1230</em>
                             <a href="javascript:void(0);" class="del-goods"><i class="fa fa-times"></i></a>
                         </li>
                         <li>
-                            <a href="item.html"><img src="assets/home/temp/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
+                            <a href="item.html"><img src="/assets/home/temp/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
                             <span class="cart-content-count">x 1</span>
                             <strong><a href="item.html">Rolex Classic Watch</a></strong>
                             <em>$1230</em>
                             <a href="javascript:void(0);" class="del-goods"><i class="fa fa-times"></i></a>
                         </li>
                         <li>
-                            <a href="item.html"><img src="assets/home/temp/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
+                            <a href="item.html"><img src="/assets/home/temp/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
                             <span class="cart-content-count">x 1</span>
                             <strong><a href="item.html">Rolex Classic Watch</a></strong>
                             <em>$1230</em>
                             <a href="javascript:void(0);" class="del-goods"><i class="fa fa-times"></i></a>
                         </li>
                         <li>
-                            <a href="item.html"><img src="assets/home/temp/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
+                            <a href="item.html"><img src="/assets/home/temp/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
                             <span class="cart-content-count">x 1</span>
                             <strong><a href="item.html">Rolex Classic Watch</a></strong>
                             <em>$1230</em>
                             <a href="javascript:void(0);" class="del-goods"><i class="fa fa-times"></i></a>
                         </li>
                         <li>
-                            <a href="item.html"><img src="assets/home/temp/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
+                            <a href="item.html"><img src="/assets/home/temp/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
                             <span class="cart-content-count">x 1</span>
                             <strong><a href="item.html">Rolex Classic Watch</a></strong>
                             <em>$1230</em>
@@ -257,11 +258,11 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <!-- BEGIN DROPDOWN MENU - BRANDS -->
                                 <div class="nav-brands">
                                     <ul>
-                                        <li><a href="product-list.html"><img title="esprit" alt="esprit" src="assets/home/temp/brands/esprit.jpg"></a></li>
-                                        <li><a href="product-list.html"><img title="gap" alt="gap" src="assets/home/temp/brands/gap.jpg"></a></li>
-                                        <li><a href="product-list.html"><img title="next" alt="next" src="assets/home/temp/brands/next.jpg"></a></li>
-                                        <li><a href="product-list.html"><img title="puma" alt="puma" src="assets/home/temp/brands/puma.jpg"></a></li>
-                                        <li><a href="product-list.html"><img title="zara" alt="zara" src="assets/home/temp/brands/zara.jpg"></a></li>
+                                        <li><a href="product-list.html"><img title="esprit" alt="esprit" src="/assets/home/temp/brands/esprit.jpg"></a></li>
+                                        <li><a href="product-list.html"><img title="gap" alt="gap" src="/assets/home/temp/brands/gap.jpg"></a></li>
+                                        <li><a href="product-list.html"><img title="next" alt="next" src="/assets/home/temp/brands/next.jpg"></a></li>
+                                        <li><a href="product-list.html"><img title="puma" alt="puma" src="/assets/home/temp/brands/puma.jpg"></a></li>
+                                        <li><a href="product-list.html"><img title="zara" alt="zara" src="/assets/home/temp/brands/zara.jpg"></a></li>
                                     </ul>
                                 </div>
                                 <!-- END DROPDOWN MENU - BRANDS -->
@@ -325,7 +326,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             <div class="nav-content">
                                 <div class="product-item">
                                     <div class="pi-img-wrapper">
-                                        <a href="item.html"><img src="assets/home/temp/products/model4.jpg" class="img-responsive" alt="Berry Lace Dress"></a>
+                                        <a href="item.html"><img src="/assets/home/temp/products/model4.jpg" class="img-responsive" alt="Berry Lace Dress"></a>
                                     </div>
                                     <h3><a href="item.html">Berry Lace Dress</a></h3>
                                     <div class="pi-price">$29.00</div>
@@ -333,7 +334,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 </div>
                                 <div class="product-item">
                                     <div class="pi-img-wrapper">
-                                        <a href="item.html"><img src="assets/home/temp/products/model3.jpg" class="img-responsive" alt="Berry Lace Dress"></a>
+                                        <a href="item.html"><img src="/assets/home/temp/products/model3.jpg" class="img-responsive" alt="Berry Lace Dress"></a>
                                     </div>
                                     <h3><a href="item.html">Berry Lace Dress</a></h3>
                                     <div class="pi-price">$29.00</div>
@@ -341,7 +342,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 </div>
                                 <div class="product-item">
                                     <div class="pi-img-wrapper">
-                                        <a href="item.html"><img src="assets/home/temp/products/model7.jpg" class="img-responsive" alt="Berry Lace Dress"></a>
+                                        <a href="item.html"><img src="/assets/home/temp/products/model7.jpg" class="img-responsive" alt="Berry Lace Dress"></a>
                                     </div>
                                     <h3><a href="item.html">Berry Lace Dress</a></h3>
                                     <div class="pi-price">$29.00</div>
@@ -366,8 +367,8 @@ License: You must have a valid license purchased only from themeforest(the above
                         <li><a href="shopping-cart-null.html">Shopping Cart (Null Cart)</a></li>
                         <li><a href="shopping-cart.html">Shopping Cart</a></li>
                         <li><a href="checkout.blade.php">Checkout</a></li>
-                        <li><a href="reg-page.html">Registration Page</a></li>
-                        <li class="active"><a href="login-page.html">Login Page</a></li>
+                        <li class="active"><a href="reg-page.html">Registration Page</a></li>
+                        <li><a href="login-page.html">Login Page</a></li>
                         <li><a href="forgotton-password.html">Forget Password</a></li>
                         <li><a href="about.html">About</a></li>
                         <li><a href="contacts.html">Contacts</a></li>
@@ -423,7 +424,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <ul class="breadcrumb">
             <li><a href="index.html">Home</a></li>
             <li><a href="">Store</a></li>
-            <li class="active">Login</li>
+            <li class="active">Create new account</li>
         </ul>
         <!-- BEGIN SIDEBAR & CONTENT -->
         <div class="row margin-bottom-40">
@@ -433,7 +434,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     <li class="list-group-item clearfix"><a href="#"><i class="fa fa-angle-right"></i> Login/Register</a></li>
                     <li class="list-group-item clearfix"><a href="#"><i class="fa fa-angle-right"></i> Restore Password</a></li>
                     <li class="list-group-item clearfix"><a href="#"><i class="fa fa-angle-right"></i> My account</a></li>
-                    <li class="list-group-item clearfix"><a href="#"><i class="fa fa-angle-right"></i> Address book</a></li>
+                    <li class="list-group-item clearfix"><a href="/history/orders"><i class="fa fa-angle-right"></i> 历史订单</a></li>
                     <li class="list-group-item clearfix"><a href="#"><i class="fa fa-angle-right"></i> Wish list</a></li>
                     <li class="list-group-item clearfix"><a href="#"><i class="fa fa-angle-right"></i> Returns</a></li>
                     <li class="list-group-item clearfix"><a href="#"><i class="fa fa-angle-right"></i> Newsletter</a></li>
@@ -443,72 +444,70 @@ License: You must have a valid license purchased only from themeforest(the above
 
             <!-- BEGIN CONTENT -->
             <div class="col-md-9 col-sm-9">
-                <h1>Login</h1>
-                @if (count($errors) > 0)
-                    <div class="alert alert-danger">
-                        <ul>
-                            @if(is_object($errors))
-                                @foreach($errors->all() as $error)
-                                    <p>{{$error}}</p>
-                                @endforeach
-                            @else
-                                <p>{{$errors}}</p>
-                            @endif
-                        </ul>
-                    </div>
-                @endif
+                <h1>订单列表</h1>
+
+
                 <div class="content-form-page">
                     <div class="row">
-                        <div class="col-md-7 col-sm-7">
-                            <form class="form-horizontal form-without-legend" role="form" action="{{url('ulogin')}}" method="post">
-                                <input type="hidden" value="{{csrf_token()}}" name="_token">
-                                <div class="form-group">
-                                    <label for="email" class="col-lg-4 control-label">Email <span class="require">*</span></label>
-                                    <div class="col-lg-8">
-                                        <input type="text" class="form-control" id="email" name="email">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="password" class="col-lg-4 control-label">Password <span class="require">*</span></label>
-                                    <div class="col-lg-8">
-                                        <input type="text" class="form-control" id="password" name="pass">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-8 col-md-offset-4 padding-left-0">
-                                        <a href="forgotton-password.html">Forget Password?</a>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-8 col-md-offset-4 padding-left-0 padding-top-20">
-                                        <button type="submit" class="btn btn-primary">Login</button>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-8 col-md-offset-4 padding-left-0 padding-top-10 padding-right-30">
-                                        <hr>
-                                        <div class="login-socio">
-                                            <p class="text-muted">or login using:</p>
-                                            <ul class="social-icons">
-                                                <li><a href="#" data-original-title="facebook" class="facebook" title="facebook"></a></li>
-                                                <li><a href="#" data-original-title="Twitter" class="twitter" title="Twitter"></a></li>
-                                                <li><a href="#" data-original-title="Google Plus" class="googleplus" title="Google Plus"></a></li>
-                                                <li><a href="#" data-original-title="Linkedin" class="linkedin" title="LinkedIn"></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="col-md-4 col-sm-4 pull-right">
-                            <div class="form-info">
-                                <h2><em>Important</em> Information</h2>
-                                <p>Duis autem vel eum iriure at dolor vulputate velit esse vel molestie at dolore.</p>
+                        <div class="col-md-12 clearfix">
+                            <div class="table-wrapper-responsive">
+                                <table summary="Shopping cart" class="table-bordered ">
+                                    <tr>
+                                        <th>订单号</th>
+                                        <th class="checkout-image">商品图</th>
+                                        <th class="checkout-description">商品描述</th>
+                                        <th class="checkout-quantity">购买数量</th>
+                                        <th class="checkout-price">商品价格</th>
+                                        <th class="checkout-total">合计</th>
+                                        <th class="checkout-total">操作</th>
 
-                                <button type="button" class="btn btn-default">More details</button>
+                                    </tr>
+                                    @php($sum = 0)
+                                    @foreach($orderList as $order)
+                                        <tr>
+                                            <td rowspan="{{count($order)}}">{{$order[0]['order_number']}}</td>
+                                        @foreach($order as $val)
+                                          @php($sum += $val['price']*$val['buynum'])
+
+
+
+                                                <td class="shopping-cart-image">
+                                                    <a href="#"><img src="{{asset('assets/home/temp/products/model3.jpg')}}" alt="Berry Lace Dress"></a>
+                                                </td>
+                                                <td class="shopping-cart-description">
+                                                    <h3><a href="#">{{$val['goods_name']}}</a></h3>
+                                                    <p><strong>Item 1</strong> - {{$val['logo']}} </p>
+                                                    <em>查看详情</em>
+                                                </td>
+                                                <td class="shopping-cart-ref-no">
+                                                    {{$val['cat_id']}}
+                                                </td>
+                                                <td class="shopping-cart-price">
+                                                    <strong>￥<span>{{$val['price']}}</span></strong>
+                                                </td>
+                                                <td class="shopping-cart-total">
+                                                    <strong>￥<span>{{sprintf("%.2f", $val['buynum']*$val['price'])}}</span></strong>
+                                                </td>
+                                                <td class="del-goods-col">
+                                                    <a href="/admin/order">确认收货</a>
+                                                </td>
+                                            </tr>
+
+
+                                        @endforeach
+
+                                        @endforeach
+
+                                    <input type="hidden" name="total_price" value="{{$sum}}">
+                                </table>
                             </div>
+
+                            <div class="clearfix"></div>
+
                         </div>
                     </div>
+
+
                 </div>
             </div>
             <!-- END CONTENT -->
@@ -523,18 +522,18 @@ License: You must have a valid license purchased only from themeforest(the above
         <div class="row">
             <div class="bxslider-wrapper">
                 <ul class="bxslider" data-slides-phone="1" data-slides-tablet="3" data-slides-desktop="6" data-slide-margin="15">
-                    <li><a href="#"><img src="assets/home/temp/brands/canon.jpg" alt="canon" title="canon"></a></li>
-                    <li><a href="#"><img src="assets/home/temp/brands/esprit.jpg" alt="esprit" title="esprit"></a></li>
-                    <li><a href="#"><img src="assets/home/temp/brands/gap.jpg" alt="gap" title="gap"></a></li>
-                    <li><a href="#"><img src="assets/home/temp/brands/next.jpg" alt="next" title="next"></a></li>
-                    <li><a href="#"><img src="assets/home/temp/brands/puma.jpg" alt="puma" title="puma"></a></li>
-                    <li><a href="#"><img src="assets/home/temp/brands/zara.jpg" alt="zara" title="zara"></a></li>
-                    <li><a href="#"><img src="assets/home/temp/brands/canon.jpg" alt="canon" title="canon"></a></li>
-                    <li><a href="#"><img src="assets/home/temp/brands/esprit.jpg" alt="esprit" title="esprit"></a></li>
-                    <li><a href="#"><img src="assets/home/temp/brands/gap.jpg" alt="gap" title="gap"></a></li>
-                    <li><a href="#"><img src="assets/home/temp/brands/next.jpg" alt="next" title="next"></a></li>
-                    <li><a href="#"><img src="assets/home/temp/brands/puma.jpg" alt="puma" title="puma"></a></li>
-                    <li><a href="#"><img src="assets/home/temp/brands/zara.jpg" alt="zara" title="zara"></a></li>
+                    <li><a href="#"><img src="/assets/home/temp/brands/canon.jpg" alt="canon" title="canon"></a></li>
+                    <li><a href="#"><img src="/assets/home/temp/brands/esprit.jpg" alt="esprit" title="esprit"></a></li>
+                    <li><a href="#"><img src="/assets/home/temp/brands/gap.jpg" alt="gap" title="gap"></a></li>
+                    <li><a href="#"><img src="/assets/home/temp/brands/next.jpg" alt="next" title="next"></a></li>
+                    <li><a href="#"><img src="/assets/home/temp/brands/puma.jpg" alt="puma" title="puma"></a></li>
+                    <li><a href="#"><img src="/assets/home/temp/brands/zara.jpg" alt="zara" title="zara"></a></li>
+                    <li><a href="#"><img src="/assets/home/temp/brands/canon.jpg" alt="canon" title="canon"></a></li>
+                    <li><a href="#"><img src="/assets/home/temp/brands/esprit.jpg" alt="esprit" title="esprit"></a></li>
+                    <li><a href="#"><img src="/assets/home/temp/brands/gap.jpg" alt="gap" title="gap"></a></li>
+                    <li><a href="#"><img src="/assets/home/temp/brands/next.jpg" alt="next" title="next"></a></li>
+                    <li><a href="#"><img src="/assets/home/temp/brands/puma.jpg" alt="puma" title="puma"></a></li>
+                    <li><a href="#"><img src="/assets/home/temp/brands/zara.jpg" alt="zara" title="zara"></a></li>
                 </ul>
             </div>
         </div>
@@ -690,11 +689,11 @@ License: You must have a valid license purchased only from themeforest(the above
             <!-- BEGIN PAYMENTS -->
             <div class="col-md-6 col-sm-6">
                 <ul class="list-unstyled list-inline pull-right margin-bottom-15">
-                    <li><img src="assets/home/img/payments/western-union.jpg" alt="We accept Western Union" title="We accept Western Union"></li>
-                    <li><img src="assets/home/img/payments/american-express.jpg" alt="We accept American Express" title="We accept American Express"></li>
-                    <li><img src="assets/home/img/payments/MasterCard.jpg" alt="We accept MasterCard" title="We accept MasterCard"></li>
-                    <li><img src="assets/home/img/payments/PayPal.jpg" alt="We accept PayPal" title="We accept PayPal"></li>
-                    <li><img src="assets/home/img/payments/visa.jpg" alt="We accept Visa" title="We accept Visa"></li>
+                    <li><img src="/assets/home/img/payments/western-union.jpg" alt="We accept Western Union" title="We accept Western Union"></li>
+                    <li><img src="/assets/home/img/payments/american-express.jpg" alt="We accept American Express" title="We accept American Express"></li>
+                    <li><img src="/assets/home/img/payments/MasterCard.jpg" alt="We accept MasterCard" title="We accept MasterCard"></li>
+                    <li><img src="/assets/home/img/payments/PayPal.jpg" alt="We accept PayPal" title="We accept PayPal"></li>
+                    <li><img src="/assets/home/img/payments/visa.jpg" alt="We accept Visa" title="We accept Visa"></li>
                 </ul>
             </div>
             <!-- END PAYMENTS -->
@@ -706,21 +705,21 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- Load javascripts at bottom, this will reduce page load time -->
 <!-- BEGIN CORE PLUGINS (REQUIRED FOR ALL PAGES) -->
 <!--[if lt IE 9]>
-<script src="assets/home/plugins/respond.min.js"></script>
+<script src="/assets/home/plugins/respond.min.js"></script>
 <![endif]-->
-<script src="assets/home/plugins/jquery-1.10.2.min.js" type="text/javascript"></script>
-<script src="assets/home/plugins/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
-<script src="assets/home/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="assets/home/plugins/back-to-top.js"></script>
-<script type="text/javascript" src="assets/home/plugins/jQuery-slimScroll/jquery.slimscroll.min.js"></script>
+<script src="/assets/home/plugins/jquery-1.10.2.min.js" type="text/javascript"></script>
+<script src="/assets/home/plugins/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+<script src="/assets/home/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="/assets/home/plugins/back-to-top.js"></script>
+<script type="text/javascript" src="/assets/home/plugins/jQuery-slimScroll/jquery.slimscroll.min.js"></script>
 <!-- END CORE PLUGINS -->
 
 <!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
-<script type="text/javascript" src="assets/home/plugins/fancybox/source/jquery.fancybox.pack.js"></script><!-- pop up -->
-<script type="text/javascript" src="assets/home/plugins/bxslider/jquery.bxslider.min.js"></script><!-- slider for products -->
-<script src="assets/home/plugins/uniform/jquery.uniform.min.js" type="text/javascript" ></script>
+<script type="text/javascript" src="/assets/home/plugins/fancybox/source/jquery.fancybox.pack.js"></script><!-- pop up -->
+<script type="text/javascript" src="/assets/home/plugins/bxslider/jquery.bxslider.min.js"></script><!-- slider for products -->
+<script src="/assets/home/plugins/uniform/jquery.uniform.min.js" type="text/javascript" ></script>
 
-<script type="text/javascript" src="assets/home/scripts/app.js"></script>
+<script type="text/javascript" src="/assets/home/scripts/app.js"></script>
 <script type="text/javascript">
     jQuery(document).ready(function() {
         App.init();

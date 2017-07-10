@@ -310,6 +310,24 @@
 
         <li>
             <a href="#" class="dropdown-toggle">
+                <i class="icon-list"></i>
+                <span class="menu-text"> 订单管理 </span>
+
+                <b class="arrow icon-angle-down"></b>
+            </a>
+
+            <ul class="submenu">
+                <li>
+                    <a href="{{url('admin/orders')}}">
+                        <i class="icon-double-angle-right"></i>
+                        浏览订单
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="#" class="dropdown-toggle">
                 <i class="icon-edit"></i>
                 <span class="menu-text"> 友情链接管理 </span>
                 <b class="arrow icon-angle-down"></b>

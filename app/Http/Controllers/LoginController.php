@@ -226,6 +226,7 @@ class LoginController extends Controller
     //前台首页遍历测试
     public function ajax()
     {
+
         $goodsList = Goods::where('cat_id', 4)->take(5)->get();
         return view('home/ajax', compact('goodsList'));
     }

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Order;
+use App\OrdersDetail;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Session;
 use App\User;
@@ -66,4 +69,163 @@ class OrderController extends Controller
         }
     }
 
+
+
+    //下单
+    public function store(Request $request)
+    {
+
+        $input = $request->except('_token');
+
+        $rules = [
+            'cnee_name' => 'required|between:1,30',
+            'cnee_tel' => 'required|digits:11',
+            'cnee_address' => 'required',
+            'code' => 'required',
+        ];
+
+        $message = [
+            'required' => ':attribute不能为空',
+            'cnee_tel.digits' => '收货人电话必须是11位!'
+        ];
+
+        $attribute = [
+            'cnee_name' => '收货人姓名',
+            'cnee_tel' => '收货人电话',
+            'cnee_address' => '收货人地址',
+            'code' => '邮编',
+        ];
+
+        $validator = Validator::make($input, $rules, $message, $attribute);
+
+        if($validator->fails()) {
+
+            return back()->withErrors($validator)->withInput();
+        }
+
+        $cartList = session('cartList');
+
+
+//        dd($cartList);
+
+
+        $order = [];
+        $order['user_id'] = session('user')->id;
+        $order['cnee_name'] = $request->get('cnee_name');
+        $order['cnee_tel'] = $request->get('cnee_tel');
+        $order['cnee_address'] = $request->get('cnee_address');
+        $order['code'] = $request->get('code');
+        $order['order_number'] = session('user')->id.time().rand(0,9999);
+        $order['ordertime'] = time();
+        $order['total_price'] = $request->get('total_price');
+        $order['status'] = 0;
+
+        //开启事务
+        DB::beginTransaction();
+
+        //插入订单表
+        $insertId = DB::table('orders')->insertGetId($order);
+
+        if(!$insertId){
+
+            DB::rollBack();
+        }
+
+        foreach ($cartList as $cart) {
+//            DB::listen(function ($sql) {
+//                dump($sql);
+//            });
+
+            //插入商品订单表
+            $res = DB::table('goods_orders')
+                ->insert([
+                    'order_id' => $insertId,
+                    'goods_id' => $cart['id'],
+
+                ]);
+
+            if(!$res){
+                DB::rollBack();
+            }
+
+            // 减少商品表中库存
+            $res = DB::table('goods')
+                ->where('id', '=', $cart['id'])
+                ->decrement('store', $cart['buynum']);
+
+            if(!$res){
+                DB::rollBack();
+            }
+
+            //插入订单详情表
+            $res = DB::table('orders_detail')
+                ->insert([
+                    'order_id' => $insertId,
+                    'goods_id' => $cart['id'],
+                    'price' => $cart['price'],
+                    'buynum' => $cart['buynum'],
+
+                ]);
+
+            if(!$res){
+                DB::rollBack();
+            }
+
+        }
+
+        //提交事务
+        DB::commit();
+
+        //清空购物车中已买的商品
+        session()->forget('cartList');
+
+        return redirect('history/orders');
+
+    }
+
+    public function index()
+    {
+        //查询订单表,前台遍历
+        $userId = session('user')->id;
+        $userId = 33;
+        $ordersId = Order::where('user_id', '=', $userId)->lists('id');
+
+        $orderList = [];
+
+        foreach ($ordersId as $oid) {
+            $orderList[] = OrdersDetail::where('order_id', '=', $oid)
+                ->leftJoin('orders', 'orders_detail.order_id', '=', 'orders.id')
+                ->leftJoin('goods', 'orders_detail.goods_id', '=', 'goods.id')
+                ->get();
+
+        }
+
+        return view('home/order/index', compact('orderList'));
+    }
+
+    public function adminIndex()
+    {
+        $orders = Order::leftJoin('users', 'users.id', '=', 'orders.user_id')
+            ->select('orders.*', 'users.user_name')
+            ->paginate(6);
+        return view('admin.order', compact('orders'));
+    }
+
+    public function edit($id)
+    {
+        Order::where('id', '=', $id)->update(['status' => 1]);
+        return back();
+
+    }
+
+    public function detail($id)
+    {
+        $orderDetail = OrdersDetail::where('order_id', '=', $id)
+            ->leftJoin('orders', 'orders_detail.order_id', '=', 'orders.id')
+            ->leftJoin('goods', 'orders_detail.goods_id', '=', 'goods.id')
+            ->select('goods.*', 'orders.order_number', 'orders.paytime', 'orders_detail.buynum')
+            ->get();
+        return view('admin.order-detail', compact('orderDetail'));
+
+    }
 }

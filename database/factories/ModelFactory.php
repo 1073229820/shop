@@ -63,3 +63,54 @@ $factory->define(App\Link::class, function (Faker\Generator $faker) {
         'status' =>$faker->numberBetween(0, 1),
     ];
 });
+
+
+$factory->define(App\Order::class, function (Faker\Generator $faker) {
+
+    $user_ids = \App\User::lists('id')->toArray();
+
+    return [
+        'user_id' => $faker->randomElement($user_ids),
+        'cnee_name' => $faker->name,
+        'cnee_tel' => $faker->phoneNumber,
+        'cnee_address' => $faker->address,
+        'cnee_province' => $faker->state,
+        'cnee_city' => $faker->city,
+        'cnee_area' => $faker->streetName,
+        'code' => $faker->postcode,
+        'order_number' => $faker->e164PhoneNumber,
+        'ordertime' => $faker->unixTime,
+        'paytime' => $faker->unixTime,
+        'total_price' => $faker->randomFloat,
+        'status' =>$faker->numberBetween(0, 3),
+    ];
+});
+
+
+$factory->define(App\OrdersDetail::class, function (Faker\Generator $faker) {
+
+    $orders_ids = \App\Order::lists('id')->toArray();
+    $goods_ids = \App\Goods::lists('id')->toArray();
+
+    return [
+
+        'order_id' => $faker->randomElement($orders_ids),
+        'goods_id' => $faker->randomElement($goods_ids),
+        'price' => $faker->randomNumber,
+        'buynum' => $faker->randomDigitNotNull,
+    ];
+});
+
+
+$factory->define(App\GoodsOrders::class, function (Faker\Generator $faker) {
+
+    $orders_ids = \App\Order::lists('id')->toArray();
+    $goods_ids = \App\OrdersDetail::lists('goods_id')->toArray();
+
+    return [
+
+        'order_id' => $faker->randomElement($orders_ids),
+        'goods_id' => $faker->randomElement($goods_ids),
+
+    ];
+});

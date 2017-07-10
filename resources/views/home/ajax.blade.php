@@ -100,7 +100,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 <ul class="list-unstyled list-inline pull-right">
                     <li><a href="{{url('order')}}">My Account</a></li>
                     <li><a href="#">My Wishlist</a></li>
-                    <li><a href="checkout.html">Checkout</a></li>
+                    <li><a href="checkout.blade.php">Checkout</a></li>
                     <li><a href="login-page.html">Log In</a></li>
                 </ul>
             </div>
@@ -194,7 +194,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     </ul>
                     <div class="text-right">
                         <a href="shopping-cart.html" class="btn btn-default">View Cart</a>
-                        <a href="checkout.html" class="btn btn-primary">Checkout</a>
+                        <a href="checkout.blade.php" class="btn btn-primary">Checkout</a>
                     </div>
                 </div>
             </div>
@@ -370,7 +370,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         <li><a href="item.html">Product Page</a></li>
                         <li><a href="shopping-cart-null.html">Shopping Cart (Null Cart)</a></li>
                         <li><a href="shopping-cart.html">Shopping Cart</a></li>
-                        <li><a href="checkout.html">Checkout</a></li>
+                        <li><a href="checkout.blade.php">Checkout</a></li>
                         <li><a href="reg-page.html">Registration Page</a></li>
                         <li><a href="login-page.html">Login Page</a></li>
                         <li><a href="forgotton-password.html">Forget Password</a></li>
@@ -507,6 +507,9 @@ License: You must have a valid license purchased only from themeforest(the above
                 <div class="bxslider-wrapper">
                     <ul class="bxslider" data-slides-phone="1" data-slides-tablet="2" data-slides-desktop="5" data-slide-margin="15">
                         @foreach($goodsList as $goods)
+                        <form action="/cart/store" method="post">
+                            <input type="hidden" name="_token" value="{{csrf_token()}}">
+                            <input type="hidden" name="gid" value="{{$goods->id}}">
                         <li>
                             <div class="product-item">
                                 <div class="pi-img-wrapper">
@@ -518,10 +521,11 @@ License: You must have a valid license purchased only from themeforest(the above
                                 </div>
                                 <h3><a href="item.html">{{$goods->goods_name}}</a></h3>
                                 <div class="pi-price">￥{{$goods->price}}</div>
-                                <a href="#" class="btn btn-default add2cart">加入购物车</a>
+                                <button type="submit" class="btn btn-default add2cart">加入购物车</button>
                                 <div class="sticker sticker-sale"></div>
                             </div>
                         </li>
+                        </form>
                         @endforeach
                     </ul>
                 </div>
@@ -687,6 +691,8 @@ License: You must have a valid license purchased only from themeforest(the above
                          str += '</div>';
 
                         $(".nodata").before(str);
+
+
                         index++;
                         if(index >= catId.length){
                             $(".nodata").show().html("别滚动了，已经到底了。。。");
