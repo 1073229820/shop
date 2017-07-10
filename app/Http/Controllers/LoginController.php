@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Input;
 use Session;
 use App\Admin;
 
+
 require_once './code/Code.class.php';
 
 class LoginController extends Controller
@@ -45,100 +46,107 @@ class LoginController extends Controller
 
 
         if($input = Input::all()){
+            //dd($input);
             //dd($input['email']);
             //$user = User::first();
             //dd($user->pass);
+            $code = $input['code'];
+            $Code = new \Code();
+            if ($Code->check($code)) {
+                $user = User::where('email', $input['email'])->first();
+                //dd($user);
+                if($user!=null){
 
-            $user = User::where('email', $input['email'])->first();
-            //dd($user);
-            if($user!=null){
+                    //验证用户状态
+                    $user_id = $user->id;
+                    $ip = $request->getClientIp();
+                    $logintime = time();
 
-                //验证用户状态
-                $user_id = $user->id;
-                $ip = $request->getClientIp();
-                $logintime = time();
+                    if($user->status != '0'){
+                        //验证登录错误次数
+                        $error = DB::table('userinfos')->select('pass_wrong_time_status', 'logintime')->where('user_id' , $user_id)->whereBetween('logintime', [$logintime-300, $logintime])->orderBy('id','desc')->get();
+                        //dd($error);
+                        if(count($error)>=3){
+                            $errors = DB::table('userinfos')->select('pass_wrong_time_status')->where('user_id', $user_id)->orderby('id','desc')->take(3)->get();
+                            //dd($errors);
+                            $json= json_encode($errors);
+                            $dejson = json_decode($json, true);
+                            $a = array_column($dejson, 'pass_wrong_time_status');
+                            //dd($a);
+                            //$b = array_search('0', $a);
 
-                if($user->status != '0'){
-                    //验证登录错误次数
-                    $error = DB::table('userinfos')->select('pass_wrong_time_status', 'logintime')->where('user_id' , $user_id)->whereBetween('logintime', [$logintime-300, $logintime])->orderBy('id','desc')->get();
-                    //dd($error);
-                   if(count($error)>=3){
-                       $errors = DB::table('userinfos')->select('pass_wrong_time_status')->where('user_id', $user_id)->orderby('id','desc')->take(3)->get();
-                       //dd($errors);
-                       $json= json_encode($errors);
-                       $dejson = json_decode($json, true);
-                       $a = array_column($dejson, 'pass_wrong_time_status');
-                       //dd($a);
-                       //$b = array_search('0', $a);
+                            $b = in_array('0', $a);
 
-                       $b = in_array('0', $a);
+                            //dd($b);
+                            if($b){
+                                if(Hash::check($input['pass'], $user->pass)){
+                                    session(['user'=>$user]);
+                                    //dd(session('user'));
+                                    Userinfo::create(['ipaddr'=>$ip, 'user_id'=>$user_id, 'pass_wrong_time_status'=>'0', 'logintime'=>$logintime]);
+                                    return redirect('index');
+                                    //return 'good';
+                                }else{
 
-                        //dd($b);
-                       if($b){
-                           if(Hash::check($input['pass'], $user->pass)){
-                               session(['user'=>$user]);
-                               //dd(session('user'));
-                               Userinfo::create(['ipaddr'=>$ip, 'user_id'=>$user_id, 'pass_wrong_time_status'=>'0', 'logintime'=>$logintime]);
-                               return redirect('index');
-                               //return 'good';
-                           }else{
+                                    Userinfo::create(['ipaddr'=>$ip, 'user_id'=>$user_id, 'pass_wrong_time_status'=>'1', 'logintime'=>$logintime]);
+                                    return back()->with('errors','密码错误');
+                                }
 
-                               Userinfo::create(['ipaddr'=>$ip, 'user_id'=>$user_id, 'pass_wrong_time_status'=>'1', 'logintime'=>$logintime]);
-                               return back()->with('errors','密码错误');
-                           }
+                            }else{
+                                $errorss = DB::table('userinfos')->where('user_id', $user_id)->orderBy('id', 'desc')->take(1)->value('logintime');
+                                //dd($errorss);
+                                $time = $errorss;
 
-                       }else{
-                           $errorss = DB::table('userinfos')->where('user_id', $user_id)->orderBy('id', 'desc')->take(1)->value('logintime');
-                            //dd($errorss);
-                           $time = $errorss;
+                                $nowtime = time();
+                                //dd($nowtime-$time);
+                                if($nowtime-$time>=300){
 
-                           $nowtime = time();
-                           //dd($nowtime-$time);
-                           if($nowtime-$time>=300){
+                                    if(Hash::check($input['pass'], $user->pass)){
+                                        session(['user'=>$user]);
+                                        //dd(session('user'));
+                                        Userinfo::create(['ipaddr'=>$ip, 'user_id'=>$user_id, 'pass_wrong_time_status'=>'0', 'logintime'=>$logintime]);
+                                        return redirect('index');
+                                        //return 'good';
+                                    }else{
 
-                               if(Hash::check($input['pass'], $user->pass)){
-                                   session(['user'=>$user]);
-                                   //dd(session('user'));
-                                   Userinfo::create(['ipaddr'=>$ip, 'user_id'=>$user_id, 'pass_wrong_time_status'=>'0', 'logintime'=>$logintime]);
-                                   return redirect('index');
-                                   //return 'good';
-                               }else{
-
-                                   Userinfo::create(['ipaddr'=>$ip, 'user_id'=>$user_id, 'pass_wrong_time_status'=>'1', 'logintime'=>$logintime]);
-                                   return back()->with('errors','密码错误');
-                               }
-                           }else{
-                               return back()->with('errors','账号错误3次。。5分钟后再试');
-                           }
-
-
-                       }
-
-                   }else{
-                       if(Hash::check($input['pass'], $user->pass)){
-                           session(['user'=>$user]);
-                           //dd(session('user'));
-                           Userinfo::create(['ipaddr'=>$ip, 'user_id'=>$user_id, 'pass_wrong_time_status'=>'0', 'logintime'=>$logintime]);
-                           return redirect('index');
-                           //return 'good';
-                       }else{
-
-                           Userinfo::create(['ipaddr'=>$ip, 'user_id'=>$user_id, 'pass_wrong_time_status'=>'1', 'logintime'=>$logintime]);
-                           return back()->with('errors','密码错误');
-                       }
-                   }
+                                        Userinfo::create(['ipaddr'=>$ip, 'user_id'=>$user_id, 'pass_wrong_time_status'=>'1', 'logintime'=>$logintime]);
+                                        return back()->with('errors','密码错误');
+                                    }
+                                }else{
+                                    return back()->with('errors','账号错误3次。。5分钟后再试');
+                                }
 
 
+                            }
+
+                        }else{
+                            if(Hash::check($input['pass'], $user->pass)){
+                                session(['user'=>$user]);
+                                //dd(session('user'));
+                                Userinfo::create(['ipaddr'=>$ip, 'user_id'=>$user_id, 'pass_wrong_time_status'=>'0', 'logintime'=>$logintime]);
+                                return redirect('index');
+                                //return 'good';
+                            }else{
+
+                                Userinfo::create(['ipaddr'=>$ip, 'user_id'=>$user_id, 'pass_wrong_time_status'=>'1', 'logintime'=>$logintime]);
+                                return back()->with('errors','密码错误');
+                            }
+                        }
+
+
+
+
+                    }else{
+                        return back()->with('errors','账号被禁用，请联系管理员');
+                    }
 
 
                 }else{
-                    return back()->with('errors','账号被禁用，请联系管理员');
+                    return back()->with('errors','账号错误');
                 }
-
-
             }else{
-                return back()->with('errors','账号错误');
+                return back()->with('errors','验证码错误');
             }
+
         }else{
             //session(['user'=>null]);
             return view('home/login');
