@@ -126,14 +126,14 @@ Route::get('ajaxGet', 'LoginController@ajaxGet');
 
 /*});*/
 
-Route::group(['middleware' => ['web','user.login']], function(){
+// Route::group(['middleware' => ['web','user.login']], function(){
 
     //个人中心
     Route::any('order', 'OrderController@order');
 //修改个人资料
     Route::any('newinfo', 'OrderController@newinfo');
 
-});
+// });
 
 
 

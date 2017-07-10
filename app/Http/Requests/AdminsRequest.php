@@ -28,7 +28,7 @@ class AdminsRequest extends Request
             'name' => 'required|min:2|max:25|alpha_dash|unique:admins,name,'.$id,
             'pass' => 'required|min:6|max:255',
             'sex' => 'required',
-            'userpic' => 'required',
+//            'userpic' => 'required',
             'email' => 'required|email',
             'status' => 'required',
         ];

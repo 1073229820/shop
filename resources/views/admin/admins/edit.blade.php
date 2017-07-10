@@ -45,7 +45,16 @@
                     </ul>
                 </div>
             @endif
+            {{--错误提示--}}
 
+            @if ($post->name == 'admin')
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1" style="margin-top: 5px"> 用户名 </label>
+                    <div class="col-sm-9">
+                        <input type="text" name="name" value="{{$post->name}}" readonly id="form-field-1" placeholder="" class="col-xs-10 col-sm-5"/>
+                    </div>
+                </div>
+            @else
             <div class="form-group">
                 <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 用户名 </label>
                 <div class="col-sm-9">
@@ -53,6 +62,8 @@
                            class="col-xs-10 col-sm-5"/>
                 </div>
             </div>
+            @endif
+
             <div class="form-group">
                 <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> 密码 </label>
                 <div class="col-sm-9">
@@ -60,6 +71,7 @@
                            class="col-xs-10 col-sm-5"/>
                 </div>
             </div>
+
             <div class="form-group">
                 <label class="col-sm-3 control-label no-padding-right" for=""> 性别 </label>
                 <div class="col-sm-3" style="padding-top:6px;">
@@ -70,51 +82,16 @@
             </div>
 
             <div class="form-group">
-                <input type="hidden" name="userpic" value="{{$post->userpic}}">
-                <label class="col-sm-3 control-label no-padding-right" for="form-field-2" style="margin-top: 40px"> 头像 </label>
-                <div class="col-sm-2">
+
+                <label class="col-sm-3 control-label no-padding-right" for="form-field-2" style="margin-top: 20px"> 头像 </label>
+                <div style="margin-top: 20px" class="col-sm-2">
+                    <input type="file" name="userpic" value="{{$post->userpic}}">
+                </div>
+                <div class="col-sm-5">
                     <img src="{{asset($post->userpic)}}" id="art_thumb_img" style="max-width:500px;max-height:100px;">
                 </div>
-                <div class="col-sm-2" style="margin-top: 40px">
-                    {{--文件上传--}}
-                    <script src="{{asset('assets/admin/js/jquery-1.10.2.min.js')}}" type="text/javascript"></script>
-                    <input id="file_upload" name="file_upload" type="file" multiple="true">
-                    <script src="{{asset('uploadify/jquery.uploadify.js')}}" type="text/javascript"></script>
-                    <link rel="stylesheet" type="text/css" href="{{asset('uploadify/uploadify.css')}}">
 
-                    <script type="text/javascript">
-                        <?php $timestamp = time();?>
-                        $(function () {
-                            $('#file_upload').uploadify({
-                                'buttonText' : '更换头像',
-                                'formData': {
-                                    'timestamp': '<?php echo $timestamp;?>',
-                                    '_token': '{{csrf_token()}}'
-                                },
-                                'swf': '{{asset('uploadify/uploadify.swf')}}',
-                                'uploader': '{{url('admin/upload')}}',
-                                'onUploadSuccess': function (file, data, response ){
-//                                    alert(data);
-                                    //给缩略图赋值，文件上传后的路径
-                                    $('input[name=userpic]').val(data);
-                                    //插入图片
-                                    $('#art_thumb_img').attr('src','/'+data);
-                                }
-                            });
-                        });
-                    </script>
-                    <style>
-                        .uploadify{display:inline-block;}
-                        .uploadify-button{border:none; border-radius:5px; margin-top:8px;}
-                        table.add_tab tr td span.uploadify-button-text{color: #FFF; margin:0;}
-                    </style>
-                    {{--文件上传--}}
-                </div>
             </div>
-
-            {{--显示图片--}}
-
-            {{--显示图片--}}
 
             <div class="form-group">
                 <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> 邮箱 </label>
@@ -123,6 +100,7 @@
                            class="col-xs-10 col-sm-5"/>
                 </div>
             </div>
+
             <div class="form-group">
                 <label class="col-sm-3 control-label no-padding-right" for=""> 状态 </label>
                 <div class="col-sm-3" style="padding-top:6px;">
@@ -130,6 +108,7 @@
                     <label><input type="radio" name="status[]" value="2" {{$post->status==2?'checked':''}}>禁用</label>
                 </div>
             </div>
+
             <div class="form-group">
                 <label class="col-sm-3 control-label no-padding-right" for=""> 角色 </label>
                 <div class="col-sm-9 no-padding-right " style="padding-top:6px;">

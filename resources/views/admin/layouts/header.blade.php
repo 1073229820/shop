@@ -264,7 +264,7 @@
                     </li>
                 @else
                     <li class="light-blue">
-                        <a  href="admin/login" class="dropdown-toggle">登录</a>
+                        <a  href="{{url('admin/login')}}" class="dropdown-toggle">登录</a>
                     </li>
                 @endif
             </ul><!-- /.ace-nav -->

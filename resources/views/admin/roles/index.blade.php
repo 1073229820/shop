@@ -38,7 +38,7 @@
         <div class="page-content">
             <div class="page-header">
                 <h1>
-                    权限管理
+                    角色管理
                     <small>
                         <i class="icon-double-angle-right"></i>
                         角色列表
@@ -210,7 +210,7 @@
                 //发送ajax请求
                 $.post(
 
-                    "{{url('admin/roles/del/ee')}}",
+                    "{{url('admin/roles/del/del')}}",
 
                     {'_method': 'delete', '_token': '{{csrf_token()}}', 'id': arr},
 

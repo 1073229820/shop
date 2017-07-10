@@ -92,13 +92,13 @@
                                                         @endif
                                                     @endif
                                                     @if (session('adminname'))
-                                                        @if (session('adminname')->ability('admin', 'perms_delete'))
+{{--                                                        @if (session('adminname')->ability('admin', 'perms_delete'))--}}
                                                             <a href="javascript:;"
                                                                onclick="delPerms('{{$v->id}}', this)"
                                                                class="btn btn-xs btn-danger">
                                                                 <i class="icon-trash bigger-120"></i>
                                                             </a>
-                                                        @endif
+                                                        {{--@endif--}}
                                                     @endif
                                                 </div>
 

@@ -41,13 +41,51 @@
                     </div>
                 @endif
             </div>
+            {{--判断是否为初始权限，是的话权限名不给修改--}}
+            <?php
+                $data = [
+                //管理员权限
+                'admin_create', 'admin_edit', 'admin_delete',
+
+                //前台用户权限
+                'user_create', 'user_edit', 'user_delete',
+
+                //角色权限
+                'role_create', 'role_edit', 'role_delete',
+
+                //权限操作
+                'perms_create', 'perms_edit', 'perms_delete',
+
+                //商品分类权限
+                'category_create', 'category_edit', 'category_delete',
+
+                //商品权限
+                'goods_create', 'goods_edit', 'goods_delete',
+
+                //订单权限
+                'orders_create', 'orders_edit', 'orders_delete',
+
+                //友链权限
+                'link_create', 'link_edit', 'link_delete',
+
+            ]
+            ?>
+            @if (in_array($perms->name, $data))
             <div class="form-group">
                 <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 权限名称 </label>
                 <div class="col-sm-9">
-                    <input type="text" name="name" value="{{$perms->name}}" id="form-field-1" placeholder="" class="col-xs-10 col-sm-5"/>
+                    <input type="text" name="name" value="{{$perms->name}}" readonly id="form-field-1" placeholder="" class="col-xs-10 col-sm-5"/>
                 </div>
             </div>
-
+            @else
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 权限名称 </label>
+                    <div class="col-sm-9">
+                        <input type="text" name="name" value="{{$perms->name}}"  id="form-field-1" placeholder="" class="col-xs-10 col-sm-5"/>
+                    </div>
+                </div>
+            @endif
+            {{--判断是否为初始权限，是的话权限名不给修改--}}
             <div class="form-group">
                 <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> 显示名称 </label>
                 <div class="col-sm-9">

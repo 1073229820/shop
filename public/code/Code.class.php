@@ -13,7 +13,7 @@ class Code{
 	//验证码
 	private $code;
 	//验证码的随机种子
-	private $codeStr='23456789abcdefghjkmnpqrstuvwsyz';
+	private $codeStr='23456789abcdefghjkmnpqrstuvwsyzABCDEFGHJKMNPRSTUVWSYZ';
 	//验证码长度
 	private $codeLen=4;
 	//验证码字体
@@ -89,16 +89,22 @@ class Code{
 		return $this;
 	}
 
-	//返回验证码
-    public function check($Code)
-    {
-        if (strtolower($Code) == strtolower($_SESSION['code'])) {
+	//验证验证码
+	 public function check($Code)
+	{
+	    if (strtolower($Code) == strtolower($_SESSION['code'])) {
 
-            return true;
-        } else {
-            return false;
-        }
-    }
+	        return true;
+	    } else {
+	        return false;
+	    }
+	}
+
+	//返回验证码，用于判断有没有开启session_start();
+	public function get() {
+
+		echo $_SESSION['code'];
+	}
 
 	//生成验证码
 	private function createCode() {
@@ -106,7 +112,7 @@ class Code{
 		for ($i = 0; $i < $this->codeLen; $i++) {
 			$code .= $this->codeStr [mt_rand(0, strlen($this->codeStr) - 1)];
 		}
-		$this->code = strtoupper($code);
+		$this->code = $code;
 		$_SESSION['code'] = $this->code;
 	}
 

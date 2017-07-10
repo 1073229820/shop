@@ -144,9 +144,17 @@
         function delUser (user_id,that)
         {
             layer.confirm('确认删除该管理员吗？', {
+
                 btn: ['确定','取消'] //按钮
+
             }, function(){
-                $.post("{{url('admin/admins')}}/"+user_id, {'_method':'delete', '_token':'{{csrf_token()}}'},
+                
+                $.post(
+
+                    "{{url('admin/admins')}}/"+user_id,
+
+                 {'_method':'delete', '_token':'{{csrf_token()}}'},
+
                     function (data) {
 
                        if (data.status == 1) {
