@@ -16,7 +16,7 @@ class CreateUserinfosTable extends Migration
 
             $table->increments('id');
             $table->integer('ipaddr');
-            $table->timestamp('logintime');
+            $table->char('logintime', '64');
             $table->integer('user_id');
             $table->tinyInteger('pass_wrong_time_status');
 

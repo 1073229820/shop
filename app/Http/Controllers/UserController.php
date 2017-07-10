@@ -73,6 +73,7 @@ class UserController extends Controller
         //修改会员状态
 
         $res = User::find($id);
+        //dd($res);
         if($res->status == '0'){
             $res->status = '1';
         }else{

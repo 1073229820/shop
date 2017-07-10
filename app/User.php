@@ -32,9 +32,9 @@ class User extends Model
     ];
 
 
-    public function setPassAttribute($password)
+   /* public function setPassAttribute($password)
     {
         $this->attributes['pass'] = Hash::make($password);
-    }
+    }*/
 
 }

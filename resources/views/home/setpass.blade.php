@@ -464,11 +464,12 @@ License: You must have a valid license purchased only from themeforest(the above
                         <div class="col-md-7 col-sm-7">
                             <form class="form-horizontal form-without-legend" role="form" action="{{url('passset')}}" method="post">
                                 <input type="hidden" name="id" value="{{request('user_id')}}">
+                                <input type="hidden" name="time" value="{{request('time')}}">
                                 <input type="hidden" value="{{csrf_token()}}" name="_token">
                                 <div class="form-group">
                                     <label for="email" class="col-lg-4 control-label">新密码 <span class="require">*</span></label>
                                     <div class="col-lg-8">
-                                        <input type="text" class="form-control" id="email" name="pass">
+                                        <input type="password" class="form-control" id="email" name="pass">
                                     </div>
                                 </div>
 

@@ -471,8 +471,15 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <div class="form-group">
                                     <label for="password" class="col-lg-4 control-label">Password <span class="require">*</span></label>
                                     <div class="col-lg-8">
-                                        <input type="text" class="form-control" id="password" name="pass">
+                                        <input type="password" class="form-control" id="password" name="pass">
                                     </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-lg-4 control-label">验证码 <span class="require">*</span></label>
+                                    <div class="col-lg-4">
+                                        <input type="text" class="form-control" id="code" name="code">
+                                    </div>
+                                    <img src="{{url('admin/code')}}" class="col-lg-4 " onclick="this.src='{{url('admin/code')}}?'+Math.random()">
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-8 col-md-offset-4 padding-left-0">

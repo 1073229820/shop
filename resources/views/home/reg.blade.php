@@ -479,7 +479,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         <div class="form-group">
                             <label for="pass" class="col-lg-4 control-label">密码： <span class="require">*</span></label>
                             <div class="col-lg-8">
-                                <input type="text" class="form-control" id="password" name="pass">
+                                <input type="password" class="form-control" id="password" name="pass">
                             </div>
                         </div>
 

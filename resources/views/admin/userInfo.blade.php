@@ -50,12 +50,7 @@
                             <table id="sample-table-2" class="table table-striped table-bordered table-hover">
                                 <thead>
                                 <tr>
-                                    <th class="center">
-                                        <label>
-                                            <input type="checkbox" class="ace" />
-                                            <span class="lbl"></span>
-                                        </label>
-                                    </th>
+
                                     <th>用户名</th>
                                     <th>真实姓名</th>
 
@@ -75,12 +70,6 @@
                                 <tbody>
                                 @foreach($info as $v)
                                 <tr>
-                                    <td class="center">
-                                        <label>
-                                            <input type="checkbox" class="ace" />
-                                            <span class="lbl"></span>
-                                        </label>
-                                    </td>
 
                                     <td>
                                        {{$v->user_name}}
@@ -294,7 +283,7 @@
             layer.confirm('你确定要删除这个会员信息么？', {
                 btn: ['是的','不不'] //按钮
             }, function(){
-                $.post("{{url('/admin/userinfo/')}}/"+cate_id, {'_method':'delete', '_token':'{{csrf_token()}}'}, function(data){
+                $.post("{{url('/admin/userInfo')}}/"+cate_id, {'_method':'delete', '_token':'{{csrf_token()}}'}, function(data){
                     if(data.status == 1){
                         //删除成功后就马上刷新
                         location.href = location.href;
@@ -317,7 +306,7 @@
             layer.confirm('你确定要修改该会员状态么？', {
                 btn: ['是的','不不'] //按钮
             }, function(){
-                $.post("{{url('/admin/userinfo/')}}/"+cate_id+"/edit", {'_method':'get', '_token':'{{csrf_token()}}'}, function(data){
+                $.post("{{url('/admin/userInfo')}}/"+cate_id+"/edit", {'_method':'get', '_token':'{{csrf_token()}}'}, function(data){
                     if(data.status == 1){
                         //删除成功后就马上刷新
                         location.href = location.href;
