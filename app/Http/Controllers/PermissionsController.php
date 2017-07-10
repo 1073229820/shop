@@ -11,96 +11,137 @@ use App\Permissions;
 
 class PermissionsController extends Controller
 {
+
     public function __construct()
     {
-        
+        $this->middleware('ProtectAdminPerms', ['only'=> 'destroy'] );
     }
 
     /**
-     * Display a listing of the resource.
+     * 权限首页
      *
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $permissions = Permission::paginate(9);
+        //判断当前登录用户是否拥有admin或perms 角色，或者用户有perms_create,perms_edit,perms_delete这三个中的任意权限
+        if (session('adminname')->ability(array('admin', 'perms'), array('perms_create', 'perms_edit', 'perms_delete'))) {
 
-        return view('admin.permissions.index', compact('permissions'));
+            $permissions = Permission::paginate(9);
+            return view('admin.permissions.index', compact('permissions'));
+        } else {
+
+            return abort(503);
+        }
 
     }
 
     /**
      *添加权限
-     * @return \Illuminate\Http\Response
+     *
      */
     public function create()
     {
-        return view('admin.permissions.create');
+        if (session('adminname')->ability('admin', 'perms_create'))
+        {
+            return view('admin.permissions.create');
+
+        } else {
+
+            return abort(503);
+        }
+
     }
 
     /**
      *执行添加权限
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     *
      */
     public function store(Requests\PermissionsRequest $request)
     {
-       $permission = $request->all();
-       Permission::create($permission);
+        if (session('adminname')->ability('admin', 'perms_create')) {
 
-       return redirect('/admin/permissions');
+            $permission = $request->all();
+            Permission::create($permission);
+            return redirect('/admin/permissions');
+
+        } else {
+
+            return abort(503);
+        }
 
     }
 
     /**
-     * @param  int  $id   编辑权限
-     * @return \Illuminate\Http\Response
+     * 编辑权限
+     *
      */
     public function edit($id)
     {
-        $perms = Permission::findOrFail($id);
+        if (session('adminname')->ability('admin', 'perms_edit'))
+        {
+            $perms = Permission::findOrFail($id);
+            return view('admin/permissions/edit', compact('perms'));
 
-        return view('admin/permissions/edit',compact('perms'));
+        } else {
+
+            return abort(503);
+        }
     }
 
     /**
      *  执行编辑权限
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     *
      */
     public function update(Requests\PermissionsRequest $request, $id)
     {
-        $perms = Permission::findOrFail($id);
-        $perms->name = $request->name;
-        $perms->display_name = $request->display_name;
-        $perms->description = $request->description;
-        $perms->save();
+        if (session('adminname')->ability('admin', 'perms_edit'))
+        {
+            $perms = Permission::findOrFail($id);
+            $perms->name = $request->name;
+            $perms->display_name = $request->display_name;
+            $perms->description = $request->description;
+            $perms->save();
 
-        return redirect('admin/permissions');
+            return redirect('admin/permissions');
+
+        } else {
+
+            return abort(503);
+        }
     }
 
     /**
-     * @param  int  $id   删除权限
-     * @return \Illuminate\Http\Response
+     * 删除权限
+     *
      */
     public function destroy($id)
     {
-        $perms = Permission::findOrFail($id);
-        if ($perms->delete()) {
+        if (session('adminname')->ability('admin', 'perms_delete'))
+        {
+            $perms = Permission::findOrFail($id);
+            if ($perms->delete()) {
 
-            $data = [
-                'status' =>1,
-                'msg' => '删除权限成功'
-            ];
+                $data = [
+                    'status' => 1,
+                    'msg' => '删除权限成功'
+                ];
+            } else {
+                $data = [
+                    'status' => 2,
+                    'msg' => '删除权限失败，请稍后再试！'
+                ];
+            }
+
+            return $data;
         } else {
+
             $data = [
                 'status' => 2,
-                'msg' => '删除权限失败，请稍后再试！'
+                'msg' => '没有删除权限！'
             ];
-        }
 
-        return $data;
+            return $data;
+        }
     }
 
     /**

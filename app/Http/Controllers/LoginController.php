@@ -14,9 +14,11 @@ use App\Http\Requests;
 use Illuminate\Support\Facades\Input;
 use Session;
 use App\Admin;
+use Illuminate\Support\Facades\Hash;
 
 
 require_once './code/Code.class.php';
+require_once 'adminlogininfo/LoginInfo.class.php';
 
 class LoginController extends Controller
 {
@@ -36,7 +38,7 @@ class LoginController extends Controller
     //前台退出
     public function logout()
     {
-        session(['user'=>null]);
+        session(['user' => null]);
         return view('home/login');
     }
 
@@ -148,6 +150,7 @@ class LoginController extends Controller
             }
 
         }else{
+
             //session(['user'=>null]);
             return view('home/login');
         }
@@ -167,11 +170,11 @@ class LoginController extends Controller
         $input['pass'] = Hash::make($input['pass']);
 
 
-
-        //dd($input);
+        // dd($input);
 
 
         $emailinfo = $this->checkemail();
+
 
 
         $rules =[
@@ -194,39 +197,38 @@ class LoginController extends Controller
             'email.email'=>'邮箱格式不对',
             'phone.required'=>'电话不能为空',
             'phone.regex'=>'电话号码格式不对'
+
         ];
 
         $validator = Validator::make($input, $rules, $message);
-        if($emailinfo['status']!=1){
-            if($validator->passes()){
+        if ($emailinfo['status'] != 1) {    
+            if ($validator->passes()) {
                 $re = User::create($input);
                 //dd($re);
-                if($re){
+                if ($re) {
                     return redirect('ulogin');
-                }else{
-                    return back()->with('errors','数据填充失败，请稍后重试！');
+                } else {
+                    return back()->with('errors', '数据填充失败，请稍后重试！');
                 }
-            }else{
+            } else {
                 return back()->withErrors($validator);
             }
 
-        }else{
-            return back()->with('errors','该邮箱已经被注册！');
+        } else {
+            return back()->with('errors', '该邮箱已经被注册！');
         }
 
     }
 
 
-
-
-    public  function checkemail()
+    public function checkemail()
     {
         $input = Input::except('_token');
         $emailifno = User::where('email', $input['email'])->first();
-        if($emailifno){
-            $data = ['status' =>1];
-        }else{
-            $data = ['status' =>0];
+        if ($emailifno) {
+            $data = ['status' => 1];
+        } else {
+            $data = ['status' => 0];
         }
         return $data;
     }
@@ -239,6 +241,7 @@ class LoginController extends Controller
         $goodsList = Goods::where('cat_id', 4)->take(5)->get();
         return view('home/ajax', compact('goodsList'));
     }
+
     public function ajaxGet(Request $request)
     {
         $input = $request->except('_token');
@@ -257,7 +260,7 @@ class LoginController extends Controller
     }
 
     /**
-     * 认证码
+     * 生成认证码
      */
     public function code()
     {
@@ -281,6 +284,17 @@ class LoginController extends Controller
             //验证管理员账号
             $user = Admin::where('name', $name)->first();
             if ($user) {
+
+                //检查用户最近30分钟密码错误次数
+               $check = new \LoginInfo();
+                $res = $check->checkPassWrongTime($user->id);
+
+                //次数达到3次，返回false 锁住账号
+                if ($res === false) {
+
+                    return redirect('admin/login')->withInput()->with(['fail' => '密码错误频繁，账号被锁定，请稍后再试!']);
+                }
+
                 //判断密码
                 if (Hash::check($pass, $user->pass)) {
 
@@ -290,10 +304,14 @@ class LoginController extends Controller
                         //存入session
                         session(['adminname' => $user]);
                         return redirect('admin/')->with(['success' => '登录成功']);
+
                     } else {
                         return redirect('admin/login')->withInput()->with(['fail' => '该管理员已被禁用']);
                     }
                 } else {
+                    //账号和密码不匹配时，记录一次到admin_login_infos表中
+                    $check->recordPassWrongTime($user->id);
+
                     return redirect('admin/login')->withInput()->with(['fail' => '账号和密码不匹配']);
                 }
             } else {
@@ -303,20 +321,11 @@ class LoginController extends Controller
             return redirect('admin/login')->withInput()->with(['fail' => '认证码不正确']);
 
         }
-        /*   if ($user) {
-               session(['adminname' => $user]);
-               return redirect('admin/')->with(['success'=>'登录成功']);
-           } else {
-               return redirect('admin/login')->withInput()->with(['fail'=>'账号和密码不匹配或被禁用']);
-           }*/
 
     }
 
     /**
      *  处理管理员注销
-     *
-     * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function signout(Request $request)
     {

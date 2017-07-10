@@ -61,6 +61,8 @@ class Kernel extends HttpKernel
 
         'AdminCheckLogin' => \App\Http\Middleware\AdminCheckLogin::class,
         'ProtectAdminRole' => \App\Http\Middleware\ProtectAdminRole::class,
+        'ProtectAdminPerms' => \App\Http\Middleware\ProtectAdminPerms::class,
+
 
 
 
