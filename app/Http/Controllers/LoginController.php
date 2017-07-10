@@ -50,8 +50,6 @@ class LoginController extends Controller
             //dd($user->pass);
 
             $user = User::where('email', $input['email'])->first();
-
-
             //dd($user);
             if($user!=null){
 
@@ -62,10 +60,10 @@ class LoginController extends Controller
 
                 if($user->status != '0'){
                     //验证登录错误次数
-                    $error = DB::table('userinfos')->select('pass_wrong_time_status', 'logintime')->where('user_id' , $user_id)->whereBetween('logintime', [$logintime-300, $logintime])->get();
+                    $error = DB::table('userinfos')->select('pass_wrong_time_status', 'logintime')->where('user_id' , $user_id)->whereBetween('logintime', [$logintime-300, $logintime])->orderBy('id','desc')->get();
                     //dd($error);
                    if(count($error)>=3){
-                       $errors = DB::table('userinfos')->select('pass_wrong_time_status')->where('user_id', $user_id)->take(3)->get();
+                       $errors = DB::table('userinfos')->select('pass_wrong_time_status')->where('user_id', $user_id)->orderby('id','desc')->take(3)->get();
                        //dd($errors);
                        $json= json_encode($errors);
                        $dejson = json_decode($json, true);
@@ -77,7 +75,7 @@ class LoginController extends Controller
 
                         //dd($b);
                        if($b){
-                           if($user->pass == $input['pass']){
+                           if(Hash::check($input['pass'], $user->pass)){
                                session(['user'=>$user]);
                                //dd(session('user'));
                                Userinfo::create(['ipaddr'=>$ip, 'user_id'=>$user_id, 'pass_wrong_time_status'=>'0', 'logintime'=>$logintime]);
@@ -90,7 +88,7 @@ class LoginController extends Controller
                            }
 
                        }else{
-                           $errorss = DB::table('userinfos')->where('user_id', $user_id)->take(1)->value('logintime');
+                           $errorss = DB::table('userinfos')->where('user_id', $user_id)->orderBy('id', 'desc')->take(1)->value('logintime');
                             //dd($errorss);
                            $time = $errorss;
 
@@ -98,7 +96,7 @@ class LoginController extends Controller
                            //dd($nowtime-$time);
                            if($nowtime-$time>=300){
 
-                               if($user->pass == $input['pass']){
+                               if(Hash::check($input['pass'], $user->pass)){
                                    session(['user'=>$user]);
                                    //dd(session('user'));
                                    Userinfo::create(['ipaddr'=>$ip, 'user_id'=>$user_id, 'pass_wrong_time_status'=>'0', 'logintime'=>$logintime]);
@@ -117,7 +115,7 @@ class LoginController extends Controller
                        }
 
                    }else{
-                       if($user->pass == $input['pass']){
+                       if(Hash::check($input['pass'], $user->pass)){
                            session(['user'=>$user]);
                            //dd(session('user'));
                            Userinfo::create(['ipaddr'=>$ip, 'user_id'=>$user_id, 'pass_wrong_time_status'=>'0', 'logintime'=>$logintime]);
@@ -145,8 +143,6 @@ class LoginController extends Controller
             //session(['user'=>null]);
             return view('home/login');
         }
-
-
     }
 
     //前台注册页
@@ -160,7 +156,7 @@ class LoginController extends Controller
     {
         $input = Input::except('_token');
         $input['addtime'] = time();
-        //$input['pass'] = Crypt::encrypt($input['pass']);
+        $input['pass'] = Hash::make($input['pass']);
 
 
 
@@ -171,15 +167,20 @@ class LoginController extends Controller
 
 
         $rules =[
-            'user_name'=>'required',
-            'name'=>'required',
+            'user_name'=>'required|alpha_dash|max:20',
+            'name'=>'required|chinese|max:10',
             'pass'=>'required',
             'email'=>'required | email',
             'phone'=>'required | regex:/^1[34578][0-9]{9}$/',
         ];
         $message=[
+
+            'user_name.alpha_dash'=>'用户名数字字母下划线',
+            'user_name.max'=>'用户名字段不能大于10位',
             'user_name.required'=>'用户名不能为空',
             'name.required'=>'真实姓名不能为空',
+            'name.digits_between'=>'真实姓名2-10个',
+            'name.chinese'=>'真实姓名为汉字',
             'pass.required'=>'密码不能为空',
             'email.required'=>'邮箱不能为空',
             'email.email'=>'邮箱格式不对',

@@ -16,14 +16,14 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('user_name', '32');
             $table->string('name', '16');
-            $table->char('pass', '32');
+            $table->char('pass', '64');
             $table->string('userpic', '255');
             $table->string('phone');
             $table->tinyInteger('sex');
             $table->string('email')->unique();
             $table->string('email_code');
             $table->integer('addtime');
-            $table->integer('status');
+            $table->integer('status')->default('1');
 
         });
 
