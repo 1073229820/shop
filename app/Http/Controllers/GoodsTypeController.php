@@ -16,7 +16,7 @@ class GoodsTypeController extends Controller
      */
     public function index()
     {
-        $data = Categories::orderby('id','asc')->paginate(6);
+        $data = Categories::orderBy('path','asc')->paginate(6);
         return view('admin.goods.goodstype',compact('data'));
     }
 
@@ -47,11 +47,10 @@ class GoodsTypeController extends Controller
             'name' => '类别名',
         ]);
         $post = $request->except('_token');
-//        dd($post);
-        $success = "添加成功!!!";
+        $success = '添加成功!!!!!';
         if(Categories::create($post)){
-//            return redirect()->action('GoodsTypeController@create',compact('success'));
-            return back();
+            return  redirect('/admin/goodstype');
+//            return view('admin.goods.goodstype',compact('success'));
         } else {
             return back()->withInput();
         }
@@ -106,14 +105,20 @@ class GoodsTypeController extends Controller
      */
     public function destroy($id)
     {
-        if (Categories::destroy($id))
-        {
-            return true;
+        $array = Categories::where('pid',$id)->get();
+        if(count($array)>0){
+            return 0;
+        } else {
+            if (Categories::destroy($id))
+            {
+                return 1;
+            }
         }
+
     }
 
     public function data()
-    {
+    {   //返回一级类
         $data = Categories::where('pid','=','0')->get();
         return $data;
     }
@@ -123,6 +128,20 @@ class GoodsTypeController extends Controller
         $pid =request('pid');
         $post = Categories::where('pid',$pid)->get();
         return $post;
+    }
+
+    public function data3()
+    {   //返回二级类
+        $data = Categories::where('pid','!=','0')->get();//找出所有非一级类别
+        $array = [];
+        $i=0;
+        foreach($data as $v){       //把二级类的ID当键，name当值为数组
+            if(substr_count($v['path'],',') == 1){
+                $array[$i] = ['id'=>$v['id'],'name'=>$v['name']];
+                $i++;
+            }
+        }
+        return $array ;
     }
 
 }

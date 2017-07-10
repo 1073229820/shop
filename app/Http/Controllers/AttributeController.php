@@ -43,9 +43,22 @@ class AttributeController extends Controller
      */
     public function store(Request $request)
     {   //添加商品属性信息
+        $this->validate($request, [
+            'attr_name' => 'required',
+            'attr_value' => 'required',
+            'attr_price' => 'required',
+            'type_id' => 'required',
+        ],[
+            'required' => ':attribute 是必填字段',
+        ],[
+            'attr_name' => '属性名',
+            'attr_value' => '可选值',
+            'attr_price' => '对应属性',
+            'type_id' => '类别',
+        ]);
         $post = $request->except('_token');
         if(Attribute::create($post)){
-            return  redirect('/attribute');
+            return  redirect('/admin/attribute');
         }
 
     }

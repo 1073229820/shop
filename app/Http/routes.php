@@ -73,11 +73,12 @@ Route::group(['prefix' => 'admin'], function () {
 
 
 //商品管理模块
-    Route::resource('goods', 'GoodsController');
-    Route::resource('goodstype','GoodsTypeController');
+    Route::resource('goods', 'GoodsController');//商品
+    Route::resource('goodstype','GoodsTypeController');//商品类别
     Route::get('data/goodstype','GoodsTypeController@data');
     Route::get('data2/goodstype','GoodsTypeController@data2');
-    Route::resource('attribute','AttributeController');
+    Route::get('data3/goodstype','GoodsTypeController@data3');
+    Route::resource('attribute','AttributeController');//商品属性
     Route::get('data/attribute','AttributeController@data');
     Route::any('admin/upload','UploadController@upload');//图片上传
     Route::resource('goodsprice','GoodsPriceController');
@@ -89,7 +90,8 @@ Route::group(['prefix' => 'admin'], function () {
 
 // 前台首页
     Route::any('home','HomeController@index');
-
+    Route::any('item/{id?}','ItemController@show');//商品详情页
+    Route::any('productlist','ProductListController@index');
 
 
 //首页ajax滚动加载测试

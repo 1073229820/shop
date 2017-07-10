@@ -47,10 +47,9 @@
                             <table id="sample-table-1" class="table table-striped table-bordered table-hover">
                                 <thead>
                                 <tr>
-                                    <th class="center">
+                                    <th class="center" >
                                         <label>
-                                            <input type="checkbox" class="ace" />
-                                            <span class="lbl"></span>
+                                            *
                                         </label>
                                     </th>
                                     <th>类别ID</th>
@@ -66,11 +65,8 @@
                                 <tbody>
                                 @foreach($data as $v)
                                 <tr class="id{{$v['id']}}">
-                                    <td class="center">
-                                        <label>
-                                            <input type="checkbox" class="ace" />
-                                            <span class="lbl"></span>
-                                        </label>
+                                    <td class="center" >
+                                        *
                                     </td>
                                     <td>
                                         <a href="#">{{$v['id']}}</a>
@@ -101,12 +97,7 @@
                                             </button>
 
                                             <button class="del btn btn-xs btn-danger"  data='{{$v->id}}'>
-                                                <i class="icon-trash bigger-120"></i>
-                                                <!-- <form action="/goodstype/{{$v->id}}" method="post"> -->
-                                                    <!-- <input type="hidden" name="_token" value='{{ csrf_token() }}'> -->
-                                                    <!-- <input type="hidden" name="_method" value="DELETE"> -->
-                                                    <!-- <input type="submit" value="删除" class="btn btn-xs btn-danger" > -->
-                                                <!-- </form> -->
+                                                <i class="icon-trash bigger-120"></i>删除
                                             </button>
 
                                             <button class="add btn btn-xs btn-warning">
@@ -114,27 +105,20 @@
                                             </button>
 
                                             <div class="btn btn-xs btn-warning" name="create" style="visibility:hidden; ">
-                                                <form method="post" action="/goodstype">
+                                                <form method="post" action="/admin/goodstype">
                                                 {{ csrf_field() }}
                                                 <input type="hidden" name="pid" value="{{$v['id']}}">
-                                                <input type="hidden" name="path" value="{{ $v['path'].$v['id'].',' }}">
+                                                <input type="hidden" name="path" value="{{ $v['path'].','.$v['id'] }}">
                                                 <input type="text" name="name" placeholder="子类名" >
                                                 <input type="submit" value="提交">
                                                 </form>
                                             </div>   
                                             
                                             <div style="visibility:hidden; ">
-                                                <!-- <form method="post" action="/goodstype/{{$v['id']}}"> -->
-                                                    <!-- {{ csrf_field() }} -->
-                                                    <!-- <input type="hidden" name="_method" value="PUT"> -->
-
                                                     <input type='text' placeholder="新类名" name='name' data='{{$v['id']}}'>
-                                                    <button name="update">确定</button>
-                                                <!-- </form> -->
+                                                    <button class="update">确定</button>
                                             </div>
-
-                                            <div class='text'>
-                                            </div>
+                                            <div class='text'></div>
                                         </div>
                                     </td>
 
@@ -174,12 +158,12 @@
                                     }                                       
                                 })
 
-                                $('button.update').click(function () { 
+                                $('button.update').click(function () { //修改
                                     var update =  $(this);
                                     var name = $(this).prev().val();
-                                    console.log(name);
+                                    // console.log(name);
                                     var id = $(this).prev().attr('data');
-                                    console.log(id);
+                                    // console.log(id);
                                     $.ajax({
                                         url:'/admin/goodstype/'+id+'/edit?name='+name,
                                         type:'get',
@@ -199,43 +183,26 @@
                                                 },5000)
                                             }
                                         }
-                                        
                                     });
                                 })
 
                                
-                                $("button.del").click(function () { 
-
+                                $("button.del").click(function () { //删除
                                     var del = $(this);
                                     id = $(this).attr('data');
-                                    /*$.ajax({
-                                        url:'/admin/data2?id='+id,
-                                        type:'get',
-                                        dataType:'json',
-                                        success:function(data){
-                                            console.log(data);
-                                            if(data.length>0){
-                                                del.nextAll().last().text('无法删除有子类的类别');
-                                                setTimeout(function(){
-                                                    del.nextAll().last().text('');
-                                                },5000)
-                                                    
-                                            } else {
-
-                                            }
-                                        }
-                                    });*/
-                                    
                                     $.post(
                                         "/admin/goodstype/"+id,
                                         {'_method':'delete','_token':'{{csrf_token()}}'},
                                         function (data) {
-                                            if(data) {
+                                            if(data>0) {
                                                 $('tr.id'+id).empty();
+                                            } else {
+                                                del.nextAll('div.text').text('该类别有子类无法删除！');
+                                                setTimeout(function(){
+                                                    del.nextAll('div.text').text('');
+                                                },5000)
                                             }
                                     }) 
-                                    
-                                    
                                 })
                                 
                             </script>                           

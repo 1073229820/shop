@@ -28,12 +28,12 @@
     </div>
     <div class="page-content">
         <div class="page-header">
-        	<a href="/goods/create" style="float: right;">添加商品</a>
+        	<a href="/admin/goods/create" style="float: right;">添加商品</a>
             <h1>
                 Tables
                 <small>
                     <i class="icon-double-angle-right"></i>
-                    <a href="/goods/create">新增商品</a>
+                    <a href="/admin/goods/create">新增商品</a>
                 </small>
             </h1>
         </div><!-- /.page-header -->
@@ -49,15 +49,14 @@
                                 <thead>
                                     <tr>
                                         <th class="center">
-                                            <label>
-                                                <input type="checkbox" class="ace" />
-                                                <span class="lbl"></span>
-                                            </label>
+
                                         </th>
                                         <th>id</th>
                                         <th>商品名称</th>
                                         <th class="hidden-480">类型</th>
                                         <th>图片</th>
+                                        <th>热卖</th>
+                                        <th>推荐</th>
                                         <th>
                                             <i class="icon-time bigger-110 hidden-480"></i>
                                             点击量
@@ -83,30 +82,37 @@
                                             <a href="#">{{$v['id']}}</a>
                                         </td>
                                         <td><a href="/admin/goods/{{$v['id']}}">{{$v['name']}}</a></td>
-                                        <td class="hidden-480">{{$v['type_id']}}</td>
-                                        <td><img src="{{asset($v['image'])}}"></td>                                       
+                                        <td class="hidden-480">{{$v['type']}}</td>
+                                        <td><img src="{{asset($v['image'])}}" width='50' height='50
+                                        '></td>    
+                                        <td>
+                                            <label>
+                                                <input name="hot" data-id={{$v['id']}} class="update ace ace-switch ace-switch-6" type="checkbox" @if($v['hot']==1) checked data="1"  @endif  />
+                                                <span class="lbl"></span>
+                                            </label>
+                                        </td>                                   
+                                        <td>
+                                            <label>
+                                                <input name="recommend"  data-id={{$v['id']}} class="update ace ace-switch ace-switch-7" type="checkbox" @if($v['recommend']==1) data="1" checked  @endif />
+                                                <span class="lbl"></span>
+                                            </label>
+                                        </td>                                   
                                         <td>{{$v['clicknum']}}</td>
                                         <td>{{$v['store']}}</td>                                            
                                         <td class="hidden-480">
                                             <span class="label label-sm label-warning">{{$v['num']}}</span>
                                         </td>
                                         <td>
-	                                        @if ($v->status == 1)
-	                                        <span class="label label-sm label-success">新添加</span>
-	                                        @elseif ($v->status == 2)
-	                                        <span class="label label-sm label-info">在售</span>
-	                                        @else
-	                                        <span class="label label-sm label-inverse">下架</span>
-	                                        @endif
+                                            <select name="status" data-id={{$v['id']}}>
+                                                <option value="1" @if($v->status == 1) selected @endif>新添加</option>
+                                                <option value="2" @if($v->status == 2) selected @endif>在售</option>
+                                                <option value="3" @if($v->status == 3) selected @endif>下架</option>
+                                            </select>
                                         </td>
                                         <td>
                                             <div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
-                                                <a class="blue" href="#">
-                                                    <i class="icon-zoom-in bigger-130"></i>
-                                                </a>
-
-                                                <a class="green" href="#">
-                                                    <i class="icon-pencil bigger-130"></i>
+                                                <a class="blue" href="{{asset('/admin/goods/'.$v['id'].'/edit')}}">
+                                                    <i class="icon-edit bigger-130"></i>
                                                 </a>
 
                                                 <a class="del red" href="#" data='{{$v->id}}'>
@@ -146,6 +152,46 @@
                                             }
                                     }) 
 								})
+
+                                $('input.update').click( function () {
+                                    var id = $(this).attr('data-id');
+                                    var name = $(this).attr('name');
+                                    // console.log($(this).attr('data'));
+                                    if($(this).attr('data')>0){
+                                        var val = $(this).attr('data',0).attr('data');
+                                    } else {
+                                        var val = $(this).attr('data',1).attr('data');
+                                    }
+                                    console.log(val);
+                                    $.post(
+                                        "/admin/goods/"+id,
+                                        {'_method':'put','_token':'{{csrf_token()}}','hot':val,'recommend':val,'update':name},
+                                        function (data) {
+                                            /*if( data > 0 ) {
+                                                alert('修改成功！');
+                                            } else {
+                                                alert('修改失败，请刷新页面重新修改！')
+                                            }*/
+                                        })
+                                })
+
+                                $('select').change( function () {
+                                    var id = $(this).attr('data-id');
+                                    var status = $(this).val();
+                                    console.log(status+'a'+id);
+                                    $.post(
+                                        "/admin/goods/"+id,
+                                        {'_method':'put','_token':'{{csrf_token()}}','status':status,'update':'status'},
+                                        function (data) {
+                                            /*if( data > 0 ){
+                                                alert('修改成功！');
+                                            } else {
+                                                alert('修改失败，请刷新页面重新修改！')
+                                            }*/
+                                        }) 
+                                })
+
+
 							</script>
 
 

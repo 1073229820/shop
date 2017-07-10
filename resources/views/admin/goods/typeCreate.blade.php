@@ -52,7 +52,7 @@
                         </ul>
                     </div>
                 @endif
-                <form class="form-horizontal" role="form"  action='/goodstype'  method="post">
+                <form class="form-horizontal" role="form"  action='/admin/goodstype'  method="post">
                     <div class="form-group">
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 类别名 </label>
 
@@ -82,10 +82,7 @@
                     @endif              
                     <div class="clearfix form-actions">
                         <div class="col-md-offset-3 col-md-9">
-                            <button class="btn btn-info" type="button">
-                                <i class="icon-ok bigger-110"></i>
-                                <input type="submit" value="提交">
-                            </button>
+                                <input class="btn btn-info" type="submit" value="提交">
                             &nbsp; &nbsp; &nbsp;
                             <button class="btn" type="reset">
                                 <i class="icon-undo bigger-110"></i>

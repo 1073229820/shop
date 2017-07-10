@@ -44,23 +44,33 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 商品简单描述： </label>
+                    <div class="">
+                        {{$goods->descr}}
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 商品类别: </label>
                     <div class="">
                         {{$goods->type}}
                     </div>
                 </div>
+                @if(!empty($attr['attr1']))
                 <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> {{$attr['attr1']}} </label>
                     <div class="">
                         {{$price['attr1']}}
                     </div>
                 </div>
+                @endif
+                @if(!empty($attr['attr2']))
                 <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> {{$attr['attr2']}} </label>
                     <div class="">
                         {{$price['attr2']}}
                     </div>
                 </div>
+                @endif
                 <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1">价格：  </label>
                     <div class="">
@@ -101,7 +111,7 @@
                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 商品描述： </label>
                     <div class="">
                         @if(count($descr)>0)
-                        {{$descr[0]['descr']}}
+                        {{$descr[0]['descrs']}}
                         @endif                        
                     </div>
                 </div>
