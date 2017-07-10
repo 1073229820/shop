@@ -200,8 +200,8 @@ class LoginController extends Controller
 
         ];
 
-        $validator = Validator::make($input, $rules, $message);
-        if ($emailinfo['status'] != 1) {    
+        $validator = Validhator::make($input, $rules, $message);
+        if ($emailinfo['status'] != 1) {
             if ($validator->passes()) {
                 $re = User::create($input);
                 //dd($re);
