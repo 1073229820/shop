@@ -20,13 +20,18 @@ class LinkController extends Controller
     public function index()
     {
         //
-        $info = Link::orderBy('sort_num','asc')->get();
-        return view('admin/LinkInfo', compact('info'));
+        if(session('adminname')->ability(array('admin'), array('link_create','link_edit','link_delete'))){
+            $info = Link::orderBy('sort_num','asc')->get();
+            return view('admin/LinkInfo', compact('info'));
+        }
+
+
     }
 
     //AJAX路由方法用于异步修改排序
     public function changesortnum()
     {
+
         $input = Input::all();
         //var_dump($input['cate_id']);
         //var_dump($input['cate_order']);
@@ -60,8 +65,11 @@ class LinkController extends Controller
     public function create()
     {
         //
+        if(session('adminname')->ability('admin', 'link_create')) {
+            return view('admin/Linkadd');
 
-        return view('admin/Linkadd');
+        }
+
     }
 
     /**
@@ -72,37 +80,40 @@ class LinkController extends Controller
      */
     public function store(Request $request)
     {
+
         //友情链接添加
-        $input = Input::except('_token');
-        //dd($input);
-        $rules =[
-            'name'=>'required|alpha_num',
-            'url'=>'required|url',
-            'sort_num'=>'required|integer|max:1000'
-        ];
-        $message=[
-            'name.required'=>'链接名称不能为空',
-            'name.alpha_num'=>'链接名称只能数字字母',
-            'url.required'=>'链接不能为空',
-            'sort_num.required'=>'排序号不能为空',
-            'sort_num.integer'=>'排序号必须整数',
-            'sort_num.max'=>'排序号不能超过1000',
-            'url.url'=>'链接不符合格式哦',
-        ];
+        if(session('adminname')->ability('admin', 'link_create')) {
 
-    $validator = Validator::make($input, $rules, $message);
-     if($validator->passes()){
+            $input = Input::except('_token');
             //dd($input);
-            $re = Link::create($input);
-            if($re){
-                return redirect('admin/link');
-            }else{
-                return back()->with('errors','数据填充失败，请稍后重试！');
-            }
-        }else{
-            return back()->withErrors($validator);
-        }
+            $rules = [
+                'name' => 'required|alpha_num',
+                'url' => 'required|url',
+                'sort_num' => 'required|integer|max:1000'
+            ];
+            $message = [
+                'name.required' => '链接名称不能为空',
+                'name.alpha_num' => '链接名称只能数字字母',
+                'url.required' => '链接不能为空',
+                'sort_num.required' => '排序号不能为空',
+                'sort_num.integer' => '排序号必须整数',
+                'sort_num.max' => '排序号不能超过1000',
+                'url.url' => '链接不符合格式哦',
+            ];
 
+            $validator = Validator::make($input, $rules, $message);
+            if ($validator->passes()) {
+                //dd($input);
+                $re = Link::create($input);
+                if ($re) {
+                    return redirect('admin/link');
+                } else {
+                    return back()->with('errors', '数据填充失败，请稍后重试！');
+                }
+            } else {
+                return back()->withErrors($validator);
+            }
+        }
 
 
 
@@ -128,25 +139,34 @@ class LinkController extends Controller
     public function edit($id)
     {
         //修改链接状态
-        $res = Link::find($id);
-        if($res->status == '0'){
-            $res->status = '1';
-        }else{
-            $res->status = '0';
-        }
-        $res->save();
-        if($res){
-            $data = [
-                'status'=>1,
-                'msg'=>'状态修改成功！',
-            ];
+        if(session('adminname')->ability('admin', 'link_edit')){
+            $res = Link::find($id);
+            if($res->status == '0'){
+                $res->status = '1';
+            }else{
+                $res->status = '0';
+            }
+            $res->save();
+            if($res){
+                $data = [
+                    'status'=>1,
+                    'msg'=>'状态修改成功！',
+                ];
+            }else{
+                $data = [
+                    'status'=>0,
+                    'msg'=>'状态修改失败！',
+                ];
+            }
         }else{
             $data = [
                 'status'=>0,
-                'msg'=>'状态修改失败！',
+                'msg'=>'你没有权限请联系管理员！',
             ];
         }
+
         return $data;
+
 
     }
 
@@ -157,10 +177,9 @@ class LinkController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+
+
+
 
     /**
      * Remove the specified resource from storage.
@@ -173,21 +192,30 @@ class LinkController extends Controller
         //
         //
         //删除操作
-        $res = Link::where('id', $id)->delete();
-        //dd($res);
-        if($res){
-            $data = [
-                'status'=>1,
-                'msg'=>'分类删除成功！',
-            ];
+
+        if(session('adminname')->ability('admin', 'link_delete')) {
+
+            $res = Link::where('id', $id)->delete();
+            //dd($res);
+            if ($res) {
+                $data = [
+                    'status' => 1,
+                    'msg' => '分类删除成功！',
+                ];
+            } else {
+                $data = [
+                    'status' => 0,
+                    'msg' => '分类删除失败！',
+                ];
+            }
         }else{
             $data = [
                 'status'=>0,
-                'msg'=>'分类删除失败！',
+                'msg'=>'你没有权限请联系管理员！',
             ];
         }
-        return $data;
 
+        return $data;
 
 
     }

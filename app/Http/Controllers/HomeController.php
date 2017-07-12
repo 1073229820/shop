@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Categories;
 use App\Goods;
+use App\Link;
 use App\Price;
 use Illuminate\Http\Request;
 use DB;
@@ -13,13 +14,15 @@ use App\Http\Requests;
 class HomeController extends Controller
 {
     public function index()
-    {   
+    {
         $type = Categories::get();
         $goods = DB::select('select g.*,p.* from goods g,prices p where g.id = p.goods_id');
 //        dd($goods);
 //        $newgood = Goods::where('status',1)->limit(10);
 //        $data = DB::table('goods')->lists('name','id');dd($data);
         //新品上市
+        $link  = Link::where('status', 1)->get();
+        //dd($link);
         $newgoods = DB::table('goods as g')
             ->join('prices as p','g.id','=','p.goods_id')
             ->select('g.id','g.name','p.price','p.image')
@@ -44,6 +47,6 @@ class HomeController extends Controller
             ->orderBy('created_at','desc')
             ->limit(6)
             ->get();
-        return view('home.index',compact('type','goods','newgoods','hotgoods','recommend'));
+        return view('home.index',compact('type','goods','newgoods','hotgoods','recommend','link'));
     }
 }

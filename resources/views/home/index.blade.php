@@ -63,293 +63,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
 <!-- Body BEGIN -->
 <body>
-    <!-- BEGIN TOP BAR -->
-    <div class="pre-header">
-        <div class="container">
-            <div class="row">
-                <!-- BEGIN TOP BAR LEFT PART -->
-                <div class="col-md-6 col-sm-6 additional-shop-info">
-                    <ul class="list-unstyled list-inline">
-                        <li><i class="fa fa-phone"></i><span>+1 456 6717</span></li>
-                        <!-- BEGIN CURRENCIES -->
-                        <li class="shop-currencies">
-                            <a href="javascript:void(0);">€</a>
-                            <a href="javascript:void(0);">£</a>
-                            <a href="javascript:void(0);" class="current">$</a>
-                        </li>
-                        <!-- END CURRENCIES -->
-                        <!-- BEGIN LANGS -->
-                        <li class="langs-block">
-                            <a href="javascript:void(0);" class="current">English <i class="fa fa-angle-down"></i></a>
-                            <div class="langs-block-others-wrapper"><div class="langs-block-others">
-                              <a href="javascript:void(0);">Japanese</a>
-                              <a href="javascript:void(0);">Germany</a>
-                              <a href="javascript:void(0);">Turkish</a>
-                            </div></div>
-                        </li>
-                        <!-- END LANGS -->
-                    </ul>
-                </div>
-                <!-- END TOP BAR LEFT PART -->
-                <!-- BEGIN TOP BAR MENU -->
-                <div class="col-md-6 col-sm-6 additional-nav">
-                    <ul class="list-unstyled list-inline pull-right">
-                        <li><a href="{{url('order')}}">My Account</a></li>
-                        <li><a href="#">My Wishlist</a></li>
-                        <li><a href="logout">Checkout</a></li>
-                        <li><a href="login-page.html">Log In</a></li>
-                    </ul>
-                </div>
-                <!-- END TOP BAR MENU -->
-            </div>
-        </div>        
-    </div>
-    <!-- END TOP BAR -->
-
-    <!-- BEGIN HEADER -->
-    <div role="navigation" class="navbar header no-margin">
-        <div class="container">
-            <div class="navbar-header">
-                <!-- BEGIN RESPONSIVE MENU TOGGLER -->
-                <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <!-- END RESPONSIVE MENU TOGGLER -->
-                <a href="{{asset('/home')}}" class="navbar-brand"><img src="/assets/home/img/logo_red.png" alt="Metronic Shop UI"></a><!-- LOGO -->
-            </div>
-            <!-- BEGIN CART -->
-            <div class="cart-block">
-                <div class="cart-info">
-                    <a href="javascript:void(0);" class="cart-info-count">3 items</a>
-                    <a href="javascript:void(0);" class="cart-info-value">$1260</a>
-                </div>
-                <i class="fa fa-shopping-cart"></i>
-                <!-- BEGIN CART CONTENT -->
-                <div class="cart-content-wrapper">
-                  <div class="cart-content">
-                    <ul class="scroller" style="height: 250px;">
-                      <li>
-                        <a href="item.html"><img src="/assets/home/temp/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
-                        <span class="cart-content-count">x 1</span>
-                        <strong><a href="item.html">Rolex Classic Watch</a></strong>
-                        <em>$1230</em>
-                        <a href="javascript:void(0);" class="del-goods"><i class="fa fa-times"></i></a>
-                      </li>
-                      <li>
-                       <a href="item.html"><img src="/assets/home/temp/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
-                        <span class="cart-content-count">x 1</span>
-                        <strong><a href="item.html">Rolex Classic Watch</a></strong>
-                        <em>$1230</em>
-                        <a href="javascript:void(0);" class="del-goods"><i class="fa fa-times"></i></a>
-                      </li>
-                      <li>
-                        <a href="item.html"><img src="/assets/home/temp/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
-                        <span class="cart-content-count">x 1</span>
-                        <strong><a href="item.html">Rolex Classic Watch</a></strong>
-                        <em>$1230</em>
-                        <a href="javascript:void(0);" class="del-goods"><i class="fa fa-times"></i></a>
-                      </li>
-                      <li>
-                        <a href="item.html"><img src="/assets/home/temp/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
-                        <span class="cart-content-count">x 1</span>
-                        <strong><a href="item.html">Rolex Classic Watch</a></strong>
-                        <em>$1230</em>
-                        <a href="javascript:void(0);" class="del-goods"><i class="fa fa-times"></i></a>
-                      </li>
-                      <li>
-                        <a href="item.html"><img src="/assets/home/temp/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
-                        <span class="cart-content-count">x 1</span>
-                        <strong><a href="item.html">Rolex Classic Watch</a></strong>
-                        <em>$1230</em>
-                        <a href="javascript:void(0);" class="del-goods"><i class="fa fa-times"></i></a>
-                      </li>
-                      <li>
-                       <a href="item.html"><img src="/assets/home/temp/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
-                        <span class="cart-content-count">x 1</span>
-                        <strong><a href="item.html">Rolex Classic Watch</a></strong>
-                        <em>$1230</em>
-                        <a href="javascript:void(0);" class="del-goods"><i class="fa fa-times"></i></a>
-                      </li>
-                      <li>
-                        <a href="item.html"><img src="/assets/home/temp/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
-                        <span class="cart-content-count">x 1</span>
-                        <strong><a href="item.html">Rolex Classic Watch</a></strong>
-                        <em>$1230</em>
-                        <a href="javascript:void(0);" class="del-goods"><i class="fa fa-times"></i></a>
-                      </li>
-                      <li>
-                        <a href="item.html"><img src="/assets/home/temp/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
-                        <span class="cart-content-count">x 1</span>
-                        <strong><a href="item.html">Rolex Classic Watch</a></strong>
-                        <em>$1230</em>
-                        <a href="javascript:void(0);" class="del-goods"><i class="fa fa-times"></i></a>
-                      </li>
-                    </ul>
-                    <div class="text-right">
-                      <a href="shopping-cart.html" class="btn btn-default">View Cart</a>
-                      <a href="checkout.blade.php" class="btn btn-primary">Checkout</a>
-                    </div>
-                  </div>
-                </div>
-                <!-- END CART CONTENT -->
-            </div>
-            <!-- END CART -->
-            <!-- BEGIN NAVIGATION -->
-            <div class="collapse navbar-collapse mega-menu">
-                <ul class="nav navbar-nav">         <!-- 这个ul是整个导航栏 -->
-                    @foreach($type as $one)
-                    @if($one['pid'] == 0)
-                    <li class="dropdown">
-                      <a class="dropdown-toggle" data-toggle="dropdown" data-delay="0" data-close-others="false" data-target="product-list.html" href="product-list.html">
-                        {{$one['name']}} 
-                        <i class="fa fa-angle-down"></i>
-                      </a>
-                      <!-- BEGIN DROPDOWN MENU -->
-                      <ul class="dropdown-menu" aria-labelledby="mega-menu">
-<<<<<<< HEAD
-                        @foreach($type as $one)
-                        @if($one['pid'] == 0)
-                        <li>
-                          <div class="nav-content">
-                            <!-- BEGIN DROPDOWN MENU - COLUMN -->
-                            <div class="nav-brands">
-                                <h2>{{$one['name']}}</h2>
-                            </div>
-                            @foreach($type as $two)
-                            @if($two['pid'] == $one['id'])
-=======
-                        <li>
-                          <div class="nav-content">
-                          @foreach($type as $two)
-                          @if($two['pid'] == $one['id'])
->>>>>>> d874410a16ddbf35afd7f0520ba14ef01de497d3
-                            <div class="nav-content-col">
-                              <h3>{{$two['name']}}</h3>
-                              <ul>
-                                @foreach($type as $three)
-                                @if($three['pid'] == $two['id'])
-                                <li><a href="{{asset('/productlist?type='.$three['id'])}}">{{$three['name']}}</a></li>
-                                @endif
-                                @endforeach
-                              </ul>
-                            </div>
-                          @endif
-                          @endforeach
-                          </div>
-                          <!-- BEGIN DROPDOWN MENU - BRANDS -->
-                          <div class="nav-brands">
-                            <ul>
-                              <li><a href="product-list.html"><img title="esprit" alt="esprit" src="/assets/home/temp/brands/esprit.jpg"></a></li>
-                              <li><a href="product-list.html"><img title="gap" alt="gap" src="/assets/home/temp/brands/gap.jpg"></a></li>
-                              <li><a href="product-list.html"><img title="next" alt="next" src="/assets/home/temp/brands/next.jpg"></a></li>
-                              <li><a href="product-list.html"><img title="puma" alt="puma" src="/assets/home/temp/brands/puma.jpg"></a></li>
-                              <li><a href="product-list.html"><img title="zara" alt="zara" src="/assets/home/temp/brands/zara.jpg"></a></li>
-                            </ul>
-                          </div>
-                          <!-- END DROPDOWN MENU - BRANDS -->
-                        </li>
-                      </ul>
-                      <!-- END DROPDOWN MENU -->
-                    </li>
-                    @endif
-                    @endforeach
-                    <li class="dropdown">
-                      <a class="dropdown-toggle" data-toggle="dropdown" data-delay="0" data-close-others="false" data-target="product-list.html" href="product-list.html">
-                        新上市 
-                        <i class="fa fa-angle-down"></i>
-                      </a>
-                      <!-- BEGIN DROPDOWN MENU -->
-                      <ul class="dropdown-menu" aria-labelledby="mega-menu-catalogue">
-                        <li>
-                          <div class="nav-content">
-                            @for($i=0;$i<3;$i++)
-                            <div class="product-item">
-                              <div class="pi-img-wrapper">
-                                <a href="item.html"><img src="{{$newgoods[$i]->image}}"></a>
-                              </div>
-                              <h3><a href="item.html">{{$newgoods[$i]->name}}</a></h3>
-                              <div class="pi-price">${{$newgoods[$i]->price}}</div>
-                              <a href="#" class="btn btn-default add2cart">加入购物车</a>
-                            </div>
-                            @endfor
-      
-                          </div>
-                        </li>
-                      </ul>
-                      <!-- END DROPDOWN MENU -->
-                    </li>
-<<<<<<< HEAD
-                    <li class="dropdown">
-                      <a class="dropdown-toggle" data-toggle="dropdown" data-delay="0" data-close-others="false" data-target="#" href="#">
-                        Pages
-                        <i class="fa fa-angle-down"></i>
-                      </a>
-                      <!-- BEGIN DROPDOWN MENU -->
-                      <ul class="dropdown-menu">
-                        <li><a href="index-light-footer.html">Light Footer</a></li>
-                        <li><a href="product-list.html">Product List</a></li>
-                        <li><a href="search-result.html">Search Result</a></li>
-                        <li><a href="item.html">Product Page</a></li>
-                        <li><a href="shopping-cart-null.html">Shopping Cart (Null Cart)</a></li>
-                        <li><a href="shopping-cart.html">Shopping Cart</a></li>
-                        <li><a href="checkout.blade.php">Checkout</a></li>
-                        <li><a href="reg-page.html">Registration Page</a></li>
-                        <li><a href="login-page.html">Login Page</a></li>
-                        <li><a href="forgotton-password.html">Forget Password</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="contacts.html">Contacts</a></li>
-                        <li><a href="faq.html">FAQ</a></li>
-                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                        <li><a href="terms-conditions-page.html">Terms & Conditions</a></li>
-                        <li><a href="site-map.html">Site Map</a></li>
-                        <li><a href="page-404.html">404</a></li>
-                        <li><a href="page-500.html">500</a></li> 
-                      </ul>
-                      <!-- END DROPDOWN MENU -->
-                    </li>
-                    <li class="dropdown">
-                      <a class="dropdown-toggle" data-toggle="dropdown" data-delay="0" data-close-others="false" data-target="#" href="#">
-                        Features
-                        <i class="fa fa-angle-down"></i>
-                      </a>
-                      <!-- BEGIN DROPDOWN MENU -->
-                      <ul class="dropdown-menu">
-                        <li><a href="feature-typography.html">Typography</a></li>
-                        <li><a href="feature-forms.html">Forms</a></li>
-                        <li><a href="feature-buttons.html">Buttons</a></li>
-                        <li><a href="feature-icons.html">Icons</a></li>
-                      </ul>
-                      <!-- END DROPDOWN MENU -->
-                    </li>
-                    <li><a href="http://keenthemes.com/preview/metronic_admin/ecommerce_index.html">Admin theme</a></li>
-=======
-
->>>>>>> d874410a16ddbf35afd7f0520ba14ef01de497d3
-                    <!-- BEGIN TOP SEARCH -->
-                    <li class="menu-search">
-                        <span class="sep"></span>
-                        <i class="fa fa-search search-btn"></i>
-                        <div class="search-box">
-                            <form action="{{asset('/productlist')}}" method="get">
-                                <div class="input-group">
-                                    <input type="text" placeholder="搜索内容" class="form-control" name="search">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-primary" type="submit">搜索</button>
-                                    </span>
-                                </div>
-                            </form>
-                        </div> 
-                    </li>
-                    <!-- END TOP SEARCH -->
-                </ul>
-            </div>
-            <!-- END NAVIGATION -->
-        </div>
-    </div>
-    <!-- END HEADER -->
+    @include('/home/head')
 
     <!-- BEGIN SLIDER -->
     <div class="page-slider margin-bottom-35">
@@ -435,21 +149,27 @@ License: You must have a valid license purchased only from themeforest(the above
             <div class="bxslider-wrapper">
               <ul class="bxslider" data-slides-phone="1" data-slides-tablet="2" data-slides-desktop="5" data-slide-margin="15">
                 @foreach($newgoods as $v)
+                      <form action="/cart/store" method="post">
+                          <input type="hidden" name="_token" value="{{csrf_token()}}">
+                          <input type="hidden" name="gid" value="{{$v->id}}">
                 <li>
-                  <div class="product-item">
-                    <div class="pi-img-wrapper">
-                      <img src="{{$v->image}}" class="img-responsive" alt="Berry Lace Dress">
-                      <div>
-                        <a href="{{$v->image}}" class="btn btn-default fancybox-button">Zoom</a>
-                        <a href="{{asset('/item/'.$v->id)}}" class="btn btn-default fancybox-fast-view">View</a>
-                      </div>
+                    <div class="product-item">
+                        <div class="pi-img-wrapper">
+                            <img src="{{$v->image}}" class="img-responsive" alt="Berry Lace Dress">
+                            <div>
+                                <a href="{{$v->image}}" class="btn btn-default fancybox-button">Zoom</a>
+                                <a href="{{asset('/item/'.$v->id)}}" class="btn btn-default fancybox-fast-view">View</a>
+                            </div>
+                        </div>
+                        <h3><a href="{{asset('/item/'.$v->id)}}">{{$v->name}}</a></h3>
+                        <div class="pi-price">${{$v->price}}</div>
+                        {{--<a href="#" class="btn btn-default add2cart">加入购物车</a>--}}
+                        <button type="submit" class="btn btn-default add2cart">加入购物车</button>
+
+                        <div class="sticker sticker-new"></div>
                     </div>
-                    <h3><a href="{{asset('/item/'.$v->id)}}">{{$v->name}}</a></h3>
-                    <div class="pi-price">${{$v->price}}</div>
-                    <a href="#" class="btn btn-default add2cart">加入购物车</a>
-                    <div class="sticker sticker-new"></div>
-                  </div>
                 </li>
+                      </form>
                 @endforeach
               </ul>
             </div>
@@ -501,21 +221,7 @@ License: You must have a valid license purchased only from themeforest(the above
               @endif
               @endforeach
             </ul>
-            <!-- 用来撑住下面的空白 -->
-            <div class="product-item">
-              <div class="pi-img-wrapper">
-                <img src="{{$v->image}}" class="img-responsive" alt="Berry Lace Dress">
-                <div>
-                  <a href="{{$v->image}}" class="btn btn-default fancybox-button">Zoom</a>
-                  <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
-                </div>
-              </div>
-              <h3><a href="{{asset('/item/'.$v->id)}}">{{$v->name}}</a></h3>
-              <div class="pi-price">${{$v->price}}</div>
-              <a href="#" class="btn btn-default add2cart">加入购物车</a>
-              <div class="sticker sticker-new"></div>
-            </div>
-            <!-- 这个$v真的不会报错？ -->
+
           </div>
           <!-- END SIDEBAR -->
           <!-- BEGIN CONTENT -->
@@ -535,7 +241,9 @@ License: You must have a valid license purchased only from themeforest(the above
                     </div>
                     <h3><a href="{{asset('/item/'.$v->id)}}">{{$v->name}}</a></h3>
                     <div class="pi-price">${{$v->price}}</div>
-                    <a href="#" class="btn btn-default add2cart">加入购物车</a>
+                    {{--<a href="#" class="btn btn-default add2cart">加入购物车</a>--}}
+                      <button type="submit" class="btn btn-default add2cart">加入购物车</button>
+
                   </div>
                 </li>
                 @endforeach
@@ -554,6 +262,9 @@ License: You must have a valid license purchased only from themeforest(the above
             <div class="bxslider-wrapper">
               <ul class="bxslider" data-slides-phone="1" data-slides-tablet="2" data-slides-desktop="2" data-slide-margin="15">
                 @foreach($recommend as $v)
+                      <form action="/cart/store" method="post">
+                          <input type="hidden" name="_token" value="{{csrf_token()}}">
+                          <input type="hidden" name="gid" value="{{$v->id}}">
                 <li>
                   <div class="product-item">
                     <div class="pi-img-wrapper">
@@ -565,9 +276,12 @@ License: You must have a valid license purchased only from themeforest(the above
                     </div>
                     <h3><a href="{{asset('/item/'.$v->id)}}">{{$v->name}}</a></h3>
                     <div class="pi-price">${{$v->price}}</div>
-                    <a href="#" class="btn btn-default add2cart">加入购物车</a>
+                    {{--<a href="#" class="btn btn-default add2cart">加入购物车</a>--}}
+                      <button type="submit" class="btn btn-default add2cart">加入购物车</button>
+
                   </div>
                 </li>
+                      </form>
                 @endforeach
               </ul>
             </div>
@@ -719,13 +433,10 @@ License: You must have a valid license purchased only from themeforest(the above
           <div class="col-md-3 col-sm-6 pre-footer-col">
             <h2>Information</h2>
             <ul class="list-unstyled">
-              <li><i class="fa fa-angle-right"></i> <a href="#">Delivery Information</a></li>
-              <li><i class="fa fa-angle-right"></i> <a href="#">Customer Service</a></li>
-              <li><i class="fa fa-angle-right"></i> <a href="#">Order Tracking</a></li>
-              <li><i class="fa fa-angle-right"></i> <a href="#">Shipping & Returns</a></li>
-              <li><i class="fa fa-angle-right"></i> <a href="contacts.html">Contact Us</a></li>
-              <li><i class="fa fa-angle-right"></i> <a href="#">Careers</a></li>
-              <li><i class="fa fa-angle-right"></i> <a href="#">Payment Methods</a></li>
+
+                    @foreach($link as $v)
+              <li><i class="fa fa-angle-right"></i> <a href="{{$v->url}}">Delivery {{$v->name}}</a></li>
+                @endforeach
             </ul>
           </div>
           <!-- END INFO BLOCK -->

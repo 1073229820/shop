@@ -113,7 +113,8 @@
                                         'swf'      : "{{asset('/uploadify/uploadify.swf')}}",
                                         'uploader' : "{{asset('admin/upload')}}",
                                         'onUploadSuccess' : function(file, data, response) {
-                                            $('input[name=image]').val(data);
+                                            console.log(data);
+//                                            $('input[name=image]').val(data);
                                             $('#art_thumb_img').attr('src','/'+data);
 
                                         }
@@ -158,7 +159,15 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 商品详细描述 </label>
                         <div class="col-sm-9">
-                            <textarea id="form-field-11" class="autosize-transition col-xs-10 col-sm-6 " name="descrs"></textarea>
+                            <link rel="stylesheet" type="text/css" href="{{asset('/assets/admin/css/wangEditor.min.css')}}">
+                            <textarea id="textarea" class="autosize-transition col-xs-10 col-sm-6 " name="descrs"></textarea>
+                            <script type="text/javascript" src="{{asset('/assets/admin/js/wangEditor.min.js')}}"></script>
+                            <script type="text/javascript" >
+                                $(function () {
+                                    var editor = new wangEditor('textarea');
+                                    editor.create();
+                                });
+                            </script>
                         </div>
                     </div>                       
 

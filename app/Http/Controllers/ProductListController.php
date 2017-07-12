@@ -13,6 +13,13 @@ class ProductListController extends Controller
     public function index()
     {
         $type = Categories::get();
+        $newgoods = DB::table('goods as g')
+            ->join('prices as p','g.id','=','p.goods_id')
+            ->select('g.id','g.name','p.price','p.image')
+            ->where('status',1)
+            ->orderBy('created_at','desc')
+            ->limit(10)
+            ->get();
         $first = DB::table('goods as g')
             ->join('prices as p','g.id','=','p.goods_id')
             ->select('g.id','g.name','p.price','p.image');
@@ -33,7 +40,7 @@ class ProductListController extends Controller
             $goods = $first->paginate(9);
         }
 //        dd($goods);
-        return view('home.productList',compact('type','goods'));
+        return view('home.productList',compact('type','goods','newgoods'));
 
 
     }

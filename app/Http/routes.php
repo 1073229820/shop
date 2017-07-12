@@ -15,7 +15,7 @@
 
 Route::group(['prefix' => 'admin'], function () {
 
-
+//后台登录中间件，现在必须登录才能登录--开始
     Route::group(['middleware'=>'AdminCheckLogin'], function () {
         Route::resource('roles', 'RolesController');
         Route::resource('permissions', 'PermissionsController');
@@ -55,14 +55,28 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('link/changesortnum', 'LinkController@changesortnum');
 
 
+
         //订单管理
         Route::get('orders', 'OrderController@adminIndex');
 
         Route::get('orders/edit/{id}', 'OrderController@edit');
         Route::get('orders/detail/{id}', 'OrderController@detail');
 
+        //商品管理模块
+        Route::resource('goods', 'GoodsController');//商品
+        Route::resource('goodstype','GoodsTypeController');//商品类别
+        Route::get('data/goodstype','GoodsTypeController@data');
+        Route::get('data2/goodstype','GoodsTypeController@data2');
+        Route::get('data3/goodstype','GoodsTypeController@data3');
+        Route::resource('attribute','AttributeController');//商品属性
+        Route::get('data/attribute','AttributeController@data');
+        Route::any('admin/upload','UploadController@upload');//图片上传
+        Route::resource('goodsprice','GoodsPriceController');
+        Route::get('data/goodsprice','GoodsPriceController@data');
+
 
     });
+//后台登录中间件，现在必须登录才能登录--结束
 
     //管理员登录、注销、认证码路由
     Route::get('login', 'LoginController@AdminLogin');
@@ -72,24 +86,14 @@ Route::group(['prefix' => 'admin'], function () {
     Route::any('getcode', 'LoginController@getCode');
 
 
-//商品管理模块
-    Route::resource('goods', 'GoodsController');//商品
-    Route::resource('goodstype','GoodsTypeController');//商品类别
-    Route::get('data/goodstype','GoodsTypeController@data');
-    Route::get('data2/goodstype','GoodsTypeController@data2');
-    Route::get('data3/goodstype','GoodsTypeController@data3');
-    Route::resource('attribute','AttributeController');//商品属性
-    Route::get('data/attribute','AttributeController@data');
-    Route::any('admin/upload','UploadController@upload');//图片上传
-    Route::resource('goodsprice','GoodsPriceController');
-    Route::get('data/goodsprice','GoodsPriceController@data');
+
 
 
 
 });
 
 // 前台首页
-    Route::any('home','HomeController@index');
+//    Route::any('index','HomeController@index');
     Route::any('item/{id?}','ItemController@show');//商品详情页
     Route::any('productlist','ProductListController@index');
 
@@ -113,7 +117,7 @@ Route::get('history/orders', 'OrderController@index');
     //前台退出
     Route::any('logout', 'LoginController@logout');
 //前台首页
-    Route::any('index', 'LoginController@index');
+    Route::any('index', 'HomeController@index');
 //前台注册页
     Route::any('reg', 'LoginController@reg');
 //前台注册

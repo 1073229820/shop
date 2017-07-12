@@ -25,7 +25,7 @@ class RolesController extends Controller
             $roles = Role::with('perms')->paginate(9);
             return view('/admin/roles/index', compact('roles'));
         } else {
-            return abort(503);
+            return abort(404);
         }
 
     }
@@ -43,7 +43,7 @@ class RolesController extends Controller
             return view('admin/roles/create', compact('perms'));
 
         } else {
-            return abort(503);
+            return abort(404);
         }
 
     }
@@ -78,7 +78,7 @@ class RolesController extends Controller
             }
         } else {
 
-            return abort(503);
+            return abort(404);
         }
     }
 
@@ -97,7 +97,7 @@ class RolesController extends Controller
 
         } else {
 
-            return abort(503);
+            return abort(404);
         }
     }
 
@@ -128,7 +128,7 @@ class RolesController extends Controller
             return redirect('admin/roles');
         } else {
 
-            return abort(503);
+            return abort(404);
         }
     }
 

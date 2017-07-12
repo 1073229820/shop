@@ -30,7 +30,7 @@ class PermissionsController extends Controller
             return view('admin.permissions.index', compact('permissions'));
         } else {
 
-            return abort(503);
+            return abort(404);
         }
 
     }
@@ -47,7 +47,7 @@ class PermissionsController extends Controller
 
         } else {
 
-            return abort(503);
+            return abort(404);
         }
 
     }
@@ -66,7 +66,7 @@ class PermissionsController extends Controller
 
         } else {
 
-            return abort(503);
+            return abort(404);
         }
 
     }
@@ -84,7 +84,7 @@ class PermissionsController extends Controller
 
         } else {
 
-            return abort(503);
+            return abort(404);
         }
     }
 
@@ -106,7 +106,7 @@ class PermissionsController extends Controller
 
         } else {
 
-            return abort(503);
+            return abort(404);
         }
     }
 

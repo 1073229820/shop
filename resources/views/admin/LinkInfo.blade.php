@@ -96,6 +96,8 @@
                                                 <i class="icon-pencil bigger-130"></i>
                                             </a>
 
+
+
                                             <a class="red" href="javascript:;"   onclick="deleteClick({{$v->id}})">
                                                 <i class="icon-trash bigger-130"></i>
                                             </a>
@@ -274,9 +276,9 @@
                     if(data.status == 1){
                         //删除成功后就马上刷新
                         location.href = location.href;
-                        layer.msg('删除成功', {icon: 6});
+                        layer.msg(data.msg, {icon: 6});
                     }else{
-                        layer.msg('删除失败！稍后再试', {icon: 5});
+                        layer.msg(data.msg, {icon: 5});
                     }
                 });
                 //alert(cate_id);
@@ -310,12 +312,13 @@
                 btn: ['是的','不不'] //按钮
             }, function(){
                 $.post("{{url('/admin/link/')}}/"+id+"/edit", {'_method':'get', '_token':'{{csrf_token()}}'}, function(data){
+                   console.log(data.status);
                     if(data.status == 1){
                         //删除成功后就马上刷新
                         location.href = location.href;
-                        layer.msg('改变成功', {icon: 6});
+                        layer.msg(data.msg, {icon: 6});
                     }else{
-                        layer.msg('改变失败！稍后再试', {icon: 5});
+                        layer.msg(data.msg, {icon: 5});
                     }
                 });
                 //alert(cate_id);

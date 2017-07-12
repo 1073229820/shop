@@ -14,7 +14,7 @@ use App\Http\Requests;
 use Illuminate\Support\Facades\Input;
 use Session;
 use App\Admin;
-use Illuminate\Support\Facades\Hash;
+
 
 
 require_once './code/Code.class.php';
@@ -45,9 +45,13 @@ class LoginController extends Controller
     //前台登录验证
     public function login(Request $request)
     {
-
+     /*   dd(Input::all());
+        $request = new Request();
+        $post=$request->all();
+        dd($post);*/
 
         if($input = Input::all()){
+
             //dd($input);
             //dd($input['email']);
             //$user = User::first();
@@ -200,7 +204,7 @@ class LoginController extends Controller
 
         ];
 
-        $validator = Validhator::make($input, $rules, $message);
+        $validator = Validator::make($input, $rules, $message);
         if ($emailinfo['status'] != 1) {
             if ($validator->passes()) {
                 $re = User::create($input);

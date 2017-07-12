@@ -77,7 +77,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             <table summary="Shopping cart">
                                 <tr>
                                     <th class="shopping-cart-image">商品图</th>
-                                    <th class="shopping-cart-description">商品简要</th>
+                                    <th class="shopping-cart-description">商品名</th>
                                     <th class="shopping-cart-ref-no">商品类别</th>
                                     <th class="shopping-cart-quantity">购买数量</th>
                                     <th class="shopping-cart-price">商品单价</th>
@@ -86,15 +86,13 @@ License: You must have a valid license purchased only from themeforest(the above
                                 @foreach($cartList as $cart)
                                 <tr>
                                     <td class="shopping-cart-image">
-                                        <a href="#"><img src="{{asset('assets/home/temp/products/model3.jpg')}}" alt="Berry Lace Dress"></a>
+                                        <a href="#"><img src="{{$cart['image']}}" alt="..."></a>
                                     </td>
                                     <td class="shopping-cart-description">
-                                        <h3><a href="#">{{$cart['goods_name']}}</a></h3>
-                                        <p><strong>Item 1</strong> - {{$cart['logo']}} </p>
-                                        <em>查看详情</em>
+                                        <h3><a href="#">{{$cart['name']}}</a></h3>
                                     </td>
                                     <td class="shopping-cart-ref-no">
-                                        {{$cart['cat_id']}}
+                                        {{$cart['type_id']}}
                                     </td>
                                     <td class="shopping-cart-quantity" gid="{{$cart['id']}}">
                                         <div class="product-quantity">
@@ -125,7 +123,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             </ul>
                         </div>
                     </div>
-                    <a class="btn btn-default" href="/ajax">继续购物<i class="fa fa-shopping-cart"></i></a>
+                    <a class="btn btn-default" href="/index">继续购物<i class="fa fa-shopping-cart"></i></a>
                     <a class="btn btn-primary" href="/cart/order">确认购买<i class="fa fa-check"></i></a>
                 </div>
             </div>

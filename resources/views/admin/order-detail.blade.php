@@ -61,9 +61,9 @@
                                     <tr>
                                         <td>{{$item['order_number']}}</td>
                                         <td>
-                                            {{$item['goods_name']}}
+                                            {{$item['name']}}
                                         </td>
-                                        <td>{{$item['logo']}}</td>
+                                        <td>{{$item['image']}}</td>
                                         <td>{{$item['price']}}</td>
                                         <td>{{$item['buynum']}}</td>
 

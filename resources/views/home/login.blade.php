@@ -93,10 +93,8 @@ License: You must have a valid license purchased only from themeforest(the above
             <!-- BEGIN TOP BAR MENU -->
             <div class="col-md-6 col-sm-6 additional-nav">
                 <ul class="list-unstyled list-inline pull-right">
-                    <li><a href="{{url('order')}}">My Account</a></li>
-                    <li><a href="#">My Wishlist</a></li>
-                    <li><a href="checkout.blade.php">Checkout</a></li>
-                    <li><a href="login-page.html">Log In</a></li>
+                    <li><a href="{{url('ulogin')}}">登录</a></li>
+                    <li><a href="{{url('reg')}}">立即注册</a></li>
                 </ul>
             </div>
             <!-- END TOP BAR MENU -->
@@ -117,7 +115,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 <span class="icon-bar"></span>
             </button>
             <!-- END RESPONSIVE MENU TOGGLER -->
-            <a href="index.html" class="navbar-brand"><img src="assets/home/img/logo_red.png" alt="Metronic Shop UI"></a><!-- LOGO -->
+            <a href="/index" class="navbar-brand"><img src="assets/home/img/logo_red.png" alt="Metronic Shop UI"></a><!-- LOGO -->
         </div>
         <!-- BEGIN CART -->
         <div class="cart-block">
@@ -368,7 +366,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         <li><a href="checkout.blade.php">Checkout</a></li>
                         <li><a href="reg-page.html">Registration Page</a></li>
                         <li class="active"><a href="login-page.html">Login Page</a></li>
-                        <li><a href="forgotton-password.html">Forget Password</a></li>
+                        <li><a href="{{url('passshow')}}">Forget Password</a></li>
                         <li><a href="about.html">About</a></li>
                         <li><a href="contacts.html">Contacts</a></li>
                         <li><a href="faq.html">FAQ</a></li>
@@ -421,7 +419,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <div class="main">
     <div class="container">
         <ul class="breadcrumb">
-            <li><a href="index.html">Home</a></li>
+            <li><a href="/index">Home</a></li>
             <li><a href="">Store</a></li>
             <li class="active">Login</li>
         </ul>
@@ -463,13 +461,13 @@ License: You must have a valid license purchased only from themeforest(the above
                             <form class="form-horizontal form-without-legend" role="form" action="{{url('ulogin')}}" method="post">
                                 <input type="hidden" value="{{csrf_token()}}" name="_token">
                                 <div class="form-group">
-                                    <label for="email" class="col-lg-4 control-label">Email <span class="require">*</span></label>
+                                    <label for="email" class="col-lg-4 control-label">邮箱 <span class="require">*</span></label>
                                     <div class="col-lg-8">
                                         <input type="text" class="form-control" id="email" name="email">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="password" class="col-lg-4 control-label">Password <span class="require">*</span></label>
+                                    <label for="password" class="col-lg-4 control-label">密码 <span class="require">*</span></label>
                                     <div class="col-lg-8">
                                         <input type="password" class="form-control" id="password" name="pass">
                                     </div>
@@ -483,7 +481,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-8 col-md-offset-4 padding-left-0">
-                                        <a href="forgotton-password.html">Forget Password?</a>
+                                        <a href="{{url('passshow')}}">忘记密码?</a>
                                     </div>
                                 </div>
                                 <div class="row">

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Categories;
 use App\Order;
 use App\OrdersDetail;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Session;
@@ -12,6 +14,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Hash;
 
 class OrderController extends Controller
 {
@@ -19,12 +22,19 @@ class OrderController extends Controller
 
     public function order()
     {
-
+        $type = Categories::get();
+        $newgoods = DB::table('goods as g')
+            ->join('prices as p','g.id','=','p.goods_id')
+            ->select('g.id','g.name','p.price','p.image')
+            ->where('status',1)
+            ->orderBy('created_at','desc')
+            ->limit(10)
+            ->get();
         $info = session('user')->email;
         //dd($info);
         $user = User::where('email', $info)->first();
         //dd($user);
-        return view('home/order', compact('user'));
+        return view('home/order', compact('user','type','newgoods'));
 
     }
 
@@ -57,12 +67,24 @@ class OrderController extends Controller
 
         if($validator->passes()) {
             $id = $input['id'];
-            $res = User::where('id', $id)->update($input);
+            $res = User::where('id', $id)->first();
+          $res->user_name = $input['user_name'];
+            $res->name = $input['name'];
+            $res->phone = $input['phone'];
+            $res->sex = $input['sex'];
+            $res->email = $input['email'];
+            //dd(Hash::check('$2y$10$9su0RnLTOy21rz5X2ZiUpeW29H3j5Jnx59TfFLMWQb8B2O8ogFpp2'));
+            if ($input['pass'] != $res->pass){
+                $res->pass =Hash::make($input['pass']);
+            }
+            //dd($res);
+            $res->save();
+//            dd($res);
             if ($res) {
                 session(['user' => null]);
                 return redirect('ulogin');
             } else {
-                return back()->with('errors', '修改分类失败，请稍后重试！');
+                return back()->with('errors', '失败，请稍后重试！');
             }
         }else{
             return back()->withErrors($validator);
@@ -78,6 +100,7 @@ class OrderController extends Controller
         $input = $request->except('_token');
 
         $rules = [
+            'uid' => 'required',
             'cnee_name' => 'required|between:1,30',
             'cnee_tel' => 'required|digits:11',
             'cnee_address' => 'required',
@@ -86,7 +109,8 @@ class OrderController extends Controller
 
         $message = [
             'required' => ':attribute不能为空',
-            'cnee_tel.digits' => '收货人电话必须是11位!'
+            'cnee_tel.digits' => '收货人电话必须是11位!',
+            'uid.required' => '请先登录！',
         ];
 
         $attribute = [
@@ -187,7 +211,6 @@ class OrderController extends Controller
     {
         //查询订单表,前台遍历
         $userId = session('user')->id;
-        $userId = 33;
         $ordersId = Order::where('user_id', '=', $userId)->lists('id');
 
         $orderList = [];
@@ -223,7 +246,8 @@ class OrderController extends Controller
         $orderDetail = OrdersDetail::where('order_id', '=', $id)
             ->leftJoin('orders', 'orders_detail.order_id', '=', 'orders.id')
             ->leftJoin('goods', 'orders_detail.goods_id', '=', 'goods.id')
-            ->select('goods.*', 'orders.order_number', 'orders.paytime', 'orders_detail.buynum')
+            ->leftJoin('prices', 'orders_detail.goods_id', '=', 'prices.id')
+            ->select('goods.*', 'orders.order_number', 'orders.paytime', 'orders_detail.buynum', 'prices.price')
             ->get();
         return view('admin.order-detail', compact('orderDetail'));
 

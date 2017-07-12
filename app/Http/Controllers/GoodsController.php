@@ -39,7 +39,7 @@ class GoodsController extends Controller
             'type_id' => 'required',
             'price' => 'required',
             'store' => 'required',
-            'image' => 'required',
+
         ],[
             'required' => ':attribute 不可以少',
         ],[
@@ -47,7 +47,7 @@ class GoodsController extends Controller
             'type_id' => '种类',
             'price' => '价格',
             'store' => '库存量',
-            'image' => '图片',
+
         ]);
 //        添加商品主表
         $post = $request->only(['type_id','name','production','descr','status','store']);

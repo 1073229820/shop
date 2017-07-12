@@ -28,7 +28,7 @@ class AdminsController extends Controller
             return view('admin/admins/index', compact('post'));
         } else {
 
-            return abort(503);
+            return abort(404);
         }
     }
 
@@ -44,7 +44,7 @@ class AdminsController extends Controller
             return view('admin/admins/create', compact('roles'));
         } else {
 
-            return abort(503);
+            return abort(404);
         }
     }
 
@@ -84,7 +84,7 @@ class AdminsController extends Controller
             return redirect('admin/admins');
         } else {
 
-            return abort(503);
+            return abort(404);
         }
     }
 
@@ -101,7 +101,7 @@ class AdminsController extends Controller
             return view('admin/admins/edit', compact('post', 'roles'));
         } else {
 
-            return abort(503);
+            return abort(404);
         }
     }
 
@@ -141,9 +141,9 @@ class AdminsController extends Controller
             $admin->name = $request->name;
             $admin->pass = $pass;
             $admin->userpic = $filePath;
-            $admin->sex = ($request->sex)[0];
+            $admin->sex = $request->get('sex')[0];
             $admin->email = $request->email;
-            $admin->status = ($request->status)[0];
+            $admin->status = $request->get('status')[0];
             $admin->save();
 
             //清空原有的角色
@@ -164,7 +164,7 @@ class AdminsController extends Controller
 
         } else {
 
-            return abort(503);
+            return abort(404);
         }
     }
 

@@ -42,7 +42,7 @@ class CartController extends Controller
         $userId = session('user_id');
 
 
-        if ($userId) {
+        if (false) {
             //用户已登录存入redis数据库
         }else {
 
@@ -53,7 +53,12 @@ class CartController extends Controller
                 $cartList[$gid]['buynum'] += 1;
                 $cartList[$gid]['addtime'] = time();
             }else {
-                $cartList[$gid] = array_merge(Goods::find($gid)->toArray(), ['buynum'=>1, 'addtime'=>time()]);
+                $product = Goods::leftJoin('prices', 'goods.id', '=', 'prices.id')
+                    ->select('goods.*', 'prices.price')
+                    ->where('goods.id', '=', $gid)
+                    ->first()
+                    ->toArray();
+                $cartList[$gid] = array_merge($product, ['buynum'=>1, 'addtime'=>time()]);
             }
             session()->put('cartList', $cartList);
 

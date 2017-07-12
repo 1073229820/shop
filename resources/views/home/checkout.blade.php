@@ -440,25 +440,17 @@ License: You must have a valid license purchased only from themeforest(the above
                 <div class="panel-heading">
                   <h2 class="panel-title">
                     <a data-toggle="collapse" data-parent="#checkout-page" href="#checkout-content" class="accordion-toggle">
-                      Step 1: Checkout Options
+                      一：请先登录
                     </a>
                   </h2>
                 </div>
                 <div id="checkout-content" class="panel-collapse collapse in">
                   <div class="panel-body row">
                     <div class="col-md-6 col-sm-6">
-                      <h3>New Customer</h3>
-                      <p>Checkout Options:</p>
-                      <div class="radio-list">
-                        <label>
-                          <input type="radio" name="account"  value="register"> Register Account
-                        </label>
-                        <label>
-                          <input type="radio" name="account"  value="guest"> Guest Checkout
-                        </label>
-                      </div>
-                      <p>By creating an account you will be able to shop faster, be up to date on an order's status, and keep track of the orders you have previously made.</p>
-                      <button class="btn btn-primary" type="submit" data-toggle="collapse" data-parent="#checkout-page" data-target="#payment-address-content">Continue</button>
+                      <h3>还没账号？</h3>
+
+                        <p>快快注册一个吧！</p>
+                      <button class="btn btn-primary" type="submit" data-toggle="collapse" data-parent="#checkout-page" data-target="#payment-address-content">注册</button>
                     </div>
                     <div class="col-md-6 col-sm-6">
                       <h3>Returning Customer</h3>
@@ -565,6 +557,11 @@ License: You must have a valid license purchased only from themeforest(the above
 
               <form action="/order/store" method="post">
                 <input type="hidden" name="_token" value="{{csrf_token()}}">
+                  @if(session('user'))
+                      <input type="hidden" name="uid" value="{{session('user')->id}}">
+                      @else
+                      <input type="hidden" name="uid" value="">
+                  @endif
                 <input type="hidden" name="cnee_name">
                 <input type="hidden" name="cnee_tel">
                 <input type="hidden" name="cnee_address">
@@ -574,7 +571,7 @@ License: You must have a valid license purchased only from themeforest(the above
                   <div class="panel-heading">
                     <h2 class="panel-title">
                       <a data-toggle="collapse" data-parent="#checkout-page" href="#confirm-content" class="accordion-toggle">
-                        Step 6: Confirm Order
+                        三：购买商品
                       </a>
                     </h2>
                   </div>
@@ -586,7 +583,6 @@ License: You must have a valid license purchased only from themeforest(the above
                           <tr>
                             <th class="checkout-image">商品图</th>
                             <th class="checkout-description">商品描述</th>
-                            <th class="checkout-model">商品类型</th>
                             <th class="checkout-quantity">购买数量</th>
                             <th class="checkout-price">商品价格</th>
                             <th class="checkout-total">Total</th>
@@ -595,14 +591,12 @@ License: You must have a valid license purchased only from themeforest(the above
                           @foreach(session('cartList') as $cart)
                           <tr>
                             <td class="checkout-image">
-                              <a href="#"><img src="{{$cart['logo']}}" alt="Berry Lace Dress"></a>
+                              <a href="#"><img src="{{$cart['image']}}" alt="Berry Lace Dress"></a>
                             </td>
                             <td class="checkout-description">
-                              <h3><a href="#">{{$cart['goods_name']}}</a></h3>
-                              <p>{{$cart['logo']}}</p>
-                              <em>More info is here</em>
+                              <h3><a href="#">{{$cart['name']}}</a></h3>
+                              <em>查看详情</em>
                             </td>
-                            <td class="checkout-model">{{$cart['cat_id']}}</td>
                             <td class="checkout-quantity">{{$cart['buynum']}}</td>
                             <td class="checkout-price"><strong><span>￥</span>{{$cart['price']}}</strong></td>
                             <td class="checkout-total"><strong><span>￥</span>{{$cart['price']*$cart['buynum']}}</strong></td>

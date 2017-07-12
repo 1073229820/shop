@@ -13,6 +13,7 @@ class UploadController extends Controller
         $file = Input::file('Filedata');
         if ($file->isValid()) {
             $realPath = $file->getRealPath(); //获取临时路径
+
             $originalExtension = $file->getClientOriginalExtension(); //扩展名
             $fileName = date('YmdHis') . uniqid() . '.'.$originalExtension;//拼接文件名
             $path = $file->move(base_path().'/public/uploads', $fileName);
